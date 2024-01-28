@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "extended-enchanting",
+	"version": "${version}",
+	"name": "Extended Enchanting",
+	"description": "Adds a large variety of enchantments. Part of the Combat+ collection.",
+	"authors": [
+		"Provismet"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "Lily License",
+	"icon": "assets/extended-enchanting/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.provismet.ExtendedEnchanting.ExtendedEnchantingMain"
+		],
+		"fabric-datagen": [
+			"com.provismet.datagen.ExtendedEnchanting.ExtendedEnchantingDatagen"
+		]
+	},
+	"mixins": [
+		"extended-enchanting.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.6",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*",
+		"combat-plus": "*"
+	}
+}
