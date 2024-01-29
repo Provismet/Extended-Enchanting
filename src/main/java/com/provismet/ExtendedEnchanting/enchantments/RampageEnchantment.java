@@ -2,6 +2,7 @@ package com.provismet.ExtendedEnchanting.enchantments;
 
 import com.provismet.CombatPlusCore.enchantments.WeaponUtilityEnchantment;
 
+import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -9,14 +10,14 @@ import net.minecraft.entity.effect.StatusEffects;
 
 public class RampageEnchantment extends WeaponUtilityEnchantment {
     public RampageEnchantment () {
-        super(Rarity.RARE, EquipmentSlot.MAINHAND);
+        super(Rarity.RARE, EnchantmentTarget.WEAPON, EquipmentSlot.MAINHAND);
     }
     
     @Override
     public void postKill (int level, LivingEntity user, LivingEntity target) {
         super.postKill(level, user, target);
-        user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 10 * level, 0), user);
-        user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 10 * level, 0), user);
+        user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 25 * level, 0), user);
+        user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 25 * level, 0), user);
     }
 
     @Override

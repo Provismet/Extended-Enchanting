@@ -12,9 +12,9 @@ public class LeechingEnchantment extends AspectEnchantment {
     }
     
     @Override
-    public void postChargedHit (int level, LivingEntity user, LivingEntity target) {
-        super.postChargedHit(level, user, target);
-        user.heal(level * 2f);
+    public void postCriticalHit (int level, LivingEntity user, LivingEntity target) {
+        super.postCriticalHit(level, user, target);
+        user.heal(level);
     }
 
     @Override
