@@ -1,0 +1,22 @@
+{
+  "enchantment.extended-enchanting.back_foot": "Feint",
+  "enchantment.extended-enchanting.back_foot.desc": "Jump back after striking a target.",
+  "enchantment.extended-enchanting.dual_strike": "Dual Strike",
+  "enchantment.extended-enchanting.dual_strike.desc": "Attack a secondary target with each hit.",
+  "enchantment.extended-enchanting.frost_aspect": "Frost Aspect",
+  "enchantment.extended-enchanting.frost_aspect.desc": "Partially freezes the target on hit.",
+  "enchantment.extended-enchanting.glass": "Glass",
+  "enchantment.extended-enchanting.glass.desc": "Deal increased damage when on full health.",
+  "enchantment.extended-enchanting.initiative": "Initiative",
+  "enchantment.extended-enchanting.initiative.desc": "Deal increased damage to full health targets.",
+  "enchantment.extended-enchanting.launch": "Launch",
+  "enchantment.extended-enchanting.launch.desc": "Launches the target in the air on hit.",
+  "enchantment.extended-enchanting.leeching": "Leeching",
+  "enchantment.extended-enchanting.leeching.desc": "Heals the user when striking a target.",
+  "enchantment.extended-enchanting.rampage": "Rampage",
+  "enchantment.extended-enchanting.rampage.desc": "Gain strength and speed after killing an enemy.",
+  "enchantment.extended-enchanting.solitude": "Solitude",
+  "enchantment.extended-enchanting.solitude.desc": "Deal more damage when this is the only enchantment on the item.",
+  "enchantment.extended-enchanting.weapon_protection": "Weapon Protection",
+  "enchantment.extended-enchanting.weapon_protection.desc": "Grants increased protection against attackers wielding melee weapons."
+}

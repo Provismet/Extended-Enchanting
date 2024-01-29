@@ -7,6 +7,6 @@ public class ExtendedEnchantingDatagen implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator (FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-        pack.addProvider(LanguageProvider::new);
+        pack.addProvider(LanguageGenerator::new);
     }
 }

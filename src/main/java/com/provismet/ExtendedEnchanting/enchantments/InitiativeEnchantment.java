@@ -21,4 +21,9 @@ public class InitiativeEnchantment extends AdditionalDamageEnchantment {
     public int getMaxLevel () {
         return 5;
     }
+
+    @Override
+    public boolean isTreasure () {
+        return true;
+    }
 }

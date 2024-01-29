@@ -8,7 +8,7 @@ import net.minecraft.entity.LivingEntity;
 
 public class FrostAspectEnchantment extends AspectEnchantment {
     public FrostAspectEnchantment () {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnchantmentTarget.WEAPON, EquipmentSlot.MAINHAND);
     }
 
     @Override
@@ -19,12 +19,12 @@ public class FrostAspectEnchantment extends AspectEnchantment {
     }
     
     @Override
-    public int getMinPower(int level) {
+    public int getMinPower (int level) {
         return 10 + 20 * (level - 1);
     }
 
     @Override
-    public int getMaxPower(int level) {
+    public int getMaxPower (int level) {
         return super.getMinPower(level) + 50;
     }
 

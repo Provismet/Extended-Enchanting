@@ -13,12 +13,17 @@ public class GlassEnchantment extends AdditionalDamageEnchantment {
 
     @Override
     public float getAttackDamage (int level, EquipmentSlot slot, LivingEntity user, LivingEntity target) {
-        if (slot == EquipmentSlot.MAINHAND && user.getHealth() >= user.getMaxHealth()) return level * 5f;
+        if (slot == EquipmentSlot.MAINHAND && user.getHealth() >= user.getMaxHealth()) return level * 2.8f;
         return 0f;
     }
 
     @Override
     public int getMaxLevel () {
-        return 3;
+        return 5;
+    }
+
+    @Override
+    public boolean isTreasure () {
+        return true;
     }
 }

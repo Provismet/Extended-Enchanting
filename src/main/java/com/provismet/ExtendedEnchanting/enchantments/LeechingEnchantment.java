@@ -8,7 +8,7 @@ import net.minecraft.entity.LivingEntity;
 
 public class LeechingEnchantment extends AspectEnchantment {
     public LeechingEnchantment () {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnchantmentTarget.WEAPON, EquipmentSlot.MAINHAND);
     }
     
     @Override
