@@ -17,7 +17,7 @@ public class LaunchEnchantment extends Enchantment implements CPCEnchantment {
     
     @Override
     public void postChargedHit (int level, LivingEntity user, LivingEntity target) {
-        if (!user.getWorld().isClient() && !target.getType().isIn(EETags.NO_LAUNCH)) target.addVelocity(0.0, level * 0.33, 0.0);
+        if (!user.getWorld().isClient() && !target.getType().isIn(EETags.NO_LAUNCH)) target.addVelocity(0.0, level * 0.5, 0.0);
     }
 
     @Override
