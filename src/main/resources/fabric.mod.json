@@ -8,8 +8,8 @@
 		"Provismet"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/Provismet/Extended-Enchanting",
+		"sources": "https://github.com/Provismet/Extended-Enchanting"
 	},
 	"license": "Lily License",
 	"icon": "assets/extended-enchanting/icon.png",
@@ -18,15 +18,21 @@
 		"main": [
 			"com.provismet.ExtendedEnchanting.ExtendedEnchantingMain"
 		],
+		"client": [
+			"com.provismet.ExtendedEnchanting.ExtendedEnchantingClient"
+		],
 		"fabric-datagen": [
 			"com.provismet.datagen.ExtendedEnchanting.ExtendedEnchantingDatagen"
+		],
+		"mm:early_risers": [
+			"com.provismet.ExtendedEnchanting.asm.EarlyRiser"
 		]
 	},
 	"mixins": [
 		"extended-enchanting.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.15.6",
+		"fabricloader": ">=0.15.0",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
 		"fabric-api": "*",

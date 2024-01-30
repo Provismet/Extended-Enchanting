@@ -10,6 +10,7 @@ import net.minecraft.registry.tag.TagKey;
 public class EETags {
     public static final TagKey<DamageType> MELEE_STRIKE = EETags.createDamageTypeTag("melee");
     public static final TagKey<DamageType> DIRECT_ATTACK = EETags.createDamageTypeTag("direct_attack");
+    public static final TagKey<DamageType> COMBUSTION = EETags.createDamageTypeTag("combustion");
 
     public static final TagKey<EntityType<?>> NO_LAUNCH = EETags.createEntityTypeTag("cannot_launch");
 

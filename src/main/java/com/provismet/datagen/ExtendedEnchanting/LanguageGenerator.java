@@ -13,8 +13,9 @@ public class LanguageGenerator extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations (TranslationBuilder translationBuilder) {
-        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.LEECHING, "Leeching", "Heals the user when striking a target.");
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.LEECHING_ASPECT, "Leeching Aspect", "Heals the user when striking a target.");
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.FROST_ASPECT, "Frost Aspect", "Partially freezes the target on hit.");
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.LIGHTNING_ASPECT, "Lightning Aspect", "Build up static charge on struck targets.");
 
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.INITIATIVE, "Initiative", "Deal increased damage to full health targets.");
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.GLASS, "Glass", "Deal increased damage when on full health.");
@@ -27,10 +28,18 @@ public class LanguageGenerator extends FabricLanguageProvider {
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.LAUNCH, "Launch", "Launches the target in the air on hit.");
 
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.WEAPON_PROTECTION, "Weapon Protection", "Grants increased protection against attackers wielding melee weapons.");
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.COMBUSTION_PROTECTION, "Combustion Protection", "Grants increased protection to fire and explosion damage.");
+
+        LanguageGenerator.addDeathMessage(translationBuilder, "static_shock", "was electrified", "was electrified by");
     }
 
     private static void addEnchantment (TranslationBuilder translationBuilder, Enchantment enchantment, String name, String description) {
         translationBuilder.add(enchantment, name);
         translationBuilder.add(enchantment.getTranslationKey() + ".desc", description);
+    }
+
+    private static void addDeathMessage (TranslationBuilder translationBuilder, String damageId, String message, String mobMessage) {
+        translationBuilder.add("death.attack.extended-enchanting." + damageId, "%1$s " + message);
+        translationBuilder.add("death.attack.extended-enchanting." + damageId + ".player", "%1$s " + mobMessage + " %2$s");
     }
 }

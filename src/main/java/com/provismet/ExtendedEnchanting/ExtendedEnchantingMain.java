@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.provismet.ExtendedEnchanting.registries.EEEnchantments;
+import com.provismet.ExtendedEnchanting.registries.EEParticleTypes;
 
 public class ExtendedEnchantingMain implements ModInitializer {
 	public static final String MODID = "extended-enchanting";
@@ -19,5 +20,6 @@ public class ExtendedEnchantingMain implements ModInitializer {
 	@Override
 	public void onInitialize () {
 		EEEnchantments.register();
+		EEParticleTypes.register();
 	}
 }
