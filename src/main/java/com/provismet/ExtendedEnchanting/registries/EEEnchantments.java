@@ -4,6 +4,7 @@ import com.provismet.CombatPlusCore.enchantments.AdditionalDamageEnchantment;
 import com.provismet.CombatPlusCore.enchantments.AspectEnchantment;
 import com.provismet.CombatPlusCore.enchantments.WeaponUtilityEnchantment;
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
+import com.provismet.ExtendedEnchanting.enchantments.AbstractBootsEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.AbstractHeartEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.AbstractProtectionEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.BackFootEnchantment;
@@ -20,6 +21,8 @@ import com.provismet.ExtendedEnchanting.enchantments.LaunchEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.LeechingEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.LightningAspectEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.RampageEnchantment;
+import com.provismet.ExtendedEnchanting.enchantments.ReplantingEnchantment;
+import com.provismet.ExtendedEnchanting.enchantments.SoilWalkerEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.SolitudeEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.WeaponProtectionEnchantment;
 
@@ -50,6 +53,9 @@ public class EEEnchantments {
     public static final AbstractHeartEnchantment BRIMSTONE_HEART = new HeartBrimstoneEnchantment();
     public static final AbstractHeartEnchantment VOID_HEART = new HeartVoidEnchantment();
 
+    public static final ReplantingEnchantment REPLANT = new ReplantingEnchantment();
+    public static final AbstractBootsEnchantment SOIL_WALKER = new SoilWalkerEnchantment();
+
     private static void register (Enchantment enchantment, String name) {
         Registry.register(Registries.ENCHANTMENT, ExtendedEnchantingMain.identifier(name), enchantment);
     }
@@ -76,5 +82,8 @@ public class EEEnchantments {
         register(MOON_HEART, "moon_heart");
         register(BRIMSTONE_HEART, "brimstone_heart");
         register(VOID_HEART, "void_heart");
+
+        register(REPLANT, "replanting");
+        register(SOIL_WALKER, "soil_walker");
     }
 }

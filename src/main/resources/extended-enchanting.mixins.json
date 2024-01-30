@@ -4,7 +4,9 @@
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"PlayerEntityMixin",
-		"LivingEntityMixin"
+		"LivingEntityMixin",
+		"HoeItemMixin",
+		"FarmlandBlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

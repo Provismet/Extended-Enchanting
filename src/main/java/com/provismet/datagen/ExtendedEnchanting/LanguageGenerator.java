@@ -35,6 +35,9 @@ public class LanguageGenerator extends FabricLanguageProvider {
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.BRIMSTONE_HEART, "Heart of Brimstone", "Grants speed and health regeneration when on fire in the Nether.");
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.VOID_HEART, "Heart of the Void", "Saves you from fall damage and the void when in the End.");
 
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.REPLANT, "Green Thumb", "Replants crops that are broken with a hoe.");
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.SOIL_WALKER, "Soil Walker", "Prevents you from converting farmland into dirt when landing on it.");
+
         LanguageGenerator.addDeathMessage(translationBuilder, "static_shock", "was electrified", "was electrified by");
     }
 

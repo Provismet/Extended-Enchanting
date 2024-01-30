@@ -7,7 +7,7 @@ import net.minecraft.entity.EquipmentSlot;
 
 public class ReplantingEnchantment extends Enchantment {
     public ReplantingEnchantment () {
-        super(Rarity.UNCOMMON, EEEnchantmentTarget.HOE, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EEEnchantmentTarget.HOE, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
     }
     
     @Override
