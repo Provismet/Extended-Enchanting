@@ -11,9 +11,9 @@ import com.provismet.ExtendedEnchanting.enchantments.CombustionProtectionEnchant
 import com.provismet.ExtendedEnchanting.enchantments.DualStrikeEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.FrostAspectEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.GlassEnchantment;
-import com.provismet.ExtendedEnchanting.enchantments.HeartEndEnchantment;
+import com.provismet.ExtendedEnchanting.enchantments.HeartVoidEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.HeartMoonEnchantment;
-import com.provismet.ExtendedEnchanting.enchantments.HeartNetherEnchantment;
+import com.provismet.ExtendedEnchanting.enchantments.HeartBrimstoneEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.HeartSunEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.InitiativeEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.LaunchEnchantment;
@@ -47,8 +47,8 @@ public class EEEnchantments {
 
     public static final AbstractHeartEnchantment SUN_HEART = new HeartSunEnchantment();
     public static final AbstractHeartEnchantment MOON_HEART = new HeartMoonEnchantment();
-    public static final AbstractHeartEnchantment NETHER_HEART = new HeartNetherEnchantment();
-    public static final AbstractHeartEnchantment END_HEART = new HeartEndEnchantment();
+    public static final AbstractHeartEnchantment BRIMSTONE_HEART = new HeartBrimstoneEnchantment();
+    public static final AbstractHeartEnchantment VOID_HEART = new HeartVoidEnchantment();
 
     private static void register (Enchantment enchantment, String name) {
         Registry.register(Registries.ENCHANTMENT, ExtendedEnchantingMain.identifier(name), enchantment);
@@ -74,7 +74,7 @@ public class EEEnchantments {
 
         register(SUN_HEART, "sun_heart");
         register(MOON_HEART, "moon_heart");
-        register(NETHER_HEART, "nether_heart");
-        register(END_HEART, "end_heart");
+        register(BRIMSTONE_HEART, "brimstone_heart");
+        register(VOID_HEART, "void_heart");
     }
 }

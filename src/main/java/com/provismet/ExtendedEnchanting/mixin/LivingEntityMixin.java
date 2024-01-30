@@ -6,7 +6,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.provismet.ExtendedEnchanting.enchantments.AbstractHeartEnchantment;
 import com.provismet.ExtendedEnchanting.interfaces.IMixinLivingEntity;
 import com.provismet.ExtendedEnchanting.registries.EEParticleTypes;
 import com.provismet.ExtendedEnchanting.utility.EEDamageTypes;
@@ -14,8 +13,8 @@ import com.provismet.ExtendedEnchanting.utility.ExtendedEnchantmentHelper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 @Mixin(LivingEntity.class)
@@ -27,11 +26,13 @@ public abstract class LivingEntityMixin extends Entity implements IMixinLivingEn
     @Unique
     private int staticCharge = 0;
 
+    @Unique
+    private Vec3d previousGroundPos = null;
+
     @Inject(method="tick", at=@At("HEAD"))
     private void applyEffectsOverTime (CallbackInfo info) {
         LivingEntity thisLiving = (LivingEntity)(Object)this;
-        AbstractHeartEnchantment heartEnchantment = ExtendedEnchantmentHelper.getHeartEnchantment(thisLiving.getEquippedStack(EquipmentSlot.CHEST));
-        if (heartEnchantment != null) heartEnchantment.tick(thisLiving);
+        ExtendedEnchantmentHelper.tickHeartEnchantments(thisLiving);
 
         if (this.age % 25 == 0 && this.staticCharge > 0) {
             --this.staticCharge;
@@ -50,5 +51,15 @@ public abstract class LivingEntityMixin extends Entity implements IMixinLivingEn
             this.staticCharge = 0;
             this.damage(EEDamageTypes.staticShock(this.getDamageSources()), 6f);
         }
+    }
+
+    @Override
+    public void setPreviousGroundPos (Vec3d position) {
+        this.previousGroundPos = position;
+    }
+
+    @Override
+    public Vec3d getPreviousGroundPos() {
+        return this.previousGroundPos;
     }
 }

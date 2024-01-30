@@ -30,6 +30,11 @@ public class LanguageGenerator extends FabricLanguageProvider {
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.WEAPON_PROTECTION, "Weapon Protection", "Grants increased protection against attackers wielding melee weapons.");
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.COMBUSTION_PROTECTION, "Combustion Protection", "Grants increased protection to fire and explosion damage.");
 
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.SUN_HEART, "Heart of the Sun", "Grants health over time and ignites attackers when exposed to sunlight.");
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.MOON_HEART, "Heart of the Moon", "Prevents phantom spawns and inflicts slowness on attackers when exposed to moonlight.");
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.BRIMSTONE_HEART, "Heart of Brimstone", "Grants speed and health regeneration when on fire in the Nether.");
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.VOID_HEART, "Heart of the Void", "Saves you from fall damage and the void when in the End.");
+
         LanguageGenerator.addDeathMessage(translationBuilder, "static_shock", "was electrified", "was electrified by");
     }
 

@@ -9,12 +9,12 @@ public abstract class AbstractHeartEnchantment extends Enchantment {
     protected AbstractHeartEnchantment (Rarity weight) {
         super(weight, EnchantmentTarget.ARMOR_CHEST, new EquipmentSlot[] {EquipmentSlot.CHEST});
     }
-
-    protected AbstractHeartEnchantment () {
-        this(Rarity.VERY_RARE);
-    }
     
     public abstract void tick (LivingEntity user);
+
+    public void offTick (LivingEntity user) {
+        
+    }
 
     @Override
     protected boolean canAccept (Enchantment other) {
@@ -29,5 +29,15 @@ public abstract class AbstractHeartEnchantment extends Enchantment {
     @Override
     public int getMaxPower (int level) {
         return 75;
+    }
+
+    @Override
+    public boolean isTreasure () {
+        return true;
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer () {
+        return false;
     }
 }
