@@ -8,6 +8,7 @@ import com.provismet.ExtendedEnchanting.enchantments.AbstractBootsEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.AbstractHeartEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.AbstractProtectionEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.BackFootEnchantment;
+import com.provismet.ExtendedEnchanting.enchantments.ChorusCurseEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.CombustionProtectionEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.DualStrikeEnchantment;
 import com.provismet.ExtendedEnchanting.enchantments.FrostAspectEnchantment;
@@ -56,6 +57,8 @@ public class EEEnchantments {
     public static final ReplantingEnchantment REPLANT = new ReplantingEnchantment();
     public static final AbstractBootsEnchantment SOIL_WALKER = new SoilWalkerEnchantment();
 
+    public static final ChorusCurseEnchantment CHORUS_CURSE = new ChorusCurseEnchantment();
+
     private static void register (Enchantment enchantment, String name) {
         Registry.register(Registries.ENCHANTMENT, ExtendedEnchantingMain.identifier(name), enchantment);
     }
@@ -85,5 +88,7 @@ public class EEEnchantments {
 
         register(REPLANT, "replanting");
         register(SOIL_WALKER, "soil_walker");
+
+        register(CHORUS_CURSE, "chorus_curse");
     }
 }
