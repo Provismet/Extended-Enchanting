@@ -39,6 +39,8 @@ public class LanguageGenerator extends FabricLanguageProvider {
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.REPLANT, "Green Thumb", "Replants crops that are broken with a hoe.");
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.SOIL_WALKER, "Soil Walker", "Prevents you from converting farmland into dirt when landing on it.");
 
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.CHORUS_CURSE, "Curse of Chorus", "Randomly teleport when attacked.");
+
         LanguageGenerator.addDeathMessage(translationBuilder, "static_shock", "was electrified", "was electrified by");
 
         translationBuilder.add(EEGameRules.PLAYER_SPECIAL_DAMAGE_MOD.getTranslationKey(), "PvP Effectiveness of conditional damage enchantments");
