@@ -23,7 +23,7 @@ public abstract class AbstractHeartEnchantment extends Enchantment {
 
     @Override
     public int getMinPower (int level) {
-        return 25;
+        return 50;
     }
 
     @Override
@@ -38,6 +38,11 @@ public abstract class AbstractHeartEnchantment extends Enchantment {
 
     @Override
     public boolean isAvailableForEnchantedBookOffer () {
+        return false;
+    }
+
+    @Override
+    public boolean isAvailableForRandomSelection() {
         return false;
     }
 }
