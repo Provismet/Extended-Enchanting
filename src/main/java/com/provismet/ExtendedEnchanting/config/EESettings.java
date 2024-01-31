@@ -37,7 +37,8 @@ public class EESettings {
             
             parser.beginObject();
             while (parser.hasNext()) {
-                switch (parser.nextName()) {
+                String name = parser.nextName();
+                switch (name) {
                     case "override_datapack_loot_tables":
                         EESettings.overrideDatapacks = parser.nextBoolean();
                         break;
@@ -59,7 +60,7 @@ public class EESettings {
             }
             EESettings.write();
         }
-        catch (IOException e2) {
+        catch (Exception e2) {
             ExtendedEnchantingMain.LOGGER.error("Error whilst parsing config:", e2);
         }
     }
