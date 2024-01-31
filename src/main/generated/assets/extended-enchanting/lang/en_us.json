@@ -36,5 +36,7 @@
   "enchantment.extended-enchanting.void_heart": "Heart of the Void",
   "enchantment.extended-enchanting.void_heart.desc": "Saves you from fall damage and the void when in the End.",
   "enchantment.extended-enchanting.weapon_protection": "Weapon Protection",
-  "enchantment.extended-enchanting.weapon_protection.desc": "Grants increased protection against attackers wielding melee weapons."
+  "enchantment.extended-enchanting.weapon_protection.desc": "Grants increased protection against attackers wielding melee weapons.",
+  "gamerule.additionalDamageEnchantmentPvpEffectiveness": "PvP Effectiveness of conditional damage enchantments",
+  "gamerule.additionalDamageEnchantmentPvpEffectiveness.description": "Bonus damage from conditional damage enchantments will be multiplied by this value if the target is a player."
 }

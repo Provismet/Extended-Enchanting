@@ -1,6 +1,7 @@
 package com.provismet.datagen.ExtendedEnchanting;
 
 import com.provismet.ExtendedEnchanting.registries.EEEnchantments;
+import com.provismet.ExtendedEnchanting.utility.EEGameRules;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -39,6 +40,9 @@ public class LanguageGenerator extends FabricLanguageProvider {
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.SOIL_WALKER, "Soil Walker", "Prevents you from converting farmland into dirt when landing on it.");
 
         LanguageGenerator.addDeathMessage(translationBuilder, "static_shock", "was electrified", "was electrified by");
+
+        translationBuilder.add(EEGameRules.PLAYER_SPECIAL_DAMAGE_MOD.getTranslationKey(), "PvP Effectiveness of conditional damage enchantments");
+        translationBuilder.add(EEGameRules.PLAYER_SPECIAL_DAMAGE_MOD.getTranslationKey() + ".description", "Bonus damage from conditional damage enchantments will be multiplied by this value if the target is a player.");
     }
 
     private static void addEnchantment (TranslationBuilder translationBuilder, Enchantment enchantment, String name, String description) {
