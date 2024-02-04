@@ -4,7 +4,6 @@ import com.provismet.CombatPlusCore.enchantments.WeaponUtilityEnchantment;
 import com.provismet.CombatPlusCore.interfaces.MeleeWeapon;
 import com.provismet.lilylib.util.Relations;
 
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.TargetPredicate;
@@ -15,7 +14,7 @@ import net.minecraft.item.ItemStack;
 
 public class DualStrikeEnchantment extends WeaponUtilityEnchantment {
     public DualStrikeEnchantment () {
-        super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, EquipmentSlot.MAINHAND);
+        super(Rarity.UNCOMMON, EquipmentSlot.MAINHAND);
     }
     
     @Override
