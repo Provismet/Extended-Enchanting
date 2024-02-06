@@ -12,11 +12,11 @@ import net.minecraft.particle.DefaultParticleType;
 public class StaticChargeParticle extends AnimatedParticle {
     protected StaticChargeParticle (ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider) {
         super(world, x, y, z, spriteProvider, 0f);
-        this.maxAge += 20;
+        this.maxAge += 5 + (int)(20.0 * this.random.nextDouble());
 
-        this.velocityX = this.random.nextDouble() * 0.1 - 0.05;
+        this.velocityX = this.random.nextDouble() * 0.2- 0.1;
         this.velocityY = this.random.nextDouble() * 0.02 - 0.01;
-        this.velocityZ = this.random.nextDouble() * 0.1 - 0.05;
+        this.velocityZ = this.random.nextDouble() * 0.2 - 0.1;
         this.gravityStrength = 0;
 
         this.setSpriteForAge(spriteProvider);

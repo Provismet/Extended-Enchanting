@@ -34,11 +34,13 @@ public abstract class LivingEntityMixin extends Entity implements IMixinLivingEn
         LivingEntity thisLiving = (LivingEntity)(Object)this;
         ExtendedEnchantmentHelper.tickHeartEnchantments(thisLiving);
 
-        if (this.age % 25 == 0 && this.staticCharge > 0) {
-            --this.staticCharge;
-            if (this.getWorld().isClient()) {
-                for (int i = 0; i < this.staticCharge * 2; ++i) {
-                    this.getWorld().addParticle(EEParticleTypes.STATIC_CHARGE, this.getX(), (this.getY() + this.getEyeY()) / 2.0, this.getZ(), 0.0, 0.0, 0.0);
+        if (this.staticCharge > 0) {
+            if (this.age % 25 == 0) --this.staticCharge;
+            if (this.age % 15 == 0) {
+                if (this.getWorld().isClient()) {
+                    for (int i = 0; i < this.staticCharge * 2; ++i) {
+                        this.getWorld().addParticle(EEParticleTypes.STATIC_CHARGE, this.getX(), (this.getY() + this.getEyeY()) / 2.0, this.getZ(), 0.0, 0.0, 0.0);
+                    }
                 }
             }
         }
@@ -49,7 +51,7 @@ public abstract class LivingEntityMixin extends Entity implements IMixinLivingEn
         this.staticCharge += amount;
         if (this.staticCharge >= 5) {
             this.staticCharge = 0;
-            this.damage(EEDamageTypes.staticShock(this.getDamageSources()), 6f);
+            if (!this.getWorld().isClient()) this.damage(EEDamageTypes.staticShock(this.getDamageSources()), 6f);
         }
     }
 
