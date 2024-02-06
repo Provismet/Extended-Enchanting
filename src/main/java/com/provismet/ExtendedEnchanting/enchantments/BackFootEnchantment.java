@@ -1,9 +1,7 @@
 package com.provismet.ExtendedEnchanting.enchantments;
 
-import com.provismet.CombatPlusCore.enchantments.OffHandEnchantment;
 import com.provismet.CombatPlusCore.enchantments.WeaponUtilityEnchantment;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.Vec3d;
@@ -21,12 +19,6 @@ public class BackFootEnchantment extends WeaponUtilityEnchantment {
             user.addVelocity(velocity);
             user.velocityModified = true;
         }
-    }
-    
-    @Override
-    protected boolean canAccept (Enchantment other) {
-        if (other instanceof OffHandEnchantment) return true;
-        return super.canAccept(other);
     }
 
     @Override
