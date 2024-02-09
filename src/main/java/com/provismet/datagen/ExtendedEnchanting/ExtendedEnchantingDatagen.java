@@ -8,5 +8,7 @@ public class ExtendedEnchantingDatagen implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator (FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(LanguageGenerator::new);
+        pack.addProvider(EntityTypeTagGenerator::new);
+        pack.addProvider(EnchantmentTagGenerator::new);
     }
 }

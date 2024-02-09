@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:bosses",
+      "required": false
+    },
+    "minecraft:ravager",
+    "minecraft:hoglin",
+    "minecraft:zoglin",
+    "minecraft:sniffer",
+    "minecraft:warden"
+  ]
+}
