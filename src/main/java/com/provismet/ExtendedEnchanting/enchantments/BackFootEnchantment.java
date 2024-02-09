@@ -1,7 +1,9 @@
 package com.provismet.ExtendedEnchanting.enchantments;
 
 import com.provismet.CombatPlusCore.enchantments.WeaponUtilityEnchantment;
+import com.provismet.CombatPlusCore.utility.CPCEnchantmentHelper;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.Vec3d;
@@ -34,5 +36,11 @@ public class BackFootEnchantment extends WeaponUtilityEnchantment {
     @Override
     public int getMaxPower (int level) {
         return this.getMinPower(level) + 50;
+    }
+
+    @Override
+    protected boolean canAccept (Enchantment other) {
+        if (CPCEnchantmentHelper.isOffhand(other)) return true;
+        return super.canAccept(other);
     }
 }
