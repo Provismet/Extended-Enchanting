@@ -9,6 +9,8 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.KnockbackEnchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.util.math.Vec3d;
 
 public class LaunchEnchantment extends Enchantment implements CPCEnchantment {
     public LaunchEnchantment () {
@@ -17,7 +19,13 @@ public class LaunchEnchantment extends Enchantment implements CPCEnchantment {
     
     @Override
     public void postChargedHit (int level, LivingEntity user, LivingEntity target) {
-        if (!user.getWorld().isClient() && !target.getType().isIn(EETags.NO_LAUNCH)) target.addVelocity(0.0, level * 0.5, 0.0);
+        if (!user.getWorld().isClient() && !target.getType().isIn(EETags.NO_LAUNCH)) {
+            double strength = 1.0 - target.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE);
+            if (strength <= 0) return;
+
+            Vec3d velocity = new Vec3d(0.0, level * 0.15, 0.0).multiply(strength);
+            target.addVelocity(velocity);
+        }
     }
 
     @Override
