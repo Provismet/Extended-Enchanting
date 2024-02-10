@@ -13,8 +13,8 @@ public class WeaponProtectionEnchantment extends AbstractProtectionEnchantment {
     
     @Override
     public int getProtectionAmount (int level, DamageSource damageSource) {
-        if (damageSource.isIn(EETags.MELEE_STRIKE)) return (int)(level * 1.5f);
-        if (damageSource.isIn(EETags.DIRECT_ATTACK) && damageSource.getAttacker() instanceof LivingEntity living) {
+        if (damageSource.isIn(EETags.Damage.MELEE_STRIKE) || (!damageSource.isIndirect() && damageSource.getSource() instanceof LivingEntity living && living.getType().isIn(EETags.Entity.HAS_WEAPON))) return (int)(level * 1.5f);
+        if (damageSource.isIn(EETags.Damage.DIRECT_ATTACK) && damageSource.getAttacker() instanceof LivingEntity living) {
             if (WeaponTypes.isMeleeWeapon(living.getMainHandStack())) return (int)(level * 1.5f);
         }
         return super.getProtectionAmount(level, damageSource);

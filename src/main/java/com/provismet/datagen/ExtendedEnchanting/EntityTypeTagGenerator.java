@@ -17,13 +17,15 @@ public class EntityTypeTagGenerator extends EntityTypeTagProvider {
 
     @Override
     protected void configure (WrapperLookup wrapper) {
-        getOrCreateTagBuilder(EETags.NO_LAUNCH)
+        getOrCreateTagBuilder(EETags.Entity.NO_LAUNCH)
             .addOptionalTag(ConventionalEntityTypeTags.BOSSES)
             .add(EntityType.RAVAGER)
             .add(EntityType.HOGLIN)
             .add(EntityType.ZOGLIN)
             .add(EntityType.SNIFFER)
             .add(EntityType.WARDEN);
+
+        getOrCreateTagBuilder(EETags.Entity.HAS_WEAPON);
     }
     
 }
