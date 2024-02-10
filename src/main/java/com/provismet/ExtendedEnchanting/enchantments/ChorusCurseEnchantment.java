@@ -48,8 +48,8 @@ public class ChorusCurseEnchantment extends Enchantment {
     @Override
     public void onUserDamaged (LivingEntity user, Entity attacker, int level) {
         super.onUserDamaged(user, attacker, level);
-        if (attacker == null) return;
 
+        // This code is taken directly from the Chorus Fruit consume action.
         for (int i = 0; i < 16; ++i) {
             double x = user.getX() + (user.getRandom().nextDouble() - 0.5) * 16.0;
             double y = MathHelper.clamp(user.getY() + (double)(user.getRandom().nextInt(16) - 8), (double)user.getWorld().getBottomY(), (double)(user.getWorld().getBottomY() + ((ServerWorld)user.getWorld()).getLogicalHeight() - 1));
