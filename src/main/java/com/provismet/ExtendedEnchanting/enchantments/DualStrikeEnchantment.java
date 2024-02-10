@@ -33,7 +33,7 @@ public class DualStrikeEnchantment extends WeaponUtilityEnchantment {
             if (heldItem.getItem() instanceof MeleeWeapon melee) {
                 melee.postChargedHit(heldItem, user, otherTarget);
 
-                if (user.fallDistance > 0.0f && !user.isOnGround() && !user.isClimbing() && !user.isTouchingWater() && !user.hasStatusEffect(StatusEffects.BLINDNESS) && !user.hasVehicle() && otherTarget instanceof LivingEntity) {
+                if (user.fallDistance > 0.0f && !user.isOnGround() && !user.isClimbing() && !user.isTouchingWater() && !user.hasStatusEffect(StatusEffects.BLINDNESS) && !user.hasVehicle()) {
                     melee.postCriticalHit(heldItem, user, otherTarget);
                 }
             }
