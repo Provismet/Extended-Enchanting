@@ -8,4 +8,9 @@ public abstract class AbstractBootsEnchantment extends Enchantment {
     protected AbstractBootsEnchantment (Rarity weight) {
         super(weight, EnchantmentTarget.ARMOR_FEET, new EquipmentSlot[] {EquipmentSlot.FEET});
     }
+
+    @Override
+    protected boolean canAccept (Enchantment other) {
+        return super.canAccept(other) && !(other instanceof AbstractBootsEnchantment);
+    }
 }
