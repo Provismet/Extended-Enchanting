@@ -20,7 +20,7 @@
   "enchantment.extended-enchanting.launch": "Launch",
   "enchantment.extended-enchanting.launch.desc": "Launches the target in the air on hit.",
   "enchantment.extended-enchanting.leeching": "Leeching Aspect",
-  "enchantment.extended-enchanting.leeching.desc": "Heals the user when striking a target.",
+  "enchantment.extended-enchanting.leeching.desc": "Heals the user when critically striking a target.",
   "enchantment.extended-enchanting.lighting_aspect": "Lightning Aspect",
   "enchantment.extended-enchanting.lighting_aspect.desc": "Build up static charge on struck targets.",
   "enchantment.extended-enchanting.moon_heart": "Heart of the Moon",
