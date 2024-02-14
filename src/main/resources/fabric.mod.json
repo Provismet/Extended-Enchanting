@@ -9,7 +9,8 @@
 	],
 	"contact": {
 		"homepage": "https://github.com/Provismet/Extended-Enchanting",
-		"sources": "https://github.com/Provismet/Extended-Enchanting"
+		"sources": "https://github.com/Provismet/Extended-Enchanting",
+		"issues": "https://github.com/Provismet/Extended-Enchanting/issues"
 	},
 	"license": "Lily License",
 	"icon": "assets/extended-enchanting/icon.png",
