@@ -1,6 +1,9 @@
 <div align="center">
 
 # Extended Enchanting
+[![](https://img.shields.io/jitpack/version/com.github.Provismet/Extended-Enchanting?style=flat-square&logo=jitpack&color=F6F6F6)](https://jitpack.io/#Provismet/Extended-Enchanting)
+[![](https://img.shields.io/modrinth/dt/pGJRuQZQ?style=flat-square&logo=modrinth&color=F6F6F6)](https://modrinth.com/mod/extended-enchanting)
+[![](https://img.shields.io/curseforge/dt/973677?style=flat-square&logo=curseforge&color=F6F6F6)](https://www.curseforge.com/minecraft/mc-mods/extended-enchanting)
 
 <img src="https://github.com/Provismet/CombatPlus-Core/assets/17149901/d7ee8c04-1769-4873-b5a4-8fa23ed26a30" width=250px>
 
