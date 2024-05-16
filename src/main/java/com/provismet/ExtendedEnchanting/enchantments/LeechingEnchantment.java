@@ -15,7 +15,7 @@ public class LeechingEnchantment extends AspectEnchantment {
                 2,
                 Enchantment.leveledCost(10, 20),
                 Enchantment.leveledCost(50, 20),
-                4,
+                6,
                 EquipmentSlot.MAINHAND
         ));
     }

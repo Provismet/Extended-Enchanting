@@ -23,7 +23,7 @@ public class CombustionProtectionEnchantment extends AbstractProtectionEnchantme
     @Override
     public int getProtectionAmount (int level, DamageSource source) {
         if (source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)) return 0;
-        if (source.isIn(EETags.Damage.COMBUSTION)) return (int)(level * 1.5f);
+        if (source.isIn(EETags.Damage.COMBUSTION)) return (int)(level * 1.35f);
         return super.getProtectionAmount(level, source);
     }
 }
