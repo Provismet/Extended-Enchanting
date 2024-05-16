@@ -15,7 +15,7 @@ public class SolitudeEnchantment extends AdditionalDamageEnchantment {
     public SolitudeEnchantment () {
         super(Enchantment.properties(
                 ItemTags.WEAPON_ENCHANTABLE,
-                CPCItemTags.DUAL_WEAPON,
+                ItemTags.SHARP_WEAPON_ENCHANTABLE,
                 1,
                 1,
                 Enchantment.constantCost(35),

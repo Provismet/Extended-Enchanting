@@ -14,7 +14,7 @@ public class GlassEnchantment extends AdditionalDamageEnchantment {
     public GlassEnchantment () {
         super(Enchantment.properties(
                 ItemTags.WEAPON_ENCHANTABLE,
-                CPCItemTags.DUAL_WEAPON,
+                ItemTags.SHARP_WEAPON_ENCHANTABLE,
                 5,
                 5,
                 Enchantment.leveledCost(10, 5),
