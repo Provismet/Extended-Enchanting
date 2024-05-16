@@ -11,6 +11,7 @@ import net.minecraft.registry.Registry;
 
 public class EEParticleTypes {
     public static final SimpleParticleType STATIC_CHARGE = FabricParticleTypes.simple();
+    public static final SimpleParticleType DISCHARGE = FabricParticleTypes.simple();
 
     private static <T extends ParticleEffect> void register (ParticleType<T> particle, String name) {
         Registry.register(Registries.PARTICLE_TYPE, ExtendedEnchantingMain.identifier(name), particle);
@@ -18,5 +19,6 @@ public class EEParticleTypes {
 
     public static void register () {
         register(STATIC_CHARGE, "static_spark");
+        register(DISCHARGE, "discharge");
     }
 }

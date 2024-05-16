@@ -1,0 +1,39 @@
+package com.provismet.ExtendedEnchanting.particles;
+
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.particle.AnimatedParticle;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleFactory;
+import net.minecraft.client.particle.SpriteProvider;
+import net.minecraft.client.world.ClientWorld;
+import net.minecraft.particle.SimpleParticleType;
+
+public class DischargeParticle extends AnimatedParticle {
+    protected DischargeParticle (ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider) {
+        super(world, x, y, z, spriteProvider, 0f);
+        this.maxAge = 5;
+
+        this.velocityX = 0;
+        this.velocityY = 0;
+        this.velocityZ = 0;
+        this.gravityStrength = 0;
+
+        this.setSpriteForAge(spriteProvider);
+        this.scale = 2f;
+    }
+
+    @Environment(value= EnvType.CLIENT)
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
+        private final SpriteProvider spriteProvider;
+
+        public Factory (SpriteProvider spriteProvider) {
+            this.spriteProvider = spriteProvider;
+        }
+
+        @Override
+        public Particle createParticle (SimpleParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+            return new DischargeParticle(clientWorld, x, y, z, this.spriteProvider);
+        }
+    }
+}

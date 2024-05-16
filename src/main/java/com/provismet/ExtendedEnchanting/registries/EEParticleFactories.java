@@ -1,5 +1,6 @@
 package com.provismet.ExtendedEnchanting.registries;
 
+import com.provismet.ExtendedEnchanting.particles.DischargeParticle;
 import com.provismet.ExtendedEnchanting.particles.StaticChargeParticle;
 
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -14,5 +15,6 @@ public class EEParticleFactories {
 
     public static void register () {
         register(EEParticleTypes.STATIC_CHARGE, StaticChargeParticle.Factory::new);
+        register(EEParticleTypes.DISCHARGE, DischargeParticle.Factory::new);
     }
 }
