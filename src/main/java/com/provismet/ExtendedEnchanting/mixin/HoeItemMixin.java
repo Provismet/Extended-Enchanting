@@ -1,5 +1,7 @@
 package com.provismet.ExtendedEnchanting.mixin;
 
+import net.minecraft.block.NetherWartBlock;
+import net.minecraft.state.property.Properties;
 import org.spongepowered.asm.mixin.Mixin;
 
 import com.provismet.ExtendedEnchanting.registries.EEEnchantments;
@@ -31,14 +33,16 @@ public abstract class HoeItemMixin extends MiningToolItem {
 
         if (returnVal && world instanceof ServerWorld serverWorld && EnchantmentHelper.getLevel(EEEnchantments.REPLANT, stack) > 0) {
             if (state.getBlock() instanceof CropBlock crops && crops.getAge(state) == crops.getMaxAge()) serverWorld.setBlockState(pos, crops.withAge(0));
+            else if (state.getBlock() instanceof NetherWartBlock netherWart) serverWorld.setBlockState(pos, netherWart.getDefaultState());
         }
         return returnVal;
     }
 
     @Override
     public boolean canMine (BlockState state, World world, BlockPos pos, PlayerEntity miner) {
-        if (!miner.isCreative() && miner.getMainHandStack().getItem() == (HoeItem)(Object)this && EnchantmentHelper.getEquipmentLevel(EEEnchantments.REPLANT, miner) > 0) {
+        if (!miner.isCreative() && EnchantmentHelper.getLevel(EEEnchantments.REPLANT, miner.getMainHandStack()) > 0) {
             if (state.getBlock() instanceof CropBlock crops) return crops.getAge(state) == crops.getMaxAge();
+            else if (state.getBlock() instanceof NetherWartBlock) return state.get(Properties.AGE_3) == 3;
         }
         return super.canMine(state, world, pos, miner);
     }
