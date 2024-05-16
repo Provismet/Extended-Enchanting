@@ -11,11 +11,11 @@ import net.minecraft.registry.RegistryKeys;
 public class EEDamageTypes {
     private static final RegistryKey<DamageType> STATIC = createDamageType("static_shock");
 
-    public static final DamageSource staticShock (DamageSources sources) {
+    public static DamageSource staticShock (DamageSources sources) {
         return sources.create(STATIC);
     }
 
-    private static final RegistryKey<DamageType> createDamageType (String name) {
+    private static RegistryKey<DamageType> createDamageType (String name) {
         return RegistryKey.of(RegistryKeys.DAMAGE_TYPE, ExtendedEnchantingMain.identifier(name));
     }
 }
