@@ -2,8 +2,10 @@ package com.provismet.ExtendedEnchanting.enchantments;
 
 import com.provismet.CombatPlusCore.enchantments.WeaponUtilityEnchantment;
 import com.provismet.CombatPlusCore.interfaces.MeleeWeapon;
+import com.provismet.CombatPlusCore.utility.CPCItemTags;
 import com.provismet.lilylib.util.Relations;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.TargetPredicate;
@@ -11,10 +13,20 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.ItemTags;
 
 public class DualStrikeEnchantment extends WeaponUtilityEnchantment {
     public DualStrikeEnchantment () {
-        super(Rarity.UNCOMMON, EquipmentSlot.MAINHAND);
+        super(Enchantment.properties(
+                ItemTags.WEAPON_ENCHANTABLE,
+                CPCItemTags.MELEE_WEAPON,
+                5,
+                3,
+                Enchantment.leveledCost(10, 5),
+                Enchantment.leveledCost(20, 10),
+                4,
+                EquipmentSlot.MAINHAND
+        ));
     }
     
     @Override
@@ -38,20 +50,5 @@ public class DualStrikeEnchantment extends WeaponUtilityEnchantment {
                 }
             }
         }
-    }
-
-    @Override
-    public int getMaxLevel () {
-        return 3;
-    }
-
-    @Override
-    public int getMinPower (int level) {
-        return 10 + 5 * level;
-    }
-
-    @Override
-    public int getMaxPower (int level) {
-        return this.getMinLevel() + 50;
     }
 }

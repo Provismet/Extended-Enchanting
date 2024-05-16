@@ -13,26 +13,26 @@ public class HeartBrimstoneEnchantment extends AbstractHeartEnchantment {
     private static final UUID LAVA_SPEED = UUID.nameUUIDFromBytes("Extended Enchanting: Lava Speed".getBytes());
 
     public HeartBrimstoneEnchantment () {
-        super(Rarity.VERY_RARE);
+        super();
     }
 
     @Override
     public void tick (LivingEntity user) {
-        if (!user.getWorld().isClient() && user.getWorld().getDimensionKey() == DimensionTypes.THE_NETHER) {
+        if (!user.getWorld().isClient() && user.getWorld().getDimensionEntry().matchesId(DimensionTypes.THE_NETHER.getValue())) {
             EntityAttributeInstance speed = user.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
             if (speed == null) return;
 
             if (user.isOnFire()) {
                 if (user.age % 20 == 0 && user.getHealth() <= user.getMaxHealth() - 3f && user.isAlive()) {
                     user.heal(4f);
-                    user.getEquippedStack(EquipmentSlot.CHEST).damage(5, user, p -> p.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
+                    user.getEquippedStack(EquipmentSlot.CHEST).damage(5, user, EquipmentSlot.CHEST);
                 }
 
                 if (speed.getModifier(LAVA_SPEED) == null)
-                    speed.addTemporaryModifier(new EntityAttributeModifier(LAVA_SPEED, "Extended Enchanting: Heart of Brimstone", 0.03, EntityAttributeModifier.Operation.ADDITION));
+                    speed.addTemporaryModifier(new EntityAttributeModifier(LAVA_SPEED, "Extended Enchanting: Heart of Brimstone", 0.03, EntityAttributeModifier.Operation.ADD_VALUE));
 
                 if (user.getRandom().nextDouble() < 0.1) {
-                    user.getEquippedStack(EquipmentSlot.CHEST).damage(2, user, p -> p.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
+                    user.getEquippedStack(EquipmentSlot.CHEST).damage(2, user, EquipmentSlot.CHEST);
                 }
             }
             else if (speed.getModifier(LAVA_SPEED) != null) {

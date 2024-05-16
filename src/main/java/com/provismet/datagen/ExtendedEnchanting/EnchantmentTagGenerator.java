@@ -7,7 +7,7 @@ import com.provismet.ExtendedEnchanting.registries.EEEnchantments;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.EnchantmentTagProvider;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalEnchantmentTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEnchantmentTags;
 import net.minecraft.registry.RegistryWrapper.WrapperLookup;
 
 public class EnchantmentTagGenerator extends EnchantmentTagProvider {
@@ -32,7 +32,7 @@ public class EnchantmentTagGenerator extends EnchantmentTagProvider {
             .add(EEEnchantments.DUAL_STRIKE)
             .add(EEEnchantments.RAMPAGE);
 
-        getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_DEFENSE_ENHANCEMENT)
+        getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_DEFENSE_ENHANCEMENTS)
             .add(EEEnchantments.COMBUSTION_PROTECTION)
             .add(EEEnchantments.WEAPON_PROTECTION);
     }

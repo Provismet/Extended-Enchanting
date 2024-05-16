@@ -1,22 +1,19 @@
 package com.provismet.ExtendedEnchanting.enchantments;
 
-import com.provismet.ExtendedEnchanting.utility.EEEnchantmentTarget;
-
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.registry.tag.ItemTags;
 
 public class ReplantingEnchantment extends Enchantment {
     public ReplantingEnchantment () {
-        super(Rarity.RARE, EEEnchantmentTarget.HOE, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
-    }
-    
-    @Override
-    public int getMinPower (int level) {
-        return 10;
-    }
-
-    @Override
-    public int getMaxPower (int level) {
-        return 50;
+        super(Enchantment.properties(
+                ItemTags.HOES,
+                1,
+                1,
+                Enchantment.constantCost(20),
+                Enchantment.constantCost(75),
+                8,
+                EquipmentSlot.MAINHAND
+        ));
     }
 }

@@ -2,14 +2,26 @@ package com.provismet.ExtendedEnchanting.enchantments;
 
 import com.provismet.CombatPlusCore.enchantments.WeaponUtilityEnchantment;
 
+import com.provismet.CombatPlusCore.utility.CPCItemTags;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.registry.tag.ItemTags;
 
 public class RampageEnchantment extends WeaponUtilityEnchantment {
     public RampageEnchantment () {
-        super(Rarity.RARE, EquipmentSlot.MAINHAND);
+        super(Enchantment.properties(
+                ItemTags.WEAPON_ENCHANTABLE,
+                CPCItemTags.MELEE_WEAPON,
+                5,
+                3,
+                Enchantment.leveledCost(5, 10),
+                Enchantment.leveledCost(55, 10),
+                3,
+                EquipmentSlot.MAINHAND
+        ));
     }
     
     @Override
@@ -17,20 +29,5 @@ public class RampageEnchantment extends WeaponUtilityEnchantment {
         super.postKill(level, user, target);
         user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 25 * level, 0), user);
         user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 25 * level, 0), user);
-    }
-
-    @Override
-    public int getMaxLevel () {
-        return 3;
-    }
-
-    @Override
-    public int getMinPower (int level) {
-        return 10 * (level - 1);
-    }
-
-    @Override
-    public int getMaxPower (int level) {
-        return this.getMinPower(level) + 50;
     }
 }

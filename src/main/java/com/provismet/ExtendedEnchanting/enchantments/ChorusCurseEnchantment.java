@@ -1,12 +1,12 @@
 package com.provismet.ExtendedEnchanting.enchantments;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -17,17 +17,15 @@ import net.minecraft.world.event.GameEvent;
 
 public class ChorusCurseEnchantment extends Enchantment {
     public ChorusCurseEnchantment () {
-        super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR_CHEST, new EquipmentSlot[] {EquipmentSlot.CHEST});
-    }
-    
-    @Override
-    public int getMinPower(int level) {
-        return 25;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return 50;
+        super(Enchantment.properties(
+                ItemTags.CHEST_ARMOR,
+                2,
+                1,
+                Enchantment.constantCost(25),
+                Enchantment.constantCost(75),
+                4,
+                EquipmentSlot.CHEST
+        ));
     }
 
     @Override

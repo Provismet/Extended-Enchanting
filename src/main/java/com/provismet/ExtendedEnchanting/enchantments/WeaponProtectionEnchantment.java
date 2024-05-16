@@ -3,13 +3,23 @@ package com.provismet.ExtendedEnchanting.enchantments;
 import com.provismet.CombatPlusCore.utility.WeaponTypes;
 import com.provismet.ExtendedEnchanting.utility.EETags;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.registry.tag.DamageTypeTags;
+import net.minecraft.registry.tag.ItemTags;
 
 public class WeaponProtectionEnchantment extends AbstractProtectionEnchantment {
     public WeaponProtectionEnchantment () {
-        super(Rarity.RARE);
+        super(Enchantment.properties(
+                ItemTags.ARMOR_ENCHANTABLE,
+                1,
+                4,
+                Enchantment.leveledCost(10, 5),
+                Enchantment.leveledCost(20, 5),
+                4,
+                AbstractProtectionEnchantment.ARMOUR
+        ));
     }
     
     @Override

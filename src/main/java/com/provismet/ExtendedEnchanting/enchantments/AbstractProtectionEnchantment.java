@@ -5,8 +5,10 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSource;
 
 public class AbstractProtectionEnchantment extends ProtectionEnchantment {
-    public AbstractProtectionEnchantment (Rarity weight) {
-        super(weight, Type.PROJECTILE, new EquipmentSlot[] {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET});
+    protected static final EquipmentSlot[] ARMOUR = new EquipmentSlot[] {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
+
+    public AbstractProtectionEnchantment (Properties properties) {
+        super(properties, Type.PROJECTILE);
     }
 
     @Override

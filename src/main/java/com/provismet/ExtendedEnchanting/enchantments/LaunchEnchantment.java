@@ -5,16 +5,24 @@ import com.provismet.CombatPlusCore.utility.CPCEnchantmentHelper;
 import com.provismet.ExtendedEnchanting.utility.EETags;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.enchantment.KnockbackEnchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.math.Vec3d;
 
 public class LaunchEnchantment extends Enchantment implements CPCEnchantment {
     public LaunchEnchantment () {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(
+                ItemTags.SWORD_ENCHANTABLE,
+                5,
+                2,
+                Enchantment.leveledCost(5, 20),
+                Enchantment.leveledCost(50, 20),
+                2,
+                EquipmentSlot.MAINHAND
+        ));
     }
     
     @Override
@@ -29,24 +37,9 @@ public class LaunchEnchantment extends Enchantment implements CPCEnchantment {
     }
 
     @Override
-    public int getMaxLevel () {
-        return 2;
-    }
-
-    @Override
-    public int getMinPower(int level) {
-        return 5 + 20 * (level - 1);
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return super.getMinPower(level) + 50;
-    }
-
-    @Override
     public boolean canAccept (Enchantment other) {
         return super.canAccept(other) &&
-            !(other instanceof KnockbackEnchantment) &&
+            !(other == Enchantments.KNOCKBACK) &&
             !CPCEnchantmentHelper.isOffhand(other);
     }
 }

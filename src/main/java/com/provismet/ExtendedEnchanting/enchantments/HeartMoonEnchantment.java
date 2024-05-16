@@ -10,7 +10,7 @@ import net.minecraft.stat.Stats;
 
 public class HeartMoonEnchantment extends AbstractHeartEnchantment {
     public HeartMoonEnchantment () {
-        super(Rarity.VERY_RARE);
+        super();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class HeartMoonEnchantment extends AbstractHeartEnchantment {
         if (!user.getWorld().isClient() && user.getWorld().isNight() && user.getWorld().isSkyVisible(user.getBlockPos()) && !user.isWet()) {
             if (attacker instanceof LivingEntity living) {
                 living.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20, 1), user);
-                user.getEquippedStack(EquipmentSlot.CHEST).damage(5, user, p -> p.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
+                user.getEquippedStack(EquipmentSlot.CHEST).damage(5, user, EquipmentSlot.CHEST);
             }
         }
     }

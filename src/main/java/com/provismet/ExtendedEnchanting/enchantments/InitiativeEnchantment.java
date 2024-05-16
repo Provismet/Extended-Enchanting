@@ -1,16 +1,27 @@
 package com.provismet.ExtendedEnchanting.enchantments;
 
 import com.provismet.CombatPlusCore.enchantments.AdditionalDamageEnchantment;
+import com.provismet.CombatPlusCore.utility.CPCItemTags;
 import com.provismet.ExtendedEnchanting.utility.EEGameRules;
 
-import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.registry.tag.ItemTags;
 
 public class InitiativeEnchantment extends AdditionalDamageEnchantment {
     public InitiativeEnchantment () {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON);
+        super(Enchantment.properties(
+                ItemTags.WEAPON_ENCHANTABLE,
+                CPCItemTags.DUAL_WEAPON,
+                5,
+                5,
+                Enchantment.leveledCost(10, 5),
+                Enchantment.leveledCost(50, 5),
+                3,
+                EquipmentSlot.MAINHAND
+        ));
     }
     
     @Override
@@ -22,21 +33,6 @@ public class InitiativeEnchantment extends AdditionalDamageEnchantment {
             return damage;
         }
         return 0f;
-    }
-
-    @Override
-    public int getMaxLevel () {
-        return 5;
-    }
-
-    @Override
-    public int getMinPower (int level) {
-        return 10 + 5 * level;
-    }
-
-    @Override
-    public int getMaxPower (int level) {
-        return super.getMinPower(level) + 50;
     }
 
     @Override

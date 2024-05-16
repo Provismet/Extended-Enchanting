@@ -21,10 +21,10 @@ import net.minecraft.world.World;
 
 @Mixin(HoeItem.class)
 public abstract class HoeItemMixin extends MiningToolItem {
-    public HoeItemMixin (float attackDamage, float attackSpeed, ToolMaterial material, TagKey<Block> effectiveBlocks, Settings settings) {
-        super(attackDamage, attackSpeed, material, effectiveBlocks, settings);
+    protected HoeItemMixin (ToolMaterial material, TagKey<Block> effectiveBlocks, Settings settings) {
+        super(material, effectiveBlocks, settings);
     }
-    
+
     @Override
     public boolean postMine (ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
         boolean returnVal = super.postMine(stack, world, state, pos, miner);

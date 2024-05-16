@@ -2,33 +2,27 @@ package com.provismet.ExtendedEnchanting.enchantments;
 
 import com.provismet.CombatPlusCore.enchantments.AspectEnchantment;
 
-import net.minecraft.enchantment.EnchantmentTarget;
+import com.provismet.CombatPlusCore.utility.CPCItemTags;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 
 public class LeechingEnchantment extends AspectEnchantment {
     public LeechingEnchantment () {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, EquipmentSlot.MAINHAND);
+        super(Enchantment.properties(
+                CPCItemTags.ASPECT_ENCHANTABLE,
+                3,
+                2,
+                Enchantment.leveledCost(10, 20),
+                Enchantment.leveledCost(50, 20),
+                4,
+                EquipmentSlot.MAINHAND
+        ));
     }
     
     @Override
     public void postCriticalHit (int level, LivingEntity user, LivingEntity target) {
         super.postCriticalHit(level, user, target);
         user.heal(level);
-    }
-
-    @Override
-    public int getMaxLevel () {
-        return 2;
-    }
-
-    @Override
-    public int getMinPower (int level) {
-        return 10 + 20 * (level - 1);
-    }
-
-    @Override
-    public int getMaxPower (int level) {
-        return super.getMinPower(level) + 50;
     }
 }

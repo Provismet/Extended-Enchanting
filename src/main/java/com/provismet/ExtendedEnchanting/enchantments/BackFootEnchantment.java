@@ -3,14 +3,25 @@ package com.provismet.ExtendedEnchanting.enchantments;
 import com.provismet.CombatPlusCore.enchantments.WeaponUtilityEnchantment;
 import com.provismet.CombatPlusCore.utility.CPCEnchantmentHelper;
 
+import com.provismet.CombatPlusCore.utility.CPCItemTags;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.math.Vec3d;
 
 public class BackFootEnchantment extends WeaponUtilityEnchantment {
     public BackFootEnchantment () {
-        super(Rarity.UNCOMMON, EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND);
+        super(Enchantment.properties(
+                ItemTags.WEAPON_ENCHANTABLE,
+                CPCItemTags.MELEE_WEAPON,
+                2,
+                2,
+                Enchantment.leveledCost(10, 10),
+                Enchantment.leveledCost(50, 10),
+                4,
+                EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND
+        ));
     }
 
     @Override
@@ -21,21 +32,6 @@ public class BackFootEnchantment extends WeaponUtilityEnchantment {
             user.addVelocity(velocity);
             user.velocityModified = true;
         }
-    }
-
-    @Override
-    public int getMaxLevel () {
-        return 2;
-    }
-
-    @Override
-    public int getMinPower (int level) {
-       return 10 + 10 * level;
-    }
-
-    @Override
-    public int getMaxPower (int level) {
-        return this.getMinPower(level) + 50;
     }
 
     @Override

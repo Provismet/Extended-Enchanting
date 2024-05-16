@@ -33,7 +33,7 @@ public class ExtendedEnchantingMain implements ModInitializer {
 		EEGameRules.register();
 		EESettings.read();
 
-		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+		LootTableEvents.MODIFY.register((id, tableBuilder, source) -> {
 			if (source.isBuiltin() || EESettings.shouldOverrideDatapacks()) {
 				if (LootTables.BASTION_TREASURE_CHEST.equals(id) || LootTables.BASTION_HOGLIN_STABLE_CHEST.equals(id)) {
 					tableBuilder.pool(
