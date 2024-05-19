@@ -8,13 +8,12 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.registry.tag.ItemTags;
 
 public class GlassEnchantment extends AdditionalDamageEnchantment {
     public GlassEnchantment () {
         super(Enchantment.properties(
-                ItemTags.WEAPON_ENCHANTABLE,
-                ItemTags.SHARP_WEAPON_ENCHANTABLE,
+                CPCItemTags.DAMAGE_ENCHANTABLE,
+                CPCItemTags.DAMAGE_PRIMARY_ENCHANTABLE,
                 5,
                 5,
                 Enchantment.leveledCost(10, 5),

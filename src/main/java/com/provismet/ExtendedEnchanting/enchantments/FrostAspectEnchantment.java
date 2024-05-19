@@ -11,6 +11,7 @@ public class FrostAspectEnchantment extends AspectEnchantment {
     public FrostAspectEnchantment () {
         super(Enchantment.properties(
                 CPCItemTags.ASPECT_ENCHANTABLE,
+                CPCItemTags.ASPECT_PRIMARY_ENCHANTABLE,
                 5,
                 2,
                 Enchantment.leveledCost(10, 20),

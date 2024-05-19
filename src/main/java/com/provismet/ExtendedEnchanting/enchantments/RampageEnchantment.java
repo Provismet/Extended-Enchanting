@@ -8,13 +8,12 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.registry.tag.ItemTags;
 
 public class RampageEnchantment extends WeaponUtilityEnchantment {
     public RampageEnchantment () {
         super(Enchantment.properties(
-                ItemTags.WEAPON_ENCHANTABLE,
-                CPCItemTags.MELEE_WEAPON,
+                CPCItemTags.WEAPON_UTILITY_ENCHANTABLE,
+                CPCItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE,
                 5,
                 3,
                 Enchantment.leveledCost(5, 10),

@@ -13,13 +13,12 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.ItemTags;
 
 public class DualStrikeEnchantment extends WeaponUtilityEnchantment {
     public DualStrikeEnchantment () {
         super(Enchantment.properties(
-                ItemTags.WEAPON_ENCHANTABLE,
-                CPCItemTags.MELEE_WEAPON,
+                CPCItemTags.WEAPON_UTILITY_ENCHANTABLE,
+                CPCItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE,
                 5,
                 3,
                 Enchantment.leveledCost(10, 5),

@@ -9,13 +9,12 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.ItemTags;
 
 public class SolitudeEnchantment extends AdditionalDamageEnchantment {
     public SolitudeEnchantment () {
         super(Enchantment.properties(
-                ItemTags.WEAPON_ENCHANTABLE,
-                ItemTags.SHARP_WEAPON_ENCHANTABLE,
+                CPCItemTags.DAMAGE_ENCHANTABLE,
+                CPCItemTags.DAMAGE_PRIMARY_ENCHANTABLE,
                 1,
                 1,
                 Enchantment.constantCost(35),

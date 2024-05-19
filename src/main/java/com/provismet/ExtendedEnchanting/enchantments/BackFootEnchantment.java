@@ -13,8 +13,8 @@ import net.minecraft.util.math.Vec3d;
 public class BackFootEnchantment extends WeaponUtilityEnchantment {
     public BackFootEnchantment () {
         super(Enchantment.properties(
-                ItemTags.WEAPON_ENCHANTABLE,
-                CPCItemTags.MELEE_WEAPON,
+                CPCItemTags.WEAPON_UTILITY_ENCHANTABLE,
+                CPCItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE,
                 2,
                 2,
                 Enchantment.leveledCost(10, 10),

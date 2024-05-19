@@ -12,6 +12,7 @@ public class LightningAspectEnchantment extends AspectEnchantment {
     public LightningAspectEnchantment () {
         super(Enchantment.properties(
                 CPCItemTags.ASPECT_ENCHANTABLE,
+                CPCItemTags.ASPECT_PRIMARY_ENCHANTABLE,
                 3,
                 2,
                 Enchantment.leveledCost(20, 10),
