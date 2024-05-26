@@ -20,7 +20,7 @@ public class DischargeParticle extends AnimatedParticle {
         this.gravityStrength = 0;
 
         this.setSpriteForAge(spriteProvider);
-        this.scale = 2f;
+        this.scale = 1.5f;
     }
 
     @Environment(value= EnvType.CLIENT)

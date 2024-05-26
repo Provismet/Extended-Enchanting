@@ -1,9 +1,13 @@
 {
   "textures": [
-    "extended-enchanting:discharge_4",
     "extended-enchanting:discharge_1",
     "extended-enchanting:discharge_2",
     "extended-enchanting:discharge_3",
-    "extended-enchanting:discharge_4"
+    "extended-enchanting:discharge_4",
+    "extended-enchanting:discharge_5",
+    "extended-enchanting:discharge_6",
+    "extended-enchanting:discharge_7",
+    "extended-enchanting:discharge_8",
+    "extended-enchanting:discharge_9"
   ]
 }
