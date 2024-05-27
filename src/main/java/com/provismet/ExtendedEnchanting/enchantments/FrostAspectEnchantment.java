@@ -24,7 +24,7 @@ public class FrostAspectEnchantment extends AspectEnchantment {
     @Override
     public void postChargedHit (int level, LivingEntity user, LivingEntity target) {
         super.postChargedHit(level, user, target);
-        int ticks = Math.min(target.getFrozenTicks() + level * 45, 400);
+        int ticks = Math.min(target.getFrozenTicks() + level * 45, target.getMinFreezeDamageTicks() + 260);
         target.setFrozenTicks(ticks);
     }
 }
