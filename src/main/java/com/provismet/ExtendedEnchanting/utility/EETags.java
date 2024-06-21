@@ -4,6 +4,7 @@ import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageType;
+import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 
@@ -14,6 +15,14 @@ public class EETags {
 
     private static TagKey<EntityType<?>> createEntityTypeTag (String name) {
         return TagKey.of(RegistryKeys.ENTITY_TYPE, ExtendedEnchantingMain.identifier(name));
+    }
+
+    private static TagKey<Item> createItemTag (String name) {
+        return TagKey.of(RegistryKeys.ITEM, ExtendedEnchantingMain.identifier(name));
+    }
+
+    public static class Items {
+        public static final TagKey<Item> HOE_ENCHANTABLE = EETags.createItemTag("hoe_enchantable");
     }
 
     public static class Entity {

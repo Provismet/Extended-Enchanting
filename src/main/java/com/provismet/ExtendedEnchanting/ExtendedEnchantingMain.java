@@ -1,5 +1,6 @@
 package com.provismet.ExtendedEnchanting;
 
+import com.provismet.ExtendedEnchanting.registries.EEItemGroups;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.item.Items;
@@ -31,6 +32,7 @@ public class ExtendedEnchantingMain implements ModInitializer {
 		EEEnchantments.register();
 		EEParticleTypes.register();
 		EEGameRules.register();
+		EEItemGroups.register();
 		EESettings.read();
 
 		LootTableEvents.MODIFY.register((id, tableBuilder, source) -> {

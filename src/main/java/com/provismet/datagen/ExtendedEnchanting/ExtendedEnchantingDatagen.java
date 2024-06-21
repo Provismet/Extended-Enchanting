@@ -10,5 +10,6 @@ public class ExtendedEnchantingDatagen implements DataGeneratorEntrypoint {
         pack.addProvider(LanguageGenerator::new);
         pack.addProvider(EntityTypeTagGenerator::new);
         pack.addProvider(EnchantmentTagGenerator::new);
+        pack.addProvider(ItemTagGenerator::new);
     }
 }
