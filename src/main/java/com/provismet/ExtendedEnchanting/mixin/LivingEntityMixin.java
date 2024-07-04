@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.provismet.ExtendedEnchanting.interfaces.IMixinLivingEntity;
 import com.provismet.ExtendedEnchanting.registries.EEParticleTypes;
 import com.provismet.ExtendedEnchanting.utility.EEDamageTypes;
-import com.provismet.ExtendedEnchanting.utility.ExtendedEnchantmentHelper;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -25,43 +24,40 @@ public abstract class LivingEntityMixin extends Entity implements IMixinLivingEn
     }
     
     @Unique
-    private int staticCharge = 0;
+    private int staticTicks = 0;
 
     @Unique
     private Vec3d previousGroundPos = null;
 
     @Inject(method="tick", at=@At("HEAD"))
     private void applyEffectsOverTime (CallbackInfo info) {
-        LivingEntity thisLiving = (LivingEntity)(Object)this;
-        ExtendedEnchantmentHelper.tickHeartEnchantments(thisLiving);
-
-        if (this.staticCharge > 0) {
-            if (this.age % 25 == 0) --this.staticCharge;
+        if (this.staticTicks > 0) {
+            --this.staticTicks;
             if (this.age % 15 == 0 && this.getWorld() instanceof ServerWorld serverWorld) {
-                serverWorld.spawnParticles(EEParticleTypes.STATIC_CHARGE, this.getX(), (this.getY() + this.getEyeY()) / 2.0, this.getZ(), this.staticCharge * 2, 0, 0, 0, 0);
+                serverWorld.spawnParticles(EEParticleTypes.STATIC_CHARGE, this.getX(), (this.getY() + this.getEyeY()) / 2.0, this.getZ(), Math.max(1, Math.ceilDiv(this.staticTicks, 15)), 0, 0, 0, 0);
             }
         }
     }
 
     @Override
-    public void applyStatic (int amount) {
-        this.staticCharge += amount;
-        if (this.staticCharge >= 5) {
-            this.staticCharge = 0;
+    public void extended_Enchanting$applyStatic (int amount) {
+        this.staticTicks += amount;
+        if (this.staticTicks >= 100) { // TODO: Compare this with an attribute maybe?
+            this.staticTicks = Math.max(0, this.staticTicks - 100);
             if (this.getWorld() instanceof ServerWorld serverWorld) {
-                this.damage(EEDamageTypes.staticShock(this.getDamageSources()), 6f);
+                this.damage(EEDamageTypes.STATIC.createDamageSource(this.getDamageSources()), 6f);
                 serverWorld.spawnParticles(EEParticleTypes.DISCHARGE, this.getX(), (this.getY() + this.getEyeY()) / 2.0, this.getZ(), 1, 0, 0, 0, 0);
             }
         }
     }
 
     @Override
-    public void setPreviousGroundPos (Vec3d position) {
+    public void extended_Enchanting$setPreviousGroundPos (Vec3d position) {
         this.previousGroundPos = position;
     }
 
     @Override
-    public Vec3d getPreviousGroundPos() {
+    public Vec3d extended_Enchanting$getPreviousGroundPos () {
         return this.previousGroundPos;
     }
 }

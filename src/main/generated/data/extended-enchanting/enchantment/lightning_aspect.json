@@ -1,0 +1,39 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.extended-enchanting.lightning_aspect"
+  },
+  "effects": {
+    "combat-plus:post_charged_attack": [
+      {
+        "effect": {
+          "type": "combat-plus:apply_to_target",
+          "effect": {
+            "type": "extended-enchanting:shock_entity",
+            "ticks": {
+              "type": "minecraft:linear",
+              "base": 22.0,
+              "per_level_above_first": 22.0
+            }
+          }
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#combat-plus:exclusive_set/aspect",
+  "max_cost": {
+    "base": 70,
+    "per_level_above_first": 10
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 20,
+    "per_level_above_first": 10
+  },
+  "primary_items": "#combat-plus:enchantable/aspect_primary",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#combat-plus:enchantable/aspect",
+  "weight": 3
+}

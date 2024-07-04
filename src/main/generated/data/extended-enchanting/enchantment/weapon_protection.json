@@ -1,0 +1,74 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.extended-enchanting.weapon_protection"
+  },
+  "effects": {
+    "minecraft:damage_protection": [
+      {
+        "effect": {
+          "type": "minecraft:add",
+          "value": {
+            "type": "minecraft:linear",
+            "base": 1.5,
+            "per_level_above_first": 1.5
+          }
+        },
+        "requirements": {
+          "condition": "minecraft:any_of",
+          "terms": [
+            {
+              "condition": "minecraft:damage_source_properties",
+              "predicate": {
+                "is_direct": true,
+                "tags": [
+                  {
+                    "expected": true,
+                    "id": "extended-enchanting:melee"
+                  }
+                ]
+              }
+            },
+            {
+              "condition": "minecraft:damage_source_properties",
+              "predicate": {
+                "direct_entity": {
+                  "equipment": {
+                    "mainhand": {
+                      "items": "#combat-plus:melee_weapon"
+                    }
+                  }
+                },
+                "is_direct": true
+              }
+            },
+            {
+              "condition": "minecraft:damage_source_properties",
+              "predicate": {
+                "direct_entity": {
+                  "type": "#extended-enchanting:has_weapon"
+                },
+                "is_direct": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#minecraft:exclusive_set/armor",
+  "max_cost": {
+    "base": 20,
+    "per_level_above_first": 5
+  },
+  "max_level": 4,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 5
+  },
+  "slots": [
+    "armor"
+  ],
+  "supported_items": "#minecraft:enchantable/armor",
+  "weight": 1
+}

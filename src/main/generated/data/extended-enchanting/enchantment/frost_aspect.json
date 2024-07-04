@@ -1,0 +1,39 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.extended-enchanting.frost_aspect"
+  },
+  "effects": {
+    "combat-plus:post_charged_attack": [
+      {
+        "effect": {
+          "type": "combat-plus:apply_to_target",
+          "effect": {
+            "type": "combat-plus:freeze",
+            "duration": {
+              "type": "minecraft:linear",
+              "base": 2.25,
+              "per_level_above_first": 2.25
+            }
+          }
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#combat-plus:exclusive_set/aspect",
+  "max_cost": {
+    "base": 25,
+    "per_level_above_first": 20
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 20
+  },
+  "primary_items": "#combat-plus:enchantable/aspect_primary",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#combat-plus:enchantable/aspect",
+  "weight": 5
+}

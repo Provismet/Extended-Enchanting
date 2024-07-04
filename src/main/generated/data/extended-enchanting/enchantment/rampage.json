@@ -1,0 +1,68 @@
+{
+  "anvil_cost": 3,
+  "description": {
+    "translate": "enchantment.extended-enchanting.rampage"
+  },
+  "effects": {
+    "combat-plus:post_kill": [
+      {
+        "effect": {
+          "type": "combat-plus:apply_to_owner",
+          "effect": {
+            "type": "minecraft:all_of",
+            "effects": [
+              {
+                "type": "minecraft:apply_mob_effect",
+                "max_amplifier": 0.0,
+                "max_duration": {
+                  "type": "minecraft:linear",
+                  "base": 1.25,
+                  "per_level_above_first": 1.25
+                },
+                "min_amplifier": 0.0,
+                "min_duration": {
+                  "type": "minecraft:linear",
+                  "base": 1.25,
+                  "per_level_above_first": 1.25
+                },
+                "to_apply": "minecraft:strength"
+              },
+              {
+                "type": "minecraft:apply_mob_effect",
+                "max_amplifier": 0.0,
+                "max_duration": {
+                  "type": "minecraft:linear",
+                  "base": 1.25,
+                  "per_level_above_first": 1.25
+                },
+                "min_amplifier": 0.0,
+                "min_duration": {
+                  "type": "minecraft:linear",
+                  "base": 1.25,
+                  "per_level_above_first": 1.25
+                },
+                "to_apply": "minecraft:speed"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#combat-plus:exclusive_set/weapon_utility",
+  "max_cost": {
+    "base": 55,
+    "per_level_above_first": 10
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 10
+  },
+  "primary_items": "#combat-plus:enchantable/weapon_utility_primary",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#combat-plus:enchantable/weapon_utility",
+  "weight": 5
+}

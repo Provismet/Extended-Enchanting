@@ -1,0 +1,41 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.extended-enchanting.solitude"
+  },
+  "effects": {
+    "minecraft:damage": [
+      {
+        "effect": {
+          "type": "minecraft:add",
+          "value": 15.0
+        },
+        "requirements": {
+          "applied_condition": {
+            "applied_condition": {
+              "condition": "combat-plus:code_execution_item_condition",
+              "function": "extended-enchanting:one_enchantment"
+            },
+            "condition": "combat-plus:apply_to_item"
+          },
+          "condition": "combat-plus:apply_to_attacker"
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 75,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 35,
+    "per_level_above_first": 0
+  },
+  "primary_items": "#combat-plus:enchantable/damage_primary",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#combat-plus:enchantable/damage",
+  "weight": 1
+}

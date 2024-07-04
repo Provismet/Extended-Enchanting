@@ -1,6 +1,6 @@
 package com.provismet.datagen.ExtendedEnchanting;
 
-import com.provismet.ExtendedEnchanting.utility.EETags;
+import com.provismet.ExtendedEnchanting.utility.tags.EEItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -15,7 +15,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure (RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(EETags.Items.HOE_ENCHANTABLE)
+        getOrCreateTagBuilder(EEItemTags.HOE_ENCHANTABLE)
             .addOptionalTag(ItemTags.HOES);
     }
 }

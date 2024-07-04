@@ -9,7 +9,7 @@ import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
-public class EEParticleTypes {
+public abstract class EEParticleTypes {
     public static final SimpleParticleType STATIC_CHARGE = FabricParticleTypes.simple();
     public static final SimpleParticleType DISCHARGE = FabricParticleTypes.simple();
 

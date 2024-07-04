@@ -1,0 +1,39 @@
+{
+  "anvil_cost": 6,
+  "description": {
+    "translate": "enchantment.extended-enchanting.leeching_aspect"
+  },
+  "effects": {
+    "combat-plus:post_critical_attack": [
+      {
+        "effect": {
+          "type": "combat-plus:apply_to_owner",
+          "effect": {
+            "type": "combat-plus:heal",
+            "value": {
+              "type": "minecraft:linear",
+              "base": 1.0,
+              "per_level_above_first": 1.0
+            }
+          }
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#combat-plus:exclusive_set/aspect",
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 20
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 20
+  },
+  "primary_items": "#combat-plus:enchantable/aspect_primary",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#combat-plus:enchantable/aspect",
+  "weight": 3
+}

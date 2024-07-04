@@ -1,0 +1,10 @@
+{
+  "values": [
+    "extended-enchanting:solitude",
+    "extended-enchanting:chorus_curse",
+    {
+      "id": "#extended-enchanting:heart",
+      "required": false
+    }
+  ]
+}

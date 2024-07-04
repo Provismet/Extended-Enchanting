@@ -3,9 +3,12 @@ package com.provismet.datagen.ExtendedEnchanting;
 import com.provismet.ExtendedEnchanting.registries.EEEnchantments;
 import com.provismet.ExtendedEnchanting.utility.EEGameRules;
 
+import com.provismet.lilylib.container.EnchantmentContainer;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -26,7 +29,7 @@ public class LanguageGenerator extends FabricLanguageProvider {
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.SOLITUDE, "Solitude", "Deal more damage when this is the only enchantment on the item.");
 
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.DUAL_STRIKE, "Dual Strike", "Attack a secondary target with each hit.");
-        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.BACK_FOOT, "Feint", "Jump back after striking a target.");
+        LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.FEINT, "Feint", "Jump back after striking a target.");
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.RAMPAGE, "Rampage", "Gain strength and speed after killing an enemy.");
 
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.LAUNCH, "Launch", "Launches the target in the air on hit.");
@@ -50,9 +53,10 @@ public class LanguageGenerator extends FabricLanguageProvider {
         translationBuilder.add(EEGameRules.PLAYER_SPECIAL_DAMAGE_MOD.getTranslationKey() + ".description", "Bonus damage from conditional damage enchantments will be multiplied by this value if the target is a player.");
     }
 
-    private static void addEnchantment (TranslationBuilder translationBuilder, Enchantment enchantment, String name, String description) {
-        translationBuilder.add(enchantment, name);
-        translationBuilder.add(enchantment.getTranslationKey() + ".desc", description);
+    private static void addEnchantment (TranslationBuilder translationBuilder, EnchantmentContainer enchantment, String name, String description) {
+        String base = String.format("enchantment.%s.%s", enchantment.getKey().getValue().getNamespace(), enchantment.getKey().getValue().getPath());
+        translationBuilder.add(base, name);
+        translationBuilder.add(base + ".desc", description);
     }
 
     private static void addDeathMessage (TranslationBuilder translationBuilder, String damageId, String message, String mobMessage) {

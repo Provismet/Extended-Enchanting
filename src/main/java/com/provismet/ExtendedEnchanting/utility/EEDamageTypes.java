@@ -2,20 +2,17 @@ package com.provismet.ExtendedEnchanting.utility;
 
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
 
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.DamageSources;
+import com.provismet.lilylib.container.DamageTypeContainer;
 import net.minecraft.entity.damage.DamageType;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.Registerable;
 
 public class EEDamageTypes {
-    private static final RegistryKey<DamageType> STATIC = createDamageType("static_shock");
+    public static final DamageTypeContainer STATIC = new DamageTypeContainer(
+        ExtendedEnchantingMain.identifier("static_shock"),
+        new DamageType("static_shock", 0.1f)
+    );
 
-    public static DamageSource staticShock (DamageSources sources) {
-        return sources.create(STATIC);
-    }
-
-    private static RegistryKey<DamageType> createDamageType (String name) {
-        return RegistryKey.of(RegistryKeys.DAMAGE_TYPE, ExtendedEnchantingMain.identifier(name));
+    public static void bootstrap (Registerable<DamageType> registerable) {
+        registerable.register(STATIC.getKey(), STATIC.getDamageType());
     }
 }

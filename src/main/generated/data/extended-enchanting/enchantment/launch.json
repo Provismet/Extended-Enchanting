@@ -1,0 +1,55 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.extended-enchanting.launch"
+  },
+  "effects": {
+    "combat-plus:post_charged_attack": [
+      {
+        "effect": {
+          "type": "combat-plus:apply_to_target",
+          "effect": {
+            "type": "combat-plus:apply_velocity",
+            "respect_knockback_resistance": true,
+            "strength": {
+              "type": "minecraft:linear",
+              "base": 1.0,
+              "per_level_above_first": 1.0
+            },
+            "x": 0.0,
+            "y": 0.15,
+            "z": 0.0
+          }
+        },
+        "requirements": {
+          "applied_condition": {
+            "condition": "minecraft:inverted",
+            "term": {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "type": "#extended-enchanting:cannot_launch"
+              }
+            }
+          },
+          "condition": "combat-plus:apply_to_target"
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#extended-enchanting:exclusive_set/launch",
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 20
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 20
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#minecraft:enchantable/sword",
+  "weight": 5
+}

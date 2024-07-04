@@ -1,0 +1,32 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.extended-enchanting.dual_strike"
+  },
+  "effects": {
+    "combat-plus:post_charged_attack": [
+      {
+        "effect": {
+          "type": "combat-plus:code_execution_double_entity",
+          "function": "extended-enchanting:dual_strike"
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#combat-plus:exclusive_set/weapon_utility",
+  "max_cost": {
+    "base": 20,
+    "per_level_above_first": 10
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 5
+  },
+  "primary_items": "#combat-plus:enchantable/weapon_utility_primary",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#combat-plus:enchantable/weapon_utility",
+  "weight": 5
+}

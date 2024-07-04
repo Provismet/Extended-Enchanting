@@ -1,0 +1,31 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.extended-enchanting.void_heart"
+  },
+  "effects": {
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "combat-plus:code_execution_single_entity",
+          "function": "extended-enchanting:void_heart"
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#extended-enchanting:exclusive_set/heart",
+  "max_cost": {
+    "base": 75,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 50,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "chest"
+  ],
+  "supported_items": "#minecraft:enchantable/chest_armor",
+  "weight": 1
+}

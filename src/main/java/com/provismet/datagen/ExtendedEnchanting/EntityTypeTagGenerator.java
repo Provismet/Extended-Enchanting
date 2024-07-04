@@ -2,8 +2,7 @@ package com.provismet.datagen.ExtendedEnchanting;
 
 import java.util.concurrent.CompletableFuture;
 
-import com.provismet.ExtendedEnchanting.utility.EETags;
-
+import com.provismet.ExtendedEnchanting.utility.tags.EEEntityTypeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.EntityTypeTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEntityTypeTags;
@@ -17,7 +16,7 @@ public class EntityTypeTagGenerator extends EntityTypeTagProvider {
 
     @Override
     protected void configure (WrapperLookup wrapper) {
-        getOrCreateTagBuilder(EETags.Entity.NO_LAUNCH)
+        getOrCreateTagBuilder(EEEntityTypeTags.NO_LAUNCH)
             .addOptionalTag(ConventionalEntityTypeTags.BOSSES)
             .add(EntityType.RAVAGER)
             .add(EntityType.HOGLIN)
@@ -25,7 +24,8 @@ public class EntityTypeTagGenerator extends EntityTypeTagProvider {
             .add(EntityType.SNIFFER)
             .add(EntityType.WARDEN);
 
-        getOrCreateTagBuilder(EETags.Entity.HAS_WEAPON);
+        // Empty in vanilla.
+        getOrCreateTagBuilder(EEEntityTypeTags.HAS_WEAPON);
     }
     
 }

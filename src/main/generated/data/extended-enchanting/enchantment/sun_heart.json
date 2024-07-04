@@ -1,0 +1,109 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.extended-enchanting.sun_heart"
+  },
+  "effects": {
+    "minecraft:post_attack": [
+      {
+        "affected": "attacker",
+        "effect": {
+          "type": "minecraft:ignite",
+          "duration": 3.0
+        },
+        "enchanted": "victim",
+        "requirements": {
+          "condition": "minecraft:all_of",
+          "terms": [
+            {
+              "condition": "combat-plus:exposed_to_sun"
+            },
+            {
+              "condition": "minecraft:damage_source_properties",
+              "predicate": {
+                "is_direct": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "affected": "victim",
+        "effect": {
+          "type": "combat-plus:damage_equipment",
+          "equipment_slots": [
+            "chest"
+          ],
+          "value": 2.0
+        },
+        "enchanted": "victim",
+        "requirements": {
+          "condition": "minecraft:all_of",
+          "terms": [
+            {
+              "condition": "combat-plus:exposed_to_sun"
+            },
+            {
+              "condition": "minecraft:damage_source_properties",
+              "predicate": {
+                "is_direct": true
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "minecraft:all_of",
+          "effects": [
+            {
+              "type": "combat-plus:heal",
+              "value": 2.0
+            },
+            {
+              "type": "combat-plus:damage_equipment",
+              "equipment_slots": [
+                "chest"
+              ],
+              "value": 10.0
+            }
+          ]
+        },
+        "requirements": {
+          "condition": "minecraft:all_of",
+          "terms": [
+            {
+              "condition": "combat-plus:every_x_ticks",
+              "value": 40.0
+            },
+            {
+              "condition": "combat-plus:exposed_to_sun"
+            },
+            {
+              "comparison": "<",
+              "condition": "combat-plus:relative_health",
+              "value": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#extended-enchanting:exclusive_set/heart",
+  "max_cost": {
+    "base": 75,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 50,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "chest"
+  ],
+  "supported_items": "#minecraft:enchantable/chest_armor",
+  "weight": 1
+}

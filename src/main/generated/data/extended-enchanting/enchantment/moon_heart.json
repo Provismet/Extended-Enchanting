@@ -1,0 +1,87 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.extended-enchanting.moon_heart"
+  },
+  "effects": {
+    "minecraft:post_attack": [
+      {
+        "affected": "attacker",
+        "effect": {
+          "type": "minecraft:apply_mob_effect",
+          "max_amplifier": 0.0,
+          "max_duration": 1.0,
+          "min_amplifier": 0.0,
+          "min_duration": 1.0,
+          "to_apply": "minecraft:slowness"
+        },
+        "enchanted": "victim",
+        "requirements": {
+          "condition": "minecraft:all_of",
+          "terms": [
+            {
+              "condition": "combat-plus:exposed_to_moon"
+            },
+            {
+              "condition": "minecraft:damage_source_properties",
+              "predicate": {
+                "is_direct": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "affected": "victim",
+        "effect": {
+          "type": "combat-plus:damage_equipment",
+          "equipment_slots": [
+            "chest"
+          ],
+          "value": 5.0
+        },
+        "enchanted": "victim",
+        "requirements": {
+          "condition": "minecraft:all_of",
+          "terms": [
+            {
+              "condition": "combat-plus:exposed_to_moon"
+            },
+            {
+              "condition": "minecraft:damage_source_properties",
+              "predicate": {
+                "is_direct": true
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "combat-plus:code_execution_single_entity",
+          "function": "extended-enchanting:reset_insomnia"
+        },
+        "requirements": {
+          "condition": "combat-plus:exposed_to_moon"
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#extended-enchanting:exclusive_set/heart",
+  "max_cost": {
+    "base": 75,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 50,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "chest"
+  ],
+  "supported_items": "#minecraft:enchantable/chest_armor",
+  "weight": 1
+}

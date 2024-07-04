@@ -1,0 +1,99 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.extended-enchanting.brimstone_heart"
+  },
+  "effects": {
+    "minecraft:location_changed": [
+      {
+        "effect": {
+          "type": "minecraft:attribute",
+          "amount": 0.03,
+          "attribute": "minecraft:generic.movement_speed",
+          "id": "extended-enchanting:lava_speed",
+          "operation": "add_value"
+        },
+        "requirements": {
+          "condition": "minecraft:all_of",
+          "terms": [
+            {
+              "condition": "combat-plus:dimension",
+              "dimension_key": "minecraft:the_nether"
+            },
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "flags": {
+                  "is_on_fire": true
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "minecraft:all_of",
+          "effects": [
+            {
+              "type": "combat-plus:heal",
+              "value": 4.0
+            },
+            {
+              "type": "combat-plus:damage_equipment",
+              "equipment_slots": [
+                "chest"
+              ],
+              "value": 2.0
+            }
+          ]
+        },
+        "requirements": {
+          "condition": "minecraft:all_of",
+          "terms": [
+            {
+              "condition": "combat-plus:every_x_ticks",
+              "value": 20.0
+            },
+            {
+              "condition": "combat-plus:dimension",
+              "dimension_key": "minecraft:the_nether"
+            },
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "flags": {
+                  "is_on_fire": true
+                }
+              }
+            },
+            {
+              "comparison": "<",
+              "condition": "combat-plus:relative_health",
+              "value": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#extended-enchanting:exclusive_set/heart",
+  "max_cost": {
+    "base": 75,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 50,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "chest"
+  ],
+  "supported_items": "#minecraft:enchantable/chest_armor",
+  "weight": 1
+}

@@ -1,0 +1,41 @@
+{
+  "anvil_cost": 3,
+  "description": {
+    "translate": "enchantment.extended-enchanting.initiative"
+  },
+  "effects": {
+    "minecraft:damage": [
+      {
+        "effect": {
+          "type": "minecraft:add",
+          "value": {
+            "type": "minecraft:linear",
+            "base": 2.2,
+            "per_level_above_first": 2.2
+          }
+        },
+        "requirements": {
+          "comparison": ">=",
+          "condition": "combat-plus:relative_health",
+          "value": 1.0
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#combat-plus:exclusive_set/additional_damage",
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 5
+  },
+  "max_level": 5,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 5
+  },
+  "primary_items": "#combat-plus:enchantable/damage_primary",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#combat-plus:enchantable/damage",
+  "weight": 5
+}

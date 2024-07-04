@@ -1,5 +1,7 @@
 package com.provismet.ExtendedEnchanting.mixin;
 
+import com.provismet.ExtendedEnchanting.registries.EEEnchantmentComponentTypes;
+import net.minecraft.entity.EquipmentSlot;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -25,6 +27,6 @@ public abstract class FarmlandBlockMixin extends Block {
     
     @Inject(method="setToDirt", at=@At("HEAD"), cancellable=true)
     private static void preventDirt (@Nullable Entity entity, BlockState state, World world, BlockPos pos, CallbackInfo info) {
-        if (entity instanceof LivingEntity living && EnchantmentHelper.getEquipmentLevel(EEEnchantments.SOIL_WALKER, living) > 0) info.cancel();
+        if (entity instanceof LivingEntity living && EnchantmentHelper.hasAnyEnchantmentsWith(living.getEquippedStack(EquipmentSlot.FEET), EEEnchantmentComponentTypes.SOIL_STEP)) info.cancel();
     }
 }

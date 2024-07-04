@@ -8,7 +8,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry.Pendin
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleType;
 
-public class EEParticleFactories {
+public abstract class EEParticleFactories {
     private static <T extends ParticleEffect> void register (ParticleType<T> particle, PendingParticleFactory<T> constructor) {
         ParticleFactoryRegistry.getInstance().register(particle, constructor);
     }
