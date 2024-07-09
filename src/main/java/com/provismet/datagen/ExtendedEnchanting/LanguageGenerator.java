@@ -1,14 +1,12 @@
 package com.provismet.datagen.ExtendedEnchanting;
 
 import com.provismet.ExtendedEnchanting.registries.EEEnchantments;
-import com.provismet.ExtendedEnchanting.utility.EEGameRules;
 
+import com.provismet.ExtendedEnchanting.utility.EEDamageTypes;
+import com.provismet.lilylib.container.DamageTypeContainer;
 import com.provismet.lilylib.container.EnchantmentContainer;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -47,20 +45,16 @@ public class LanguageGenerator extends FabricLanguageProvider {
 
         LanguageGenerator.addEnchantment(translationBuilder, EEEnchantments.CHORUS_CURSE, "Curse of Chorus", "Randomly teleport when attacked.");
 
-        LanguageGenerator.addDeathMessage(translationBuilder, "static_shock", "was electrified", "was electrified by");
-
-        translationBuilder.add(EEGameRules.PLAYER_SPECIAL_DAMAGE_MOD.getTranslationKey(), "PvP Effectiveness of conditional damage enchantments");
-        translationBuilder.add(EEGameRules.PLAYER_SPECIAL_DAMAGE_MOD.getTranslationKey() + ".description", "Bonus damage from conditional damage enchantments will be multiplied by this value if the target is a player.");
+        LanguageGenerator.addDeathMessage(translationBuilder, EEDamageTypes.STATIC, "was electrified", "was electrified by");
     }
 
     private static void addEnchantment (TranslationBuilder translationBuilder, EnchantmentContainer enchantment, String name, String description) {
-        String base = String.format("enchantment.%s.%s", enchantment.getKey().getValue().getNamespace(), enchantment.getKey().getValue().getPath());
-        translationBuilder.add(base, name);
-        translationBuilder.add(base + ".desc", description);
+        translationBuilder.add(enchantment.getTranslationKey(), name);
+        translationBuilder.add(enchantment.getTranslationKey("desc"), description);
     }
 
-    private static void addDeathMessage (TranslationBuilder translationBuilder, String damageId, String message, String mobMessage) {
-        translationBuilder.add("death.attack.extended-enchanting." + damageId, "%1$s " + message);
-        translationBuilder.add("death.attack.extended-enchanting." + damageId + ".player", "%1$s " + mobMessage + " %2$s");
+    private static void addDeathMessage (TranslationBuilder translationBuilder, DamageTypeContainer damageType, String message, String mobMessage) {
+        translationBuilder.add(damageType.getDeathTranslationKey(), "%1$s " + message);
+        translationBuilder.add(damageType.getDeathTranslationKey() + ".player", "%1$s " + mobMessage + " %2$s");
     }
 }

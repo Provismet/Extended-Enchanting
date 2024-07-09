@@ -4,7 +4,7 @@
     "translate": "enchantment.extended-enchanting.glass"
   },
   "effects": {
-    "minecraft:damage": [
+    "combat-plus:gamerule_damage": [
       {
         "effect": {
           "type": "minecraft:add",

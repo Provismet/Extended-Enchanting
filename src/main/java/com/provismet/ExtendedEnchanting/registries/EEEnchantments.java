@@ -146,7 +146,7 @@ public class EEEnchantments {
                 AttributeModifierSlot.MAINHAND
             )
         ).addEffect(
-            EnchantmentEffectComponentTypes.DAMAGE,
+            CPCEnchantmentComponentTypes.GAMERULE_DAMAGE,
             new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(2.2f)),
             RelativeHealthCondition.builder(CPCLootContext.Comparison.GREATER_THAN_OR_EQUAL_TO, EnchantmentLevelBasedValue.constant(1))
         ).exclusiveSet(
@@ -167,7 +167,7 @@ public class EEEnchantments {
                 AttributeModifierSlot.MAINHAND
             )
         ).addEffect(
-            EnchantmentEffectComponentTypes.DAMAGE,
+            CPCEnchantmentComponentTypes.GAMERULE_DAMAGE,
             new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(1.8f)),
             ApplyToAttacker.builder(
                 RelativeHealthCondition.builder(
@@ -193,7 +193,7 @@ public class EEEnchantments {
                 AttributeModifierSlot.MAINHAND
             )
         ).addEffect(
-            EnchantmentEffectComponentTypes.DAMAGE,
+            CPCEnchantmentComponentTypes.GAMERULE_DAMAGE,
             new AddEnchantmentEffect(EnchantmentLevelBasedValue.constant(15)),
             ApplyToAttacker.builder(
                 ApplyToItem.builder(

@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import com.provismet.ExtendedEnchanting.config.EESettings;
 import com.provismet.ExtendedEnchanting.registries.EEEnchantments;
 import com.provismet.ExtendedEnchanting.registries.EEParticleTypes;
-import com.provismet.ExtendedEnchanting.utility.EEGameRules;
 
 public class ExtendedEnchantingMain implements ModInitializer {
 	public static final String MODID = "extended-enchanting";
@@ -35,7 +34,6 @@ public class ExtendedEnchantingMain implements ModInitializer {
 		EESingleEntityEnchantmentEffects.register();
 		EELambdas.register();
 		EEParticleTypes.register();
-		EEGameRules.register();
 		EESettings.read();
 
 		LootTableEvents.MODIFY.register((id, tableBuilder, source) -> {

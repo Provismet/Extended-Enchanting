@@ -4,7 +4,7 @@
     "translate": "enchantment.extended-enchanting.solitude"
   },
   "effects": {
-    "minecraft:damage": [
+    "combat-plus:gamerule_damage": [
       {
         "effect": {
           "type": "minecraft:add",
