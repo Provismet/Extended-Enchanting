@@ -5,11 +5,11 @@ import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyToTarge
 import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyToUserEntityEffect;
 import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.CodeExecutionDoubleEntityEffect;
 import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.InvertedEntityEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.ApplyVelocityEnchantmentEffect;
+import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.ApplyVelocityEffect;
 import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.CodeExecutionSingleEntityEffect;
 import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.DamageEquipmentEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.FreezeEnchantmentEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.HealEnchantmentEffect;
+import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.FreezeEffect;
+import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.HealEffect;
 import com.provismet.CombatPlusCore.enchantment.loot.condition.doubleEntity.ApplyToTargetCondition;
 import com.provismet.CombatPlusCore.enchantment.loot.condition.item.ItemLambdaCondition;
 import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ApplyToAttackerCondition;
@@ -81,7 +81,7 @@ public class EEEnchantments {
         ).addEffect(
             CPCEnchantmentComponentTypes.POST_CRITICAL_ATTACK,
             new ApplyToUserEntityEffect(
-                new HealEnchantmentEffect(EnchantmentLevelBasedValue.linear(1))
+                new HealEffect(EnchantmentLevelBasedValue.linear(1))
             )
         ).exclusiveSet(
             enchantmentLookup.getOrThrow(CPCEnchantmentTags.ASPECT_EXCLUSIVE)
@@ -103,7 +103,7 @@ public class EEEnchantments {
         ).addEffect(
             CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
             new ApplyToTargetEntityEffect(
-                new FreezeEnchantmentEffect(EnchantmentLevelBasedValue.linear(2.25f))
+                new FreezeEffect(EnchantmentLevelBasedValue.linear(2.25f))
             )
         ).exclusiveSet(
             enchantmentLookup.getOrThrow(CPCEnchantmentTags.ASPECT_EXCLUSIVE)
@@ -301,7 +301,7 @@ public class EEEnchantments {
         ).addEffect(
             CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
             new ApplyToTargetEntityEffect(
-                new ApplyVelocityEnchantmentEffect(
+                new ApplyVelocityEffect(
                     0, 0.15, 0,
                     EnchantmentLevelBasedValue.linear(1),
                     true
@@ -405,7 +405,7 @@ public class EEEnchantments {
         ).addEffect(
             EnchantmentEffectComponentTypes.TICK,
             AllOfEnchantmentEffects.allOf(
-                new HealEnchantmentEffect(
+                new HealEffect(
                     EnchantmentLevelBasedValue.constant(2)
                 ),
                 new DamageEquipmentEffect(
@@ -528,7 +528,7 @@ public class EEEnchantments {
         ).addEffect(
             EnchantmentEffectComponentTypes.TICK,
             AllOfEnchantmentEffects.allOf(
-                new HealEnchantmentEffect(EnchantmentLevelBasedValue.constant(4)),
+                new HealEffect(EnchantmentLevelBasedValue.constant(4)),
                 new DamageEquipmentEffect(List.of(EquipmentSlot.CHEST), EnchantmentLevelBasedValue.constant(2))
             ),
             AllOfLootCondition.builder(
