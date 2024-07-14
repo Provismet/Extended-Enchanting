@@ -15,7 +15,7 @@ public class StaticChargeParticle extends AnimatedParticle {
         this.maxAge += 5 + (int)(20.0 * this.random.nextDouble());
 
         this.velocityX = this.random.nextDouble() * 0.2- 0.1;
-        this.velocityY = this.random.nextDouble() * 0.02 - 0.01;
+        this.velocityY = this.random.nextDouble() * 0.04 - 0.02;
         this.velocityZ = this.random.nextDouble() * 0.2 - 0.1;
         this.gravityStrength = 0;
 
