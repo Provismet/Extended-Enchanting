@@ -42,7 +42,7 @@ public abstract class LivingEntityMixin extends Entity implements IMixinLivingEn
     @Override
     public void extended_Enchanting$applyStatic (int amount) {
         this.staticTicks += amount;
-        if (this.staticTicks >= 100) { // TODO: Compare this with an attribute maybe?
+        while (this.staticTicks >= 100) { // TODO: Compare this with an attribute maybe?
             this.staticTicks = Math.max(0, this.staticTicks - 100);
             if (this.getWorld() instanceof ServerWorld serverWorld) {
                 this.damage(EEDamageTypes.STATIC.createDamageSource(this.getDamageSources()), 6f);
