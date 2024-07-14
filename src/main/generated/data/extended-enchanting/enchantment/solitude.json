@@ -8,7 +8,11 @@
       {
         "effect": {
           "type": "minecraft:add",
-          "value": 15.0
+          "value": {
+            "type": "minecraft:linear",
+            "base": 15.0,
+            "per_level_above_first": 15.0
+          }
         },
         "requirements": {
           "applied_condition": {
