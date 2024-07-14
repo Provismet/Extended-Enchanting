@@ -1,10 +1,10 @@
 package com.provismet.ExtendedEnchanting.registries;
 
-import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyKnockbackEnchantmentEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyToTargetEntityEnchantmentEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyToUserEntityEnchantmentEffect;
+import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyKnockbackEffect;
+import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyToTargetEntityEffect;
+import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyToUserEntityEffect;
 import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.CodeExecutionDoubleEntityEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.InvertedEntityEnchantmentEffect;
+import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.InvertedEntityEffect;
 import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.ApplyVelocityEnchantmentEffect;
 import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.CodeExecutionSingleEntityEffect;
 import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.DamageEquipmentEffect;
@@ -12,8 +12,8 @@ import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.FreezeEnchan
 import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.HealEnchantmentEffect;
 import com.provismet.CombatPlusCore.enchantment.loot.condition.doubleEntity.ApplyToTargetCondition;
 import com.provismet.CombatPlusCore.enchantment.loot.condition.item.ItemLambdaCondition;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ApplyToAttacker;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ApplyToItem;
+import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ApplyToAttackerCondition;
+import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ApplyToItemCondition;
 import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.DimensionCondition;
 import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ExposedToMoonCondition;
 import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ExposedToSunCondition;
@@ -80,7 +80,7 @@ public class EEEnchantments {
             )
         ).addEffect(
             CPCEnchantmentComponentTypes.POST_CRITICAL_ATTACK,
-            new ApplyToUserEntityEnchantmentEffect(
+            new ApplyToUserEntityEffect(
                 new HealEnchantmentEffect(EnchantmentLevelBasedValue.linear(1))
             )
         ).exclusiveSet(
@@ -102,7 +102,7 @@ public class EEEnchantments {
             )
         ).addEffect(
             CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
-            new ApplyToTargetEntityEnchantmentEffect(
+            new ApplyToTargetEntityEffect(
                 new FreezeEnchantmentEffect(EnchantmentLevelBasedValue.linear(2.25f))
             )
         ).exclusiveSet(
@@ -124,7 +124,7 @@ public class EEEnchantments {
             )
         ).addEffect(
             CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
-            new ApplyToTargetEntityEnchantmentEffect(
+            new ApplyToTargetEntityEffect(
                 new ShockEnchantmentEffect(EnchantmentLevelBasedValue.linear(22))
             )
         ).exclusiveSet(
@@ -169,7 +169,7 @@ public class EEEnchantments {
         ).addEffect(
             CPCEnchantmentComponentTypes.GAMERULE_DAMAGE,
             new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(1.8f)),
-            ApplyToAttacker.builder(
+            ApplyToAttackerCondition.builder(
                 RelativeHealthCondition.builder(
                     CPCLootContext.Comparison.GREATER_THAN_OR_EQUAL_TO,
                     EnchantmentLevelBasedValue.constant(1)
@@ -194,9 +194,9 @@ public class EEEnchantments {
             )
         ).addEffect(
             CPCEnchantmentComponentTypes.GAMERULE_DAMAGE,
-            new AddEnchantmentEffect(EnchantmentLevelBasedValue.constant(15)),
-            ApplyToAttacker.builder(
-                ApplyToItem.builder(
+            new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(15)),
+            ApplyToAttackerCondition.builder(
+                ApplyToItemCondition.builder(
                     ItemLambdaCondition.builder(ExtendedEnchantingMain.identifier("one_enchantment"))
                 )
             )
@@ -238,8 +238,8 @@ public class EEEnchantments {
             )
         ).addEffect(
             CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
-            new InvertedEntityEnchantmentEffect(
-                new ApplyKnockbackEnchantmentEffect(
+            new InvertedEntityEffect(
+                new ApplyKnockbackEffect(
                     EnchantmentLevelBasedValue.linear(1, 0.5f),
                     false
                 )
@@ -263,7 +263,7 @@ public class EEEnchantments {
             )
         ).addEffect(
             CPCEnchantmentComponentTypes.POST_KILL,
-            new ApplyToUserEntityEnchantmentEffect(
+            new ApplyToUserEntityEffect(
                 AllOfEnchantmentEffects.allOf(
                     new ApplyMobEffectEnchantmentEffect(
                         RegistryEntryList.of(StatusEffects.STRENGTH),
@@ -300,7 +300,7 @@ public class EEEnchantments {
             )
         ).addEffect(
             CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
-            new ApplyToTargetEntityEnchantmentEffect(
+            new ApplyToTargetEntityEffect(
                 new ApplyVelocityEnchantmentEffect(
                     0, 0.15, 0,
                     EnchantmentLevelBasedValue.linear(1),
