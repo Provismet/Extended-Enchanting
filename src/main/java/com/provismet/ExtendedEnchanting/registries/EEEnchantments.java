@@ -66,7 +66,7 @@ public class EEEnchantments {
     public static void register () {
         register(LEECHING_ASPECT, "leeching");
         register(FROST_ASPECT, "frost_aspect");
-        register(LIGHTNING_ASPECT, "lighting_aspect");
+        register(LIGHTNING_ASPECT, "lightning_aspect");
 
         register(INITIATIVE, "initiative");
         register(GLASS, "glass");
