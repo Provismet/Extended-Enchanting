@@ -9,7 +9,7 @@
         "effect": {
           "type": "minecraft:attribute",
           "amount": 0.03,
-          "attribute": "minecraft:generic.movement_speed",
+          "attribute": "minecraft:movement_speed",
           "id": "extended-enchanting:lava_speed",
           "operation": "add_value"
         },

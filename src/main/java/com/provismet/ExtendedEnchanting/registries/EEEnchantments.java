@@ -55,6 +55,7 @@ import net.minecraft.predicate.entity.DamageSourcePredicate;
 import net.minecraft.predicate.entity.EntityEquipmentPredicate;
 import net.minecraft.predicate.entity.EntityFlagsPredicate;
 import net.minecraft.predicate.entity.EntityPredicate;
+import net.minecraft.predicate.entity.EntityTypePredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.entry.RegistryEntryList;
@@ -67,7 +68,7 @@ import java.util.List;
 public class EEEnchantments {
     public static final EnchantmentContainer LEECHING_ASPECT = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("leeching_aspect"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(CPCItemTags.ASPECT_ENCHANTABLE),
                 itemLookup.getOrThrow(CPCItemTags.ASPECT_PRIMARY_ENCHANTABLE),
@@ -89,7 +90,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer FROST_ASPECT = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("frost_aspect"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(CPCItemTags.ASPECT_ENCHANTABLE),
                 itemLookup.getOrThrow(CPCItemTags.ASPECT_PRIMARY_ENCHANTABLE),
@@ -111,7 +112,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer LIGHTNING_ASPECT = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("lightning_aspect"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(CPCItemTags.ASPECT_ENCHANTABLE),
                 itemLookup.getOrThrow(CPCItemTags.ASPECT_PRIMARY_ENCHANTABLE),
@@ -134,7 +135,7 @@ public class EEEnchantments {
 
     public static final EnchantmentContainer INITIATIVE = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("initiative"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(CPCItemTags.DAMAGE_ENCHANTABLE),
                 itemLookup.getOrThrow(CPCItemTags.DAMAGE_PRIMARY_ENCHANTABLE),
@@ -155,7 +156,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer GLASS = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("glass"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(CPCItemTags.DAMAGE_ENCHANTABLE),
                 itemLookup.getOrThrow(CPCItemTags.DAMAGE_PRIMARY_ENCHANTABLE),
@@ -181,7 +182,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer SOLITUDE = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("solitude"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(CPCItemTags.DAMAGE_ENCHANTABLE),
                 itemLookup.getOrThrow(CPCItemTags.DAMAGE_PRIMARY_ENCHANTABLE),
@@ -205,7 +206,7 @@ public class EEEnchantments {
 
     public static final EnchantmentContainer DUAL_STRIKE = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("dual_strike"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_ENCHANTABLE),
                 itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE),
@@ -225,7 +226,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer FEINT = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("feint"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_ENCHANTABLE),
                 itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE),
@@ -250,7 +251,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer RAMPAGE = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("rampage"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_ENCHANTABLE),
                 itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE),
@@ -288,7 +289,7 @@ public class EEEnchantments {
 
     public static final EnchantmentContainer LAUNCH = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("launch"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
                 5,
@@ -310,7 +311,7 @@ public class EEEnchantments {
             ApplyToTargetCondition.builder(
                 EntityPropertiesLootCondition.builder(
                     LootContext.EntityTarget.THIS,
-                    EntityPredicate.Builder.create().type(EEEntityTypeTags.NO_LAUNCH).build()
+                    EntityPredicate.Builder.create().type(EntityTypePredicate.create(entityLookup, EEEntityTypeTags.NO_LAUNCH)).build()
                 ).invert()
             )
         ).exclusiveSet(
@@ -320,7 +321,7 @@ public class EEEnchantments {
 
     public static final EnchantmentContainer WEAPON_PROTECTION = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("weapon_protection"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
                 1,
@@ -346,7 +347,7 @@ public class EEEnchantments {
                         .directEntity(
                             EntityPredicate.Builder.create().equipment(
                                 EntityEquipmentPredicate.Builder.create().mainhand(
-                                    ItemPredicate.Builder.create().tag(CPCItemTags.MELEE_WEAPON)
+                                    ItemPredicate.Builder.create().tag(itemLookup, CPCItemTags.MELEE_WEAPON)
                                 )
                             )
                         )
@@ -355,7 +356,7 @@ public class EEEnchantments {
                 DamageSourcePropertiesLootCondition.builder(
                     DamageSourcePredicate.Builder.create()
                         .directEntity(
-                            EntityPredicate.Builder.create().type(EEEntityTypeTags.HAS_WEAPON)
+                            EntityPredicate.Builder.create().type(EntityTypePredicate.create(entityLookup, EEEntityTypeTags.HAS_WEAPON))
                         )
                         .isDirect(true)
                 )
@@ -366,7 +367,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer COMBUSTION_PROTECTION = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("combustion_protection"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
                 1,
@@ -392,7 +393,7 @@ public class EEEnchantments {
 
     public static final EnchantmentContainer SUN_HEART = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("sun_heart"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(ItemTags.CHEST_ARMOR_ENCHANTABLE),
                 1,
@@ -449,7 +450,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer MOON_HEART = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("moon_heart"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(ItemTags.CHEST_ARMOR_ENCHANTABLE),
                 1,
@@ -500,7 +501,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer BRIMSTONE_HEART = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("brimstone_heart"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(ItemTags.CHEST_ARMOR_ENCHANTABLE),
                 1,
@@ -514,7 +515,7 @@ public class EEEnchantments {
             EnchantmentEffectComponentTypes.LOCATION_CHANGED,
             new AttributeEnchantmentEffect(
                 ExtendedEnchantingMain.identifier("lava_speed"),
-                EntityAttributes.GENERIC_MOVEMENT_SPEED,
+                EntityAttributes.MOVEMENT_SPEED,
                 EnchantmentLevelBasedValue.constant(0.03f),
                 EntityAttributeModifier.Operation.ADD_VALUE
             ),
@@ -546,7 +547,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer VOID_HEART = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("void_heart"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(ItemTags.CHEST_ARMOR_ENCHANTABLE),
                 1,
@@ -566,7 +567,7 @@ public class EEEnchantments {
 
     public static final EnchantmentContainer REPLANT = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("replanting"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(EEItemTags.HOE_ENCHANTABLE),
                 1,
@@ -582,7 +583,7 @@ public class EEEnchantments {
     );
     public static final EnchantmentContainer SOIL_WALKER = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("soil_walker"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),
                 2,
@@ -601,7 +602,7 @@ public class EEEnchantments {
 
     public static final EnchantmentContainer CHORUS_CURSE = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("chorus_curse"),
-        (itemLookup, enchantmentLookup, damageLookup, blockLookup) -> Enchantment.builder(
+        (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
                 itemLookup.getOrThrow(ItemTags.CHEST_ARMOR_ENCHANTABLE),
                 2,

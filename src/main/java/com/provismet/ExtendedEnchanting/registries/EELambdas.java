@@ -7,6 +7,7 @@ import com.provismet.CombatPlusCore.utility.CPCRegistries;
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
 import com.provismet.ExtendedEnchanting.interfaces.IMixinLivingEntity;
 import com.provismet.lilylib.util.Relations;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.TargetPredicate;
@@ -27,6 +28,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.dimension.DimensionTypes;
 import net.minecraft.world.event.GameEvent;
 
+import java.util.Optional;
 import java.util.function.Predicate;
 
 public abstract class EELambdas {
@@ -56,7 +58,7 @@ public abstract class EELambdas {
                     user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 50));
                     user.getEquippedStack(EquipmentSlot.CHEST).damage(100, user, EquipmentSlot.CHEST);
                 }
-                else if (user.fallDistance >= user.getAttributeValue(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE)) {
+                else if (user.fallDistance >= user.getAttributeValue(EntityAttributes.SAFE_FALL_DISTANCE)) {
                     user.fallDistance = 0f;
                     user.getEquippedStack(EquipmentSlot.CHEST).damage(2, user, EquipmentSlot.CHEST);
                 }
@@ -98,14 +100,18 @@ public abstract class EELambdas {
         register("dual_strike", ((world, level, context, userEntity, targetEntity, pos) -> {
             if (!(userEntity instanceof LivingEntity user) || !(targetEntity instanceof LivingEntity target)) return;
 
-            LivingEntity otherTarget = user.getWorld().getClosestEntity(LivingEntity.class, TargetPredicate.createAttackable().setPredicate(entity -> {
-                return !Relations.isFriendly(user, entity) && entity != target;
-            }), user, target.getX(), target.getY(), target.getZ(), target.getBoundingBox().expand(2.5, 0.25, 2.5));
+            Optional<Entity> optionalTarget = user.getWorld().getOtherEntities(
+                target,
+                target.getBoundingBox().expand(2.5, 0.25, 2.5),
+                entity -> entity instanceof LivingEntity potentialTarget && potentialTarget.canTakeDamage() && !Relations.isFriendly(user, potentialTarget)
+            )
+                .stream()
+                .reduce((entity1, entity2) -> entity1.distanceTo(target) < entity2.distanceTo(target) ? entity1 : entity2);
 
-            if (otherTarget != null) {
-                double damage = 1 + user.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) * level * 0.2;
-                if (user instanceof PlayerEntity player) otherTarget.damage(user.getDamageSources().playerAttack(player), (float)damage);
-                else otherTarget.damage(user.getDamageSources().mobAttack(user), (float)damage);
+            if (optionalTarget.isPresent() && optionalTarget.get() instanceof LivingEntity otherTarget) {
+                double damage = 1 + user.getAttributeValue(EntityAttributes.ATTACK_DAMAGE) * level * 0.2;
+                if (user instanceof PlayerEntity player) otherTarget.damage(world, user.getDamageSources().playerAttack(player), (float)damage);
+                else otherTarget.damage(world, user.getDamageSources().mobAttack(user), (float)damage);
 
                 ItemStack heldItem = user.getMainHandStack();
                 if (heldItem.getItem() instanceof MeleeWeapon melee) {

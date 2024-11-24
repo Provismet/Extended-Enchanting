@@ -22,8 +22,8 @@ import net.minecraft.world.World;
 
 @Mixin(HoeItem.class)
 public abstract class HoeItemMixin extends MiningToolItem {
-    protected HoeItemMixin (ToolMaterial material, TagKey<Block> effectiveBlocks, Settings settings) {
-        super(material, effectiveBlocks, settings);
+    protected HoeItemMixin (ToolMaterial material, TagKey<Block> effectiveBlocks, float attackDamage, float attackSpeed, Settings settings) {
+        super(material, effectiveBlocks, attackDamage, attackSpeed, settings);
     }
 
     @Override

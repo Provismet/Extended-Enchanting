@@ -5,7 +5,7 @@ import com.provismet.ExtendedEnchanting.registries.EEEnchantmentComponentTypes;
 import com.provismet.ExtendedEnchanting.registries.EELambdas;
 import com.provismet.ExtendedEnchanting.registries.EESingleEntityEnchantmentEffects;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTables;
@@ -36,16 +36,16 @@ public class ExtendedEnchantingMain implements ModInitializer {
 		EEParticleTypes.register();
 		EESettings.read();
 
-		LootTableEvents.MODIFY.register((id, tableBuilder, source) -> {
+		LootTableEvents.MODIFY.register((key, tableBuilder, source, wrapperLookup) -> {
 			if (source.isBuiltin() || EESettings.shouldOverrideDatapacks()) {
-				if (LootTables.BASTION_TREASURE_CHEST.equals(id) || LootTables.BASTION_HOGLIN_STABLE_CHEST.equals(id)) {
+				if (LootTables.BASTION_TREASURE_CHEST.equals(key) || LootTables.BASTION_HOGLIN_STABLE_CHEST.equals(key)) {
 					tableBuilder.pool(
 						LootPool.builder().rolls(BinomialLootNumberProvider.create(1, 0.05f))
 							.with(ItemEntry.builder(Items.DIAMOND_CHESTPLATE).apply(EnchantRandomlyFromKeyLootFunction.create().option(EEEnchantments.BRIMSTONE_HEART)))
 							.with(ItemEntry.builder(Items.BOOK).apply(EnchantRandomlyFromKeyLootFunction.create().option(EEEnchantments.BRIMSTONE_HEART)))
 					);
 				}
-				else if (LootTables.END_CITY_TREASURE_CHEST.equals(id)) {
+				else if (LootTables.END_CITY_TREASURE_CHEST.equals(key)) {
 					tableBuilder.pool(
 						LootPool.builder().rolls(BinomialLootNumberProvider.create(1, 0.05f))
 							.with(ItemEntry.builder(Items.DIAMOND_CHESTPLATE).apply(EnchantRandomlyFromKeyLootFunction.create().option(EEEnchantments.VOID_HEART)))
@@ -57,7 +57,7 @@ public class ExtendedEnchantingMain implements ModInitializer {
 							.with(ItemEntry.builder(Items.DIAMOND_SWORD).apply(EnchantRandomlyFromKeyLootFunction.create().option(EEEnchantments.SOLITUDE)))
 					);
 				}
-				else if (LootTables.WOODLAND_MANSION_CHEST.equals(id) || LootTables.ANCIENT_CITY_CHEST.equals(id)) {
+				else if (LootTables.WOODLAND_MANSION_CHEST.equals(key) || LootTables.ANCIENT_CITY_CHEST.equals(key)) {
 					tableBuilder.pool(
 						LootPool.builder().rolls(BinomialLootNumberProvider.create(1, 0.05f))
 							.with(ItemEntry.builder(Items.DIAMOND_CHESTPLATE).apply(EnchantRandomlyFromKeyLootFunction.create().option(EEEnchantments.SUN_HEART)))
@@ -71,7 +71,7 @@ public class ExtendedEnchantingMain implements ModInitializer {
 							.with(ItemEntry.builder(Items.DIAMOND_SWORD).apply(EnchantRandomlyFromKeyLootFunction.create().option(EEEnchantments.SOLITUDE)))
 					);
 				}
-				else if (LootTables.HERO_OF_THE_VILLAGE_ARMORER_GIFT_GAMEPLAY.equals(id)) {
+				else if (LootTables.HERO_OF_THE_VILLAGE_ARMORER_GIFT_GAMEPLAY.equals(key)) {
 					tableBuilder.pool(
 						LootPool.builder().rolls(BinomialLootNumberProvider.create(1, 0.005f))
 							.with(ItemEntry.builder(Items.DIAMOND_CHESTPLATE).apply(EnchantRandomlyFromKeyLootFunction.create().option(EEEnchantments.SUN_HEART)))
@@ -84,7 +84,7 @@ public class ExtendedEnchantingMain implements ModInitializer {
 							.with(ItemEntry.builder(Items.BOOK).apply(EnchantRandomlyFromKeyLootFunction.create().option(EEEnchantments.VOID_HEART)))
 					);
 				}
-				else if (LootTables.HERO_OF_THE_VILLAGE_WEAPONSMITH_GIFT_GAMEPLAY.equals(id)) {
+				else if (LootTables.HERO_OF_THE_VILLAGE_WEAPONSMITH_GIFT_GAMEPLAY.equals(key)) {
 					tableBuilder.pool(
 						LootPool.builder().rolls(BinomialLootNumberProvider.create(1, 0.005f))
 							.with(ItemEntry.builder(Items.BOOK).apply(EnchantRandomlyFromKeyLootFunction.create().option(EEEnchantments.SOLITUDE)))

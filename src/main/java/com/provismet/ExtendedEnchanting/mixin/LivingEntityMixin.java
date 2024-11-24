@@ -45,7 +45,7 @@ public abstract class LivingEntityMixin extends Entity implements IMixinLivingEn
         while (this.staticTicks >= 100) { // TODO: Compare this with an attribute maybe?
             this.staticTicks = Math.max(0, this.staticTicks - 100);
             if (this.getWorld() instanceof ServerWorld serverWorld) {
-                this.damage(EEDamageTypes.STATIC.createDamageSource(this.getDamageSources()), 6f);
+                this.damage(serverWorld, EEDamageTypes.STATIC.createDamageSource(this.getDamageSources()), 6f);
                 serverWorld.spawnParticles(EEParticleTypes.DISCHARGE, this.getX(), (this.getY() + this.getEyeY()) / 2.0, this.getZ(), 1, 0, 0, 0, 0);
             }
         }
