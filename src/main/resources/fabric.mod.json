@@ -12,7 +12,7 @@
 		"sources": "https://github.com/Provismet/Extended-Enchanting",
 		"issues": "https://github.com/Provismet/Extended-Enchanting/issues"
 	},
-	"license": "Lily License",
+	"license": "Lily License v1.1",
 	"icon": "assets/extended-enchanting/icon.png",
 	"environment": "*",
 	"entrypoints": {
