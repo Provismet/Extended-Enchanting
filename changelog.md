@@ -1,1 +1,2 @@
-Updated to Minecraft 1.21.3.
+## Changes
+- Updated to Minecraft 1.21.4.
