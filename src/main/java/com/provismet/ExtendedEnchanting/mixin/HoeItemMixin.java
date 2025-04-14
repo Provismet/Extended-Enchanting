@@ -1,29 +1,24 @@
 package com.provismet.ExtendedEnchanting.mixin;
 
 import com.provismet.ExtendedEnchanting.registries.EEEnchantmentComponentTypes;
-import net.minecraft.block.NetherWartBlock;
-import net.minecraft.state.property.Properties;
-import org.spongepowered.asm.mixin.Mixin;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
+import net.minecraft.block.NetherWartBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.HoeItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.MiningToolItem;
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(HoeItem.class)
-public abstract class HoeItemMixin extends MiningToolItem {
-    protected HoeItemMixin (ToolMaterial material, TagKey<Block> effectiveBlocks, float attackDamage, float attackSpeed, Settings settings) {
-        super(material, effectiveBlocks, attackDamage, attackSpeed, settings);
+public abstract class HoeItemMixin extends Item {
+    public HoeItemMixin (Settings settings) {
+        super(settings);
     }
 
     @Override
@@ -38,11 +33,11 @@ public abstract class HoeItemMixin extends MiningToolItem {
     }
 
     @Override
-    public boolean canMine (BlockState state, World world, BlockPos pos, PlayerEntity miner) {
-        if (!miner.isCreative() && EnchantmentHelper.hasAnyEnchantmentsWith(miner.getMainHandStack(), EEEnchantmentComponentTypes.REPLANT)) {
+    public boolean canMine (ItemStack stack, BlockState state, World world, BlockPos pos, LivingEntity user) {
+        if (!user.isInCreativeMode() && EnchantmentHelper.hasAnyEnchantmentsWith(user.getMainHandStack(), EEEnchantmentComponentTypes.REPLANT)) {
             if (state.getBlock() instanceof CropBlock crops) return crops.getAge(state) == crops.getMaxAge();
             else if (state.getBlock() instanceof NetherWartBlock) return state.get(Properties.AGE_3) == 3;
         }
-        return super.canMine(state, world, pos, miner);
+        return super.canMine(stack, state, world, pos, user);
     }
 }
