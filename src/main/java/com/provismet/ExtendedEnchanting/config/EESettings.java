@@ -2,28 +2,26 @@ package com.provismet.ExtendedEnchanting.config;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import com.google.gson.stream.JsonReader;
+import com.provismet.CombatPlusCore.utility.CPCConfig;
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
-import com.provismet.lilylib.util.JsonBuilder;
+import com.provismet.lilylib.util.json.JsonBuilder;
+import com.provismet.lilylib.util.json.JsonReader;
 
 public class EESettings {
+    private static final String FILE = "extended-enchanting.json";
+
     private static boolean overrideDatapacks = true;
 
     public static void write () {
-        JsonBuilder builder = new JsonBuilder();
-        String jsonString = builder.start()
-            .append("override_datapack_loot_tables", overrideDatapacks).newLine(false)
-            .closeObject()
+        String jsonString = new JsonBuilder()
+            .append(CPCConfig.KEY_OVERRIDE_DATAPACK_LOOT_TABLES, overrideDatapacks)
             .toString();
         
-        try {
-            FileWriter writer = new FileWriter("config/combat-plus/extended-enchanting.json");
+        try (FileWriter writer = new FileWriter(new File(CPCConfig.FOLDER, FILE))) {
             writer.write(jsonString);
-            writer.close();
         }
         catch (IOException e) {
             ExtendedEnchantingMain.LOGGER.error("Error whilst saving config: ", e);
@@ -32,32 +30,17 @@ public class EESettings {
 
     public static void read () {
         try {
-            FileReader reader = new FileReader("config/combat-plus/extended-enchanting.json");
-            JsonReader parser = new JsonReader(reader);
-            
-            parser.beginObject();
-            while (parser.hasNext()) {
-                String name = parser.nextName();
-                switch (name) {
-                    case "override_datapack_loot_tables":
-                        EESettings.overrideDatapacks = parser.nextBoolean();
-                        break;
-                
-                    default:
-                        break;
-                }
+            JsonReader reader = JsonReader.file(new File(CPCConfig.FOLDER, FILE));
+            if (reader == null) {
+                EESettings.write();
+                return;
             }
-            parser.endObject();
-            parser.close();
+
+            reader.getBoolean(CPCConfig.KEY_OVERRIDE_DATAPACK_LOOT_TABLES).ifPresent(val -> EESettings.overrideDatapacks = val);
         }
         catch (FileNotFoundException e) {
             ExtendedEnchantingMain.LOGGER.info("No config found for Extended Enchanting, creating one now.");
-            try {
-                (new File("config/combat-plus")).mkdirs();
-            }
-            catch (Exception e3) {
-
-            }
+            new File(CPCConfig.FOLDER).mkdirs();
             EESettings.write();
         }
         catch (Exception e2) {
