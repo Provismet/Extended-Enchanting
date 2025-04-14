@@ -16,7 +16,7 @@ public record ShockEnchantmentEffect (EnchantmentLevelBasedValue ticks) implemen
     @Override
     public void apply (ServerWorld world, int level, EnchantmentEffectContext context, Entity target, Vec3d pos) {
         int ticks = (int)this.ticks.getValue(level);
-        ((IMixinLivingEntity)(Object)target).extended_Enchanting$applyStatic(ticks);
+        ((IMixinLivingEntity)target).extended_Enchanting$applyStatic(ticks);
     }
 
     @Override
