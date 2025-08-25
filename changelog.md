@@ -1,2 +1,2 @@
-## Changes
-- Updated to Minecraft 1.21.5.
+## Additions
+- Add Russian translation.
