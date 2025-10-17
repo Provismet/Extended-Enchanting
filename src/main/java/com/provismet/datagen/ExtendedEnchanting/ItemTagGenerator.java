@@ -15,7 +15,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure (RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(EEItemTags.HOE_ENCHANTABLE)
+        this.valueLookupBuilder(EEItemTags.HOE_ENCHANTABLE)
             .addOptionalTag(ItemTags.HOES);
     }
 }

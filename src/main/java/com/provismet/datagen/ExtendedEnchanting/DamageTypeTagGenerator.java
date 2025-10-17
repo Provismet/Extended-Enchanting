@@ -17,20 +17,20 @@ public class DamageTypeTagGenerator extends LilyTagProviders.LilyDamageTypeTagPr
 
     @Override
     protected void configure (RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(EEDamageTypeTags.COMBUSTION)
+        this.builder(EEDamageTypeTags.COMBUSTION)
             .addOptionalTag(DamageTypeTags.IS_FIRE)
             .addOptionalTag(DamageTypeTags.IS_EXPLOSION);
 
-        getOrCreateTagBuilder(EEDamageTypeTags.MELEE_STRIKE)
+        this.builder(EEDamageTypeTags.MELEE_STRIKE)
             .add(DamageTypes.TRIDENT);
 
-        getOrCreateTagBuilder(DamageTypeTags.BYPASSES_ARMOR)
+        this.builder(DamageTypeTags.BYPASSES_ARMOR)
             .add(EEDamageTypes.STATIC.getKey());
 
-        getOrCreateTagBuilder(DamageTypeTags.BYPASSES_COOLDOWN)
+        this.builder(DamageTypeTags.BYPASSES_COOLDOWN)
             .add(EEDamageTypes.STATIC.getKey());
 
-        getOrCreateTagBuilder(DamageTypeTags.IS_LIGHTNING)
+        this.builder(DamageTypeTags.IS_LIGHTNING)
             .add(EEDamageTypes.STATIC.getKey());
     }
 }

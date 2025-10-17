@@ -16,7 +16,7 @@ public class EntityTypeTagGenerator extends EntityTypeTagProvider {
 
     @Override
     protected void configure (WrapperLookup wrapper) {
-        getOrCreateTagBuilder(EEEntityTypeTags.NO_LAUNCH)
+        this.valueLookupBuilder(EEEntityTypeTags.NO_LAUNCH)
             .addOptionalTag(ConventionalEntityTypeTags.BOSSES)
             .add(EntityType.RAVAGER)
             .add(EntityType.HOGLIN)
@@ -25,7 +25,7 @@ public class EntityTypeTagGenerator extends EntityTypeTagProvider {
             .add(EntityType.WARDEN);
 
         // Empty in vanilla.
-        getOrCreateTagBuilder(EEEntityTypeTags.HAS_WEAPON);
+        this.valueLookupBuilder(EEEntityTypeTags.HAS_WEAPON);
     }
     
 }

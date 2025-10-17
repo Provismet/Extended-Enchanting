@@ -1,2 +1,1 @@
-## Additions
-- Add Russian translation.
+- Update to Minecraft 1.21.10

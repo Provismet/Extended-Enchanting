@@ -10,7 +10,6 @@ import com.provismet.lilylib.util.Relations;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -47,11 +46,11 @@ public abstract class EELambdas {
 
         register("void_heart", (world, level, context, userEntity, pos) -> {
             if (!(userEntity instanceof LivingEntity user)) return;
-            if (user.getWorld().getDimensionEntry().matchesId(DimensionTypes.THE_END.getValue())) {
+            if (user.getEntityWorld().getDimensionEntry().matchesId(DimensionTypes.THE_END.getValue())) {
                 if (user.isOnGround() && user.fallDistance == 0f) {
-                    ((IMixinLivingEntity)user).extended_Enchanting$setPreviousGroundPos(user.getPos());
+                    ((IMixinLivingEntity)user).extended_Enchanting$setPreviousGroundPos(user.getEntityPos());
                 }
-                else if (((IMixinLivingEntity)user).extended_Enchanting$getPreviousGroundPos() != null && user.getY() < user.getWorld().getBottomY() - 32) {
+                else if (((IMixinLivingEntity)user).extended_Enchanting$getPreviousGroundPos() != null && user.getY() < user.getEntityWorld().getBottomY() - 32) {
                     user.fallDistance = 0f;
                     Vec3d previousPos = ((IMixinLivingEntity)user).extended_Enchanting$getPreviousGroundPos();
                     user.requestTeleport(previousPos.getX(), previousPos.getY() + 5, previousPos.getZ());
@@ -100,7 +99,7 @@ public abstract class EELambdas {
         register("dual_strike", ((world, level, context, userEntity, targetEntity, pos) -> {
             if (!(userEntity instanceof LivingEntity user) || !(targetEntity instanceof LivingEntity target)) return;
 
-            Optional<Entity> optionalTarget = user.getWorld().getOtherEntities(
+            Optional<Entity> optionalTarget = user.getEntityWorld().getOtherEntities(
                 target,
                 target.getBoundingBox().expand(2.5, 0.25, 2.5),
                 entity -> entity instanceof LivingEntity potentialTarget && potentialTarget.canTakeDamage() && !Relations.isFriendly(user, potentialTarget)

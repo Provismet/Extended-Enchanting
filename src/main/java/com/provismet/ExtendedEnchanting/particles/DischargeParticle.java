@@ -8,6 +8,7 @@ import net.minecraft.client.particle.ParticleFactory;
 import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.SimpleParticleType;
+import net.minecraft.util.math.random.Random;
 
 public class DischargeParticle extends AnimatedParticle {
     protected DischargeParticle (ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider) {
@@ -19,7 +20,7 @@ public class DischargeParticle extends AnimatedParticle {
         this.velocityZ = 0;
         this.gravityStrength = 0;
 
-        this.setSpriteForAge(spriteProvider);
+        this.updateSprite(spriteProvider);
         this.scale = 1.5f;
     }
 
@@ -32,7 +33,7 @@ public class DischargeParticle extends AnimatedParticle {
         }
 
         @Override
-        public Particle createParticle (SimpleParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+        public Particle createParticle (SimpleParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ, Random random) {
             return new DischargeParticle(clientWorld, x, y, z, this.spriteProvider);
         }
     }

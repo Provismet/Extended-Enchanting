@@ -8,6 +8,7 @@ import net.minecraft.client.particle.ParticleFactory;
 import net.minecraft.client.particle.SpriteProvider;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.SimpleParticleType;
+import net.minecraft.util.math.random.Random;
 
 public class StaticChargeParticle extends AnimatedParticle {
     protected StaticChargeParticle (ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider) {
@@ -19,7 +20,7 @@ public class StaticChargeParticle extends AnimatedParticle {
         this.velocityZ = this.random.nextDouble() * 0.2 - 0.1;
         this.gravityStrength = 0;
 
-        this.setSpriteForAge(spriteProvider);
+        this.updateSprite(spriteProvider);
     }
     
     @Environment(value=EnvType.CLIENT)
@@ -31,7 +32,7 @@ public class StaticChargeParticle extends AnimatedParticle {
         }
 
         @Override
-        public Particle createParticle (SimpleParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+        public Particle createParticle (SimpleParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ, Random random) {
             return new StaticChargeParticle(clientWorld, x, y, z, this.spriteProvider);
         }
     }

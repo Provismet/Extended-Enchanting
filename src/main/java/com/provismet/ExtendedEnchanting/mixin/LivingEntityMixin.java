@@ -33,7 +33,7 @@ public abstract class LivingEntityMixin extends Entity implements IMixinLivingEn
     private void applyEffectsOverTime (CallbackInfo info) {
         if (this.staticTicks > 0) {
             --this.staticTicks;
-            if (this.age % 15 == 0 && this.getWorld() instanceof ServerWorld serverWorld) {
+            if (this.age % 15 == 0 && this.getEntityWorld() instanceof ServerWorld serverWorld) {
                 serverWorld.spawnParticles(EEParticleTypes.STATIC_CHARGE, this.getX(), (this.getY() + this.getEyeY()) / 2.0, this.getZ(), Math.max(1, Math.ceilDiv(this.staticTicks, 15)), 0, 0, 0, 0);
             }
         }
@@ -44,7 +44,7 @@ public abstract class LivingEntityMixin extends Entity implements IMixinLivingEn
         this.staticTicks += amount;
         while (this.staticTicks >= 100) { // TODO: Compare this with an attribute maybe?
             this.staticTicks = Math.max(0, this.staticTicks - 100);
-            if (this.getWorld() instanceof ServerWorld serverWorld) {
+            if (this.getEntityWorld() instanceof ServerWorld serverWorld) {
                 this.damage(serverWorld, EEDamageTypes.STATIC.createDamageSource(this.getDamageSources()), 6f);
                 serverWorld.spawnParticles(EEParticleTypes.DISCHARGE, this.getX(), (this.getY() + this.getEyeY()) / 2.0, this.getZ(), 1, 0, 0, 0, 0);
             }

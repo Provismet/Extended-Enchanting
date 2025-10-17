@@ -310,7 +310,7 @@ public class EEEnchantments {
             ),
             ApplyToTargetCondition.builder(
                 EntityPropertiesLootCondition.builder(
-                    LootContext.EntityTarget.THIS,
+                    LootContext.EntityReference.THIS,
                     EntityPredicate.Builder.create().type(EntityTypePredicate.create(entityLookup, EEEntityTypeTags.NO_LAUNCH)).build()
                 ).invert()
             )
@@ -522,7 +522,7 @@ public class EEEnchantments {
             AllOfLootCondition.builder(
                 DimensionCondition.builder(Identifier.ofVanilla("the_nether")),
                 EntityPropertiesLootCondition.builder(
-                    LootContext.EntityTarget.THIS,
+                    LootContext.EntityReference.THIS,
                     EntityPredicate.Builder.create().flags(EntityFlagsPredicate.Builder.create().onFire(true))
                 )
             )
@@ -536,7 +536,7 @@ public class EEEnchantments {
                 TickModuloCondition.builder(EnchantmentLevelBasedValue.constant(20)),
                 DimensionCondition.builder(Identifier.ofVanilla("the_nether")),
                 EntityPropertiesLootCondition.builder(
-                    LootContext.EntityTarget.THIS,
+                    LootContext.EntityReference.THIS,
                     EntityPredicate.Builder.create().flags(EntityFlagsPredicate.Builder.create().onFire(true))
                 ),
                 RelativeHealthCondition.builder(CPCLootContext.Comparison.LESS_THAN, EnchantmentLevelBasedValue.constant(1))
