@@ -291,7 +291,7 @@ public class EEEnchantments {
         ExtendedEnchantingMain.identifier("launch"),
         (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.builder(
             Enchantment.definition(
-                itemLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                itemLookup.getOrThrow(ItemTags.MELEE_WEAPON_ENCHANTABLE),
                 5,
                 2,
                 Enchantment.leveledCost(5, 20),
