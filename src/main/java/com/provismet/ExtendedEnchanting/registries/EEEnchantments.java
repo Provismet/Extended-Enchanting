@@ -1,37 +1,35 @@
 package com.provismet.ExtendedEnchanting.registries;
 
-import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyKnockbackEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyToTargetEntityEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.ApplyToUserEntityEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.CodeExecutionDoubleEntityEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.InvertedEntityEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.ApplyVelocityEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.CodeExecutionSingleEntityEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.DamageEquipmentEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.FreezeEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.HealEffect;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.doubleEntity.ApplyToTargetCondition;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.item.ItemLambdaCondition;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ApplyToAttackerCondition;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ApplyToItemCondition;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.DimensionCondition;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ExposedToMoonCondition;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.ExposedToSunCondition;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.RelativeHealthCondition;
-import com.provismet.CombatPlusCore.enchantment.loot.condition.singleEntity.TickModuloCondition;
-import com.provismet.CombatPlusCore.enchantment.loot.context.CPCLootContext;
-import com.provismet.CombatPlusCore.registries.CPCEnchantmentComponentTypes;
-import com.provismet.CombatPlusCore.utility.tag.CPCEnchantmentTags;
-import com.provismet.CombatPlusCore.utility.tag.CPCItemTags;
+import com.provismet.CombatPlusCore.api.enchantment.effect.doubleEntity.ApplyKnockbackEffect;
+import com.provismet.CombatPlusCore.api.enchantment.effect.doubleEntity.ApplyToTargetEntityEffect;
+import com.provismet.CombatPlusCore.api.enchantment.effect.doubleEntity.ApplyToUserEntityEffect;
+import com.provismet.CombatPlusCore.api.enchantment.effect.doubleEntity.CodeExecutionDoubleEntityEffect;
+import com.provismet.CombatPlusCore.api.enchantment.effect.doubleEntity.InvertedEntityEffect;
+import com.provismet.CombatPlusCore.api.enchantment.effect.singleEntity.ApplyVelocityEffect;
+import com.provismet.CombatPlusCore.api.enchantment.effect.singleEntity.CodeExecutionSingleEntityEffect;
+import com.provismet.CombatPlusCore.api.enchantment.effect.singleEntity.DamageEquipmentEffect;
+import com.provismet.CombatPlusCore.api.enchantment.effect.singleEntity.FreezeEffect;
+import com.provismet.CombatPlusCore.api.enchantment.effect.singleEntity.HealEffect;
+import com.provismet.CombatPlusCore.api.loot.condition.doubleEntity.ApplyToTargetCondition;
+import com.provismet.CombatPlusCore.api.loot.condition.item.ItemLambdaCondition;
+import com.provismet.CombatPlusCore.api.loot.condition.singleEntity.ApplyToAttackerCondition;
+import com.provismet.CombatPlusCore.api.loot.condition.singleEntity.ApplyToItemCondition;
+import com.provismet.CombatPlusCore.api.loot.condition.singleEntity.DimensionCondition;
+import com.provismet.CombatPlusCore.api.loot.condition.singleEntity.ExposedToMoonCondition;
+import com.provismet.CombatPlusCore.api.loot.condition.singleEntity.ExposedToSunCondition;
+import com.provismet.CombatPlusCore.api.loot.condition.singleEntity.RelativeHealthCondition;
+import com.provismet.CombatPlusCore.api.loot.condition.singleEntity.TickModuloCondition;
+import com.provismet.CombatPlusCore.api.loot.context.CombatPlusLootContext;
+import com.provismet.CombatPlusCore.api.tag.CombatPlusEnchantmentTags;
+import com.provismet.CombatPlusCore.api.tag.CombatPlusItemTags;
+import com.provismet.CombatPlusCore.registries.CombatPlusEnchantmentComponentTypes;
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
-
 import com.provismet.ExtendedEnchanting.enchantment.effect.singleEntity.ShockEnchantmentEffect;
 import com.provismet.ExtendedEnchanting.utility.tags.EEDamageTypeTags;
 import com.provismet.ExtendedEnchanting.utility.tags.EEEnchantmentTags;
 import com.provismet.ExtendedEnchanting.utility.tags.EEEntityTypeTags;
 import com.provismet.ExtendedEnchanting.utility.tags.EEItemTags;
 import com.provismet.lilylib.container.EnchantmentContainer;
-import java.util.List;
 import net.minecraft.advancements.criterion.DamageSourcePredicate;
 import net.minecraft.advancements.criterion.EntityEquipmentPredicate;
 import net.minecraft.advancements.criterion.EntityFlagsPredicate;
@@ -64,13 +62,15 @@ import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
 import net.minecraft.world.level.storage.loot.predicates.DamageSourceCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 
+import java.util.List;
+
 public class EEEnchantments {
     public static final EnchantmentContainer LEECHING_ASPECT = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("leeching_aspect"),
         (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.enchantment(
             Enchantment.definition(
-                itemLookup.getOrThrow(CPCItemTags.ASPECT_ENCHANTABLE),
-                itemLookup.getOrThrow(CPCItemTags.ASPECT_PRIMARY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.ASPECT_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.ASPECT_PRIMARY_ENCHANTABLE),
                 3,
                 2,
                 Enchantment.dynamicCost(10, 20),
@@ -79,20 +79,20 @@ public class EEEnchantments {
                 EquipmentSlotGroup.MAINHAND
             )
         ).withEffect(
-            CPCEnchantmentComponentTypes.POST_CRITICAL_ATTACK,
+            CombatPlusEnchantmentComponentTypes.POST_CRITICAL_ATTACK,
             new ApplyToUserEntityEffect(
                 new HealEffect(LevelBasedValue.perLevel(1))
             )
         ).exclusiveWith(
-            enchantmentLookup.getOrThrow(CPCEnchantmentTags.ASPECT_EXCLUSIVE)
+            enchantmentLookup.getOrThrow(CombatPlusEnchantmentTags.ASPECT_EXCLUSIVE)
         )
     );
     public static final EnchantmentContainer FROST_ASPECT = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("frost_aspect"),
         (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.enchantment(
             Enchantment.definition(
-                itemLookup.getOrThrow(CPCItemTags.ASPECT_ENCHANTABLE),
-                itemLookup.getOrThrow(CPCItemTags.ASPECT_PRIMARY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.ASPECT_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.ASPECT_PRIMARY_ENCHANTABLE),
                 5,
                 2,
                 Enchantment.dynamicCost(10, 20),
@@ -101,20 +101,20 @@ public class EEEnchantments {
                 EquipmentSlotGroup.MAINHAND
             )
         ).withEffect(
-            CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
+            CombatPlusEnchantmentComponentTypes.POST_CHARGED_ATTACK,
             new ApplyToTargetEntityEffect(
                 new FreezeEffect(LevelBasedValue.perLevel(2.25f))
             )
         ).exclusiveWith(
-            enchantmentLookup.getOrThrow(CPCEnchantmentTags.ASPECT_EXCLUSIVE)
+            enchantmentLookup.getOrThrow(CombatPlusEnchantmentTags.ASPECT_EXCLUSIVE)
         )
     );
     public static final EnchantmentContainer LIGHTNING_ASPECT = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("lightning_aspect"),
         (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.enchantment(
             Enchantment.definition(
-                itemLookup.getOrThrow(CPCItemTags.ASPECT_ENCHANTABLE),
-                itemLookup.getOrThrow(CPCItemTags.ASPECT_PRIMARY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.ASPECT_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.ASPECT_PRIMARY_ENCHANTABLE),
                 3,
                 2,
                 Enchantment.dynamicCost(20, 10),
@@ -123,12 +123,12 @@ public class EEEnchantments {
                 EquipmentSlotGroup.MAINHAND
             )
         ).withEffect(
-            CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
+            CombatPlusEnchantmentComponentTypes.POST_CHARGED_ATTACK,
             new ApplyToTargetEntityEffect(
                 new ShockEnchantmentEffect(LevelBasedValue.perLevel(22))
             )
         ).exclusiveWith(
-            enchantmentLookup.getOrThrow(CPCEnchantmentTags.ASPECT_EXCLUSIVE)
+            enchantmentLookup.getOrThrow(CombatPlusEnchantmentTags.ASPECT_EXCLUSIVE)
         )
     );
 
@@ -136,8 +136,8 @@ public class EEEnchantments {
         ExtendedEnchantingMain.identifier("initiative"),
         (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.enchantment(
             Enchantment.definition(
-                itemLookup.getOrThrow(CPCItemTags.DAMAGE_ENCHANTABLE),
-                itemLookup.getOrThrow(CPCItemTags.DAMAGE_PRIMARY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.DAMAGE_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.DAMAGE_PRIMARY_ENCHANTABLE),
                 5,
                 5,
                 Enchantment.dynamicCost(10, 5),
@@ -146,19 +146,19 @@ public class EEEnchantments {
                 EquipmentSlotGroup.MAINHAND
             )
         ).withEffect(
-            CPCEnchantmentComponentTypes.GAMERULE_DAMAGE,
+            CombatPlusEnchantmentComponentTypes.GAMERULE_DAMAGE,
             new AddValue(LevelBasedValue.perLevel(2.2f)),
-            RelativeHealthCondition.builder(CPCLootContext.Comparison.GREATER_THAN_OR_EQUAL_TO, LevelBasedValue.constant(1))
+            RelativeHealthCondition.builder(CombatPlusLootContext.Comparison.GREATER_THAN_OR_EQUAL_TO, LevelBasedValue.constant(1))
         ).exclusiveWith(
-            enchantmentLookup.getOrThrow(CPCEnchantmentTags.ADDITION_DAMAGE_EXCLUSIVE)
+            enchantmentLookup.getOrThrow(CombatPlusEnchantmentTags.ADDITION_DAMAGE_EXCLUSIVE)
         )
     );
     public static final EnchantmentContainer GLASS = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("glass"),
         (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.enchantment(
             Enchantment.definition(
-                itemLookup.getOrThrow(CPCItemTags.DAMAGE_ENCHANTABLE),
-                itemLookup.getOrThrow(CPCItemTags.DAMAGE_PRIMARY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.DAMAGE_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.DAMAGE_PRIMARY_ENCHANTABLE),
                 5,
                 5,
                 Enchantment.dynamicCost(10, 5),
@@ -167,24 +167,24 @@ public class EEEnchantments {
                 EquipmentSlotGroup.MAINHAND
             )
         ).withEffect(
-            CPCEnchantmentComponentTypes.GAMERULE_DAMAGE,
+            CombatPlusEnchantmentComponentTypes.GAMERULE_DAMAGE,
             new AddValue(LevelBasedValue.perLevel(1.8f)),
             ApplyToAttackerCondition.builder(
                 RelativeHealthCondition.builder(
-                    CPCLootContext.Comparison.GREATER_THAN_OR_EQUAL_TO,
+                    CombatPlusLootContext.Comparison.GREATER_THAN_OR_EQUAL_TO,
                     LevelBasedValue.constant(1)
                 )
             )
         ).exclusiveWith(
-            enchantmentLookup.getOrThrow(CPCEnchantmentTags.ADDITION_DAMAGE_EXCLUSIVE)
+            enchantmentLookup.getOrThrow(CombatPlusEnchantmentTags.ADDITION_DAMAGE_EXCLUSIVE)
         )
     );
     public static final EnchantmentContainer SOLITUDE = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("solitude"),
         (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.enchantment(
             Enchantment.definition(
-                itemLookup.getOrThrow(CPCItemTags.DAMAGE_ENCHANTABLE),
-                itemLookup.getOrThrow(CPCItemTags.DAMAGE_PRIMARY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.DAMAGE_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.DAMAGE_PRIMARY_ENCHANTABLE),
                 1,
                 1,
                 Enchantment.constantCost(35),
@@ -193,7 +193,7 @@ public class EEEnchantments {
                 EquipmentSlotGroup.MAINHAND
             )
         ).withEffect(
-            CPCEnchantmentComponentTypes.GAMERULE_DAMAGE,
+            CombatPlusEnchantmentComponentTypes.GAMERULE_DAMAGE,
             new AddValue(LevelBasedValue.perLevel(15)),
             ApplyToAttackerCondition.builder(
                 ApplyToItemCondition.builder(
@@ -207,8 +207,8 @@ public class EEEnchantments {
         ExtendedEnchantingMain.identifier("dual_strike"),
         (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.enchantment(
             Enchantment.definition(
-                itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_ENCHANTABLE),
-                itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.WEAPON_UTILITY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE),
                 5,
                 3,
                 Enchantment.dynamicCost(10, 5),
@@ -217,18 +217,18 @@ public class EEEnchantments {
                 EquipmentSlotGroup.MAINHAND
             )
         ).withEffect(
-            CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
+            CombatPlusEnchantmentComponentTypes.POST_CHARGED_ATTACK,
             new CodeExecutionDoubleEntityEffect(ExtendedEnchantingMain.identifier("dual_strike"))
         ).exclusiveWith(
-            enchantmentLookup.getOrThrow(CPCEnchantmentTags.WEAPON_UTILITY_EXCLUSIVE)
+            enchantmentLookup.getOrThrow(CombatPlusEnchantmentTags.WEAPON_UTILITY_EXCLUSIVE)
         )
     );
     public static final EnchantmentContainer FEINT = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("feint"),
         (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.enchantment(
             Enchantment.definition(
-                itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_ENCHANTABLE),
-                itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.WEAPON_UTILITY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE),
                 2,
                 2,
                 Enchantment.dynamicCost(10, 10),
@@ -237,7 +237,7 @@ public class EEEnchantments {
                 EquipmentSlotGroup.MAINHAND, EquipmentSlotGroup.OFFHAND
             )
         ).withEffect(
-            CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
+            CombatPlusEnchantmentComponentTypes.POST_CHARGED_ATTACK,
             new InvertedEntityEffect(
                 new ApplyKnockbackEffect(
                     LevelBasedValue.perLevel(1, 0.5f),
@@ -245,15 +245,15 @@ public class EEEnchantments {
                 )
             )
         ).exclusiveWith(
-            enchantmentLookup.getOrThrow(CPCEnchantmentTags.WEAPON_UTILITY_OFFHAND_EXCLUSIVE)
+            enchantmentLookup.getOrThrow(CombatPlusEnchantmentTags.WEAPON_UTILITY_OFFHAND_EXCLUSIVE)
         )
     );
     public static final EnchantmentContainer RAMPAGE = new EnchantmentContainer(
         ExtendedEnchantingMain.identifier("rampage"),
         (itemLookup, enchantmentLookup, damageLookup, blockLookup, entityLookup) -> Enchantment.enchantment(
             Enchantment.definition(
-                itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_ENCHANTABLE),
-                itemLookup.getOrThrow(CPCItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.WEAPON_UTILITY_ENCHANTABLE),
+                itemLookup.getOrThrow(CombatPlusItemTags.WEAPON_UTILITY_PRIMARY_ENCHANTABLE),
                 5,
                 3,
                 Enchantment.dynamicCost(5, 10),
@@ -262,7 +262,7 @@ public class EEEnchantments {
                 EquipmentSlotGroup.MAINHAND
             )
         ).withEffect(
-            CPCEnchantmentComponentTypes.POST_KILL,
+            CombatPlusEnchantmentComponentTypes.POST_KILL,
             new ApplyToUserEntityEffect(
                 AllOf.entityEffects(
                     new ApplyMobEffect(
@@ -282,7 +282,7 @@ public class EEEnchantments {
                 )
             )
         ).exclusiveWith(
-            enchantmentLookup.getOrThrow(CPCEnchantmentTags.WEAPON_UTILITY_EXCLUSIVE)
+            enchantmentLookup.getOrThrow(CombatPlusEnchantmentTags.WEAPON_UTILITY_EXCLUSIVE)
         )
     );
 
@@ -299,7 +299,7 @@ public class EEEnchantments {
                 EquipmentSlotGroup.MAINHAND
             )
         ).withEffect(
-            CPCEnchantmentComponentTypes.POST_CHARGED_ATTACK,
+            CombatPlusEnchantmentComponentTypes.POST_CHARGED_ATTACK,
             new ApplyToTargetEntityEffect(
                 new ApplyVelocityEffect(
                     0, 0.15, 0,
@@ -346,7 +346,7 @@ public class EEEnchantments {
                         .direct(
                             EntityPredicate.Builder.entity().equipment(
                                 EntityEquipmentPredicate.Builder.equipment().mainhand(
-                                    ItemPredicate.Builder.item().of(itemLookup, CPCItemTags.MELEE_WEAPON)
+                                    ItemPredicate.Builder.item().of(itemLookup, CombatPlusItemTags.MELEE_WEAPON)
                                 )
                             )
                         )
@@ -416,7 +416,7 @@ public class EEEnchantments {
             AllOfCondition.allOf(
                 TickModuloCondition.builder(LevelBasedValue.constant(40)),
                 ExposedToSunCondition.builder(),
-                RelativeHealthCondition.builder(CPCLootContext.Comparison.LESS_THAN, LevelBasedValue.constant(1))
+                RelativeHealthCondition.builder(CombatPlusLootContext.Comparison.LESS_THAN, LevelBasedValue.constant(1))
             )
         ).withEffect(
             EnchantmentEffectComponents.POST_ATTACK,
@@ -538,7 +538,7 @@ public class EEEnchantments {
                     LootContext.EntityTarget.THIS,
                     EntityPredicate.Builder.entity().flags(EntityFlagsPredicate.Builder.flags().setOnFire(true))
                 ),
-                RelativeHealthCondition.builder(CPCLootContext.Comparison.LESS_THAN, LevelBasedValue.constant(1))
+                RelativeHealthCondition.builder(CombatPlusLootContext.Comparison.LESS_THAN, LevelBasedValue.constant(1))
             )
         ).exclusiveWith(
             enchantmentLookup.getOrThrow(EEEnchantmentTags.HEART_EXCLUSIVE)

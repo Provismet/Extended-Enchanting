@@ -1,6 +1,6 @@
 package com.provismet.ExtendedEnchanting.config;
 
-import com.provismet.CombatPlusCore.utility.CPCConfig;
+import com.provismet.CombatPlusCore.utility.CombatPlusConfig;
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
 import com.provismet.lilylib.util.json.JsonBuilder;
 import com.provismet.lilylib.util.json.JsonReader;
@@ -11,13 +11,13 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public class EESettings {
-    private static final Path FILE = CPCConfig.getConfigDirectory().resolve("extended-enchanting.json");
+    private static final Path FILE = CombatPlusConfig.getConfigDirectory().resolve("extended-enchanting.json");
 
     private static boolean overrideDatapacks = true;
 
     public static void write () {
         String jsonString = new JsonBuilder()
-            .append(CPCConfig.KEY_OVERRIDE_DATAPACK_LOOT_TABLES, overrideDatapacks)
+            .append(CombatPlusConfig.KEY_OVERRIDE_DATAPACK_LOOT_TABLES, overrideDatapacks)
             .toString();
         
         try (FileWriter writer = new FileWriter(FILE.toFile())) {
@@ -36,7 +36,7 @@ public class EESettings {
                 return;
             }
 
-            reader.getBoolean(CPCConfig.KEY_OVERRIDE_DATAPACK_LOOT_TABLES).ifPresent(val -> EESettings.overrideDatapacks = val);
+            reader.getBoolean(CombatPlusConfig.KEY_OVERRIDE_DATAPACK_LOOT_TABLES).ifPresent(val -> EESettings.overrideDatapacks = val);
         }
         catch (FileNotFoundException e) {
             ExtendedEnchantingMain.LOGGER.info("No config found for Extended Enchanting, creating one now.");

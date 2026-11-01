@@ -1,6 +1,6 @@
 package com.provismet.ExtendedEnchanting;
 
-import com.provismet.CombatPlusCore.loot.functions.EnchantRandomlyFromKeyLootFunction;
+import com.provismet.CombatPlusCore.api.loot.functions.EnchantRandomlyFromKeyLootFunction;
 import com.provismet.ExtendedEnchanting.registries.EEEnchantmentComponentTypes;
 import com.provismet.ExtendedEnchanting.registries.EELambdas;
 import com.provismet.ExtendedEnchanting.registries.EESingleEntityEnchantmentEffects;

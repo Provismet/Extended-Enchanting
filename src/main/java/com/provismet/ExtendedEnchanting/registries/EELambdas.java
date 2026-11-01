@@ -1,9 +1,9 @@
 package com.provismet.ExtendedEnchanting.registries;
 
-import com.provismet.CombatPlusCore.enchantment.effect.doubleEntity.CodeExecutionDoubleEntityEffect;
-import com.provismet.CombatPlusCore.enchantment.effect.singleEntity.CodeExecutionSingleEntityEffect;
-import com.provismet.CombatPlusCore.interfaces.MeleeWeapon;
-import com.provismet.CombatPlusCore.utility.CPCRegistries;
+import com.provismet.CombatPlusCore.api.enchantment.effect.doubleEntity.CodeExecutionDoubleEntityEffect;
+import com.provismet.CombatPlusCore.api.enchantment.effect.singleEntity.CodeExecutionSingleEntityEffect;
+import com.provismet.CombatPlusCore.api.item.interfaces.MeleeWeapon;
+import com.provismet.CombatPlusCore.utility.CombatPlusRegistries;
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
 import com.provismet.ExtendedEnchanting.interfaces.IMixinLivingEntity;
 import com.provismet.lilylib.util.Relations;
@@ -128,14 +128,14 @@ public abstract class EELambdas {
     }
 
     private static void register (String name, Predicate<ItemStack> lambda) {
-        Registry.register(CPCRegistries.ITEM_LAMBDA_CONDITION, ExtendedEnchantingMain.identifier(name), lambda);
+        Registry.register(CombatPlusRegistries.ITEM_LAMBDA_CONDITION, ExtendedEnchantingMain.identifier(name), lambda);
     }
 
     private static void register (String name, CodeExecutionSingleEntityEffect.Lambda lambda) {
-        Registry.register(CPCRegistries.SINGLE_ENTITY_LAMBDA, ExtendedEnchantingMain.identifier(name), lambda);
+        Registry.register(CombatPlusRegistries.SINGLE_ENTITY_LAMBDA, ExtendedEnchantingMain.identifier(name), lambda);
     }
 
     private static void register (String name, CodeExecutionDoubleEntityEffect.Lambda lambda) {
-        Registry.register(CPCRegistries.DOUBLE_ENTITY_LAMBDA, ExtendedEnchantingMain.identifier(name), lambda);
+        Registry.register(CombatPlusRegistries.DOUBLE_ENTITY_LAMBDA, ExtendedEnchantingMain.identifier(name), lambda);
     }
 }

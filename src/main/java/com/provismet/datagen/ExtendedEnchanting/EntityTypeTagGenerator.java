@@ -3,14 +3,14 @@ package com.provismet.datagen.ExtendedEnchanting;
 import java.util.concurrent.CompletableFuture;
 
 import com.provismet.ExtendedEnchanting.utility.tags.EEEntityTypeTags;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.EntityTypeTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEntityTypeTags;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.world.entity.EntityType;
 
-public class EntityTypeTagGenerator extends EntityTypeTagProvider {
-    public EntityTypeTagGenerator (FabricDataOutput output, CompletableFuture<Provider> completableFuture) {
+public class EntityTypeTagGenerator extends FabricTagsProvider.EntityTypeTagsProvider {
+    public EntityTypeTagGenerator (FabricPackOutput output, CompletableFuture<Provider> completableFuture) {
         super(output, completableFuture);
     }
 

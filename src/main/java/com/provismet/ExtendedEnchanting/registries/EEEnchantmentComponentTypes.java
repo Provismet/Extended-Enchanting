@@ -7,6 +7,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.Unit;
 import net.minecraft.world.item.enchantment.ConditionalEffect;
 import net.minecraft.world.item.enchantment.effects.EnchantmentValueEffect;
+import net.minecraft.world.level.storage.loot.Validatable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import java.util.List;
 import java.util.function.UnaryOperator;
@@ -20,7 +21,7 @@ public abstract class EEEnchantmentComponentTypes {
     }
 
     private static UnaryOperator<DataComponentType.Builder<List<ConditionalEffect<EnchantmentValueEffect>>>> createValueCodec () {
-        return builder -> builder.persistent(ConditionalEffect.codec(EnchantmentValueEffect.CODEC, LootContextParamSets.ENCHANTED_ENTITY).listOf());
+        return builder -> builder.persistent(ConditionalEffect.codec(EnchantmentValueEffect.CODEC).listOf().validate(Validatable.listValidatorForContext(LootContextParamSets.ENCHANTED_ENTITY)));
     }
 
     public static void init () {}

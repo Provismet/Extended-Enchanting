@@ -1,20 +1,19 @@
 package com.provismet.datagen.ExtendedEnchanting;
 
-import java.util.concurrent.CompletableFuture;
-
-import com.provismet.CombatPlusCore.utility.tag.CPCEnchantmentTags;
+import com.provismet.CombatPlusCore.api.tag.CombatPlusEnchantmentTags;
 import com.provismet.ExtendedEnchanting.registries.EEEnchantments;
-
 import com.provismet.ExtendedEnchanting.utility.tags.EEEnchantmentTags;
 import com.provismet.lilylib.datagen.tag.LilyTagProviders;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEnchantmentTags;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.item.enchantment.Enchantments;
 
+import java.util.concurrent.CompletableFuture;
+
 public class EnchantmentTagGenerator extends LilyTagProviders.LilyEnchantmentTagProvider {
-    public EnchantmentTagGenerator(FabricDataOutput output, CompletableFuture<Provider> completableFuture) {
+    public EnchantmentTagGenerator(FabricPackOutput output, CompletableFuture<Provider> completableFuture) {
         super(output, completableFuture);
     }
 
@@ -32,17 +31,17 @@ public class EnchantmentTagGenerator extends LilyTagProviders.LilyEnchantmentTag
         this.builder(EEEnchantmentTags.LAUNCH_EXCLUSIVE)
             .add(Enchantments.KNOCKBACK);
 
-        this.builder(CPCEnchantmentTags.ADDITIONAL_DAMAGE)
+        this.builder(CombatPlusEnchantmentTags.ADDITIONAL_DAMAGE)
             .add(EEEnchantments.GLASS.getKey())
             .add(EEEnchantments.INITIATIVE.getKey())
             .add(EEEnchantments.SOLITUDE.getKey());
 
-        this.builder(CPCEnchantmentTags.ASPECT)
+        this.builder(CombatPlusEnchantmentTags.ASPECT)
             .add(EEEnchantments.LEECHING_ASPECT.getKey())
             .add(EEEnchantments.LIGHTNING_ASPECT.getKey())
             .add(EEEnchantments.FROST_ASPECT.getKey());
         
-        this.builder(CPCEnchantmentTags.WEAPON_UTILITY)
+        this.builder(CombatPlusEnchantmentTags.WEAPON_UTILITY)
             .add(EEEnchantments.FEINT.getKey())
             .add(EEEnchantments.DUAL_STRIKE.getKey())
             .add(EEEnchantments.RAMPAGE.getKey());

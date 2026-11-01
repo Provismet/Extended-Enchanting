@@ -5,13 +5,13 @@ import com.provismet.ExtendedEnchanting.registries.EEEnchantments;
 import com.provismet.ExtendedEnchanting.utility.EEDamageTypes;
 import com.provismet.lilylib.container.DamageTypeContainer;
 import com.provismet.lilylib.container.EnchantmentContainer;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
 import java.util.concurrent.CompletableFuture;
 
 public class LanguageGenerator extends FabricLanguageProvider {
-    protected LanguageGenerator (FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
+    protected LanguageGenerator (FabricPackOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(dataOutput, registryLookup);
     }
 
