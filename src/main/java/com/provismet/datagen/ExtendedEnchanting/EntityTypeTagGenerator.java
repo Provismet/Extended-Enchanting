@@ -6,16 +6,16 @@ import com.provismet.ExtendedEnchanting.utility.tags.EEEntityTypeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider.EntityTypeTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEntityTypeTags;
-import net.minecraft.entity.EntityType;
-import net.minecraft.registry.RegistryWrapper.WrapperLookup;
+import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.world.entity.EntityType;
 
 public class EntityTypeTagGenerator extends EntityTypeTagProvider {
-    public EntityTypeTagGenerator (FabricDataOutput output, CompletableFuture<WrapperLookup> completableFuture) {
+    public EntityTypeTagGenerator (FabricDataOutput output, CompletableFuture<Provider> completableFuture) {
         super(output, completableFuture);
     }
 
     @Override
-    protected void configure (WrapperLookup wrapper) {
+    protected void addTags (Provider wrapper) {
         this.valueLookupBuilder(EEEntityTypeTags.NO_LAUNCH)
             .addOptionalTag(ConventionalEntityTypeTags.BOSSES)
             .add(EntityType.RAVAGER)

@@ -2,38 +2,38 @@ package com.provismet.ExtendedEnchanting.particles;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.particle.AnimatedParticle;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleFactory;
-import net.minecraft.client.particle.SpriteProvider;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particle.SimpleParticleType;
-import net.minecraft.util.math.random.Random;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.SimpleAnimatedParticle;
+import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.RandomSource;
 
-public class DischargeParticle extends AnimatedParticle {
-    protected DischargeParticle (ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider) {
+public class DischargeParticle extends SimpleAnimatedParticle {
+    protected DischargeParticle (ClientLevel world, double x, double y, double z, SpriteSet spriteProvider) {
         super(world, x, y, z, spriteProvider, 0f);
-        this.maxAge = 5;
+        this.lifetime = 5;
 
-        this.velocityX = 0;
-        this.velocityY = 0;
-        this.velocityZ = 0;
-        this.gravityStrength = 0;
+        this.xd = 0;
+        this.yd = 0;
+        this.zd = 0;
+        this.gravity = 0;
 
-        this.updateSprite(spriteProvider);
-        this.scale = 1.5f;
+        this.setSpriteFromAge(spriteProvider);
+        this.quadSize = 1.5f;
     }
 
     @Environment(value= EnvType.CLIENT)
-    public static class Factory implements ParticleFactory<SimpleParticleType> {
-        private final SpriteProvider spriteProvider;
+    public static class Factory implements ParticleProvider<SimpleParticleType> {
+        private final SpriteSet spriteProvider;
 
-        public Factory (SpriteProvider spriteProvider) {
+        public Factory (SpriteSet spriteProvider) {
             this.spriteProvider = spriteProvider;
         }
 
         @Override
-        public Particle createParticle (SimpleParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ, Random random) {
+        public Particle createParticle (SimpleParticleType defaultParticleType, ClientLevel clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ, RandomSource random) {
             return new DischargeParticle(clientWorld, x, y, z, this.spriteProvider);
         }
     }

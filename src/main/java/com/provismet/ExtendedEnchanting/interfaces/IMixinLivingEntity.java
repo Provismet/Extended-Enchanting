@@ -1,10 +1,10 @@
 package com.provismet.ExtendedEnchanting.interfaces;
 
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.phys.Vec3;
 
 public interface IMixinLivingEntity {
     void extended_Enchanting$applyStatic (int amount);
     
-    Vec3d extended_Enchanting$getPreviousGroundPos ();
-    void extended_Enchanting$setPreviousGroundPos (Vec3d position);
+    Vec3 extended_Enchanting$getPreviousGroundPos ();
+    void extended_Enchanting$setPreviousGroundPos (Vec3 position);
 }

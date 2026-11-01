@@ -3,8 +3,8 @@ package com.provismet.ExtendedEnchanting.utility;
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
 
 import com.provismet.lilylib.container.DamageTypeContainer;
-import net.minecraft.entity.damage.DamageType;
-import net.minecraft.registry.Registerable;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.world.damagesource.DamageType;
 
 public class EEDamageTypes {
     public static final DamageTypeContainer STATIC = new DamageTypeContainer(
@@ -12,7 +12,7 @@ public class EEDamageTypes {
         new DamageType("static_shock", 0.1f)
     );
 
-    public static void bootstrap (Registerable<DamageType> registerable) {
+    public static void bootstrap (BootstrapContext<DamageType> registerable) {
         registerable.register(STATIC.getKey(), STATIC.getDamageType());
     }
 }

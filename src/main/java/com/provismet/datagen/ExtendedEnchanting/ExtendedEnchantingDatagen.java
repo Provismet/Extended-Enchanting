@@ -4,8 +4,8 @@ import com.provismet.ExtendedEnchanting.registries.EEEnchantments;
 import com.provismet.ExtendedEnchanting.utility.EEDamageTypes;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.minecraft.registry.RegistryBuilder;
-import net.minecraft.registry.RegistryKeys;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 
 public class ExtendedEnchantingDatagen implements DataGeneratorEntrypoint {
     @Override
@@ -21,8 +21,8 @@ public class ExtendedEnchantingDatagen implements DataGeneratorEntrypoint {
     }
 
     @Override
-    public void buildRegistry (RegistryBuilder registryBuilder) {
-        registryBuilder.addRegistry(RegistryKeys.ENCHANTMENT, EEEnchantments::bootstrap);
-        registryBuilder.addRegistry(RegistryKeys.DAMAGE_TYPE, EEDamageTypes::bootstrap);
+    public void buildRegistry (RegistrySetBuilder registryBuilder) {
+        registryBuilder.add(Registries.ENCHANTMENT, EEEnchantments::bootstrap);
+        registryBuilder.add(Registries.DAMAGE_TYPE, EEDamageTypes::bootstrap);
     }
 }

@@ -9,17 +9,17 @@ import com.provismet.ExtendedEnchanting.utility.tags.EEEnchantmentTags;
 import com.provismet.lilylib.datagen.tag.LilyTagProviders;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEnchantmentTags;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.registry.RegistryWrapper.WrapperLookup;
-import net.minecraft.registry.tag.EnchantmentTags;
+import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.tags.EnchantmentTags;
+import net.minecraft.world.item.enchantment.Enchantments;
 
 public class EnchantmentTagGenerator extends LilyTagProviders.LilyEnchantmentTagProvider {
-    public EnchantmentTagGenerator(FabricDataOutput output, CompletableFuture<WrapperLookup> completableFuture) {
+    public EnchantmentTagGenerator(FabricDataOutput output, CompletableFuture<Provider> completableFuture) {
         super(output, completableFuture);
     }
 
     @Override
-    protected void configure (WrapperLookup arg) {
+    protected void addTags (Provider arg) {
         this.builder(EEEnchantmentTags.HEART)
             .add(EEEnchantments.SUN_HEART.getKey())
             .add(EEEnchantments.MOON_HEART.getKey())
@@ -51,11 +51,11 @@ public class EnchantmentTagGenerator extends LilyTagProviders.LilyEnchantmentTag
             .add(EEEnchantments.COMBUSTION_PROTECTION.getKey())
             .add(EEEnchantments.WEAPON_PROTECTION.getKey());
 
-        this.builder(EnchantmentTags.ARMOR_EXCLUSIVE_SET)
+        this.builder(EnchantmentTags.ARMOR_EXCLUSIVE)
             .add(EEEnchantments.COMBUSTION_PROTECTION.getKey())
             .add(EEEnchantments.WEAPON_PROTECTION.getKey());
 
-        this.builder(EnchantmentTags.BOOTS_EXCLUSIVE_SET)
+        this.builder(EnchantmentTags.BOOTS_EXCLUSIVE)
             .add(EEEnchantments.SOIL_WALKER.getKey());
 
         this.builder(EnchantmentTags.TREASURE)

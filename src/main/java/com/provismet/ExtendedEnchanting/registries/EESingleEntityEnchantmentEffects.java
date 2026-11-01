@@ -3,9 +3,9 @@ package com.provismet.ExtendedEnchanting.registries;
 import com.mojang.serialization.MapCodec;
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
 import com.provismet.ExtendedEnchanting.enchantment.effect.singleEntity.ShockEnchantmentEffect;
-import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 
 public abstract class EESingleEntityEnchantmentEffects {
     public static void register () {
@@ -13,6 +13,6 @@ public abstract class EESingleEntityEnchantmentEffects {
     }
 
     private static void register (String name, MapCodec<? extends EnchantmentEntityEffect> codec) {
-        Registry.register(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, ExtendedEnchantingMain.identifier(name), codec);
+        Registry.register(BuiltInRegistries.ENCHANTMENT_ENTITY_EFFECT_TYPE, ExtendedEnchantingMain.identifier(name), codec);
     }
 }

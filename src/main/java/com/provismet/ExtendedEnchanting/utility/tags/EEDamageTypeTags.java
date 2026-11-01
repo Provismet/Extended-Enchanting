@@ -1,15 +1,15 @@
 package com.provismet.ExtendedEnchanting.utility.tags;
 
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
-import net.minecraft.entity.damage.DamageType;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageType;
 
 public class EEDamageTypeTags {
     public static final TagKey<DamageType> MELEE_STRIKE = EEDamageTypeTags.of("melee");
     public static final TagKey<DamageType> COMBUSTION = EEDamageTypeTags.of("combustion");
 
     private static TagKey<DamageType> of (String name) {
-        return TagKey.of(RegistryKeys.DAMAGE_TYPE, ExtendedEnchantingMain.identifier(name));
+        return TagKey.create(Registries.DAMAGE_TYPE, ExtendedEnchantingMain.identifier(name));
     }
 }

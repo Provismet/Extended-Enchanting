@@ -7,28 +7,27 @@ import com.provismet.CombatPlusCore.utility.CPCRegistries;
 import com.provismet.ExtendedEnchanting.ExtendedEnchantingMain;
 import com.provismet.ExtendedEnchanting.interfaces.IMixinLivingEntity;
 import com.provismet.lilylib.util.Relations;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.passive.FoxEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registry;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.stat.Stats;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.dimension.DimensionTypes;
-import net.minecraft.world.event.GameEvent;
-
 import java.util.Optional;
 import java.util.function.Predicate;
+import net.minecraft.core.Registry;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.animal.fox.Fox;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.Vec3;
 
 public abstract class EELambdas {
     public static void register () {
@@ -39,27 +38,27 @@ public abstract class EELambdas {
 
     private static void registerSingleEntityEffects () {
         register("reset_insomnia", (world, level, context, user, pos) -> {
-            if (user.age % 5000 == 0 && user instanceof ServerPlayerEntity serverPlayer) {
-                serverPlayer.resetStat(Stats.CUSTOM.getOrCreateStat(Stats.TIME_SINCE_REST));
+            if (user.tickCount % 5000 == 0 && user instanceof ServerPlayer serverPlayer) {
+                serverPlayer.resetStat(Stats.CUSTOM.get(Stats.TIME_SINCE_REST));
             }
         });
 
         register("void_heart", (world, level, context, userEntity, pos) -> {
             if (!(userEntity instanceof LivingEntity user)) return;
-            if (user.getEntityWorld().getDimensionEntry().matchesId(DimensionTypes.THE_END.getValue())) {
-                if (user.isOnGround() && user.fallDistance == 0f) {
-                    ((IMixinLivingEntity)user).extended_Enchanting$setPreviousGroundPos(user.getEntityPos());
+            if (user.level().dimensionTypeRegistration().is(BuiltinDimensionTypes.END.identifier())) {
+                if (user.onGround() && user.fallDistance == 0f) {
+                    ((IMixinLivingEntity)user).extended_Enchanting$setPreviousGroundPos(user.position());
                 }
-                else if (((IMixinLivingEntity)user).extended_Enchanting$getPreviousGroundPos() != null && user.getY() < user.getEntityWorld().getBottomY() - 32) {
+                else if (((IMixinLivingEntity)user).extended_Enchanting$getPreviousGroundPos() != null && user.getY() < user.level().getMinY() - 32) {
                     user.fallDistance = 0f;
-                    Vec3d previousPos = ((IMixinLivingEntity)user).extended_Enchanting$getPreviousGroundPos();
-                    user.requestTeleport(previousPos.getX(), previousPos.getY() + 5, previousPos.getZ());
-                    user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 50));
-                    user.getEquippedStack(EquipmentSlot.CHEST).damage(100, user, EquipmentSlot.CHEST);
+                    Vec3 previousPos = ((IMixinLivingEntity)user).extended_Enchanting$getPreviousGroundPos();
+                    user.teleportTo(previousPos.x(), previousPos.y() + 5, previousPos.z());
+                    user.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 50));
+                    user.getItemBySlot(EquipmentSlot.CHEST).hurtAndBreak(100, user, EquipmentSlot.CHEST);
                 }
-                else if (user.fallDistance >= user.getAttributeValue(EntityAttributes.SAFE_FALL_DISTANCE)) {
+                else if (user.fallDistance >= user.getAttributeValue(Attributes.SAFE_FALL_DISTANCE)) {
                     user.fallDistance = 0f;
-                    user.getEquippedStack(EquipmentSlot.CHEST).damage(2, user, EquipmentSlot.CHEST);
+                    user.getItemBySlot(EquipmentSlot.CHEST).hurtAndBreak(2, user, EquipmentSlot.CHEST);
                 }
             }
             else {
@@ -71,25 +70,25 @@ public abstract class EELambdas {
             if (!(userEntity instanceof LivingEntity user)) return;
 
             for (int i = 0; i < 16; ++i) {
-                double x = pos.getX() + (user.getRandom().nextDouble() - 0.5) * 16.0;
-                double y = MathHelper.clamp(pos.getY() + (double)(user.getRandom().nextInt(16) - 8), world.getBottomY(), world.getBottomY() + world.getLogicalHeight() - 1);
-                double z = pos.getZ() + (user.getRandom().nextDouble() - 0.5) * 16.0;
+                double x = pos.x() + (user.getRandom().nextDouble() - 0.5) * 16.0;
+                double y = Mth.clamp(pos.y() + (double)(user.getRandom().nextInt(16) - 8), world.getMinY(), world.getMinY() + world.getLogicalHeight() - 1);
+                double z = pos.z() + (user.getRandom().nextDouble() - 0.5) * 16.0;
 
-                if (user.hasVehicle()) user.stopRiding();
-                if (!user.teleport(x, y, z, true)) continue;
-                world.emitGameEvent(GameEvent.TELEPORT, pos, GameEvent.Emitter.of(user));
+                if (user.isPassenger()) user.stopRiding();
+                if (!user.randomTeleport(x, y, z, true)) continue;
+                world.gameEvent(GameEvent.TELEPORT, pos, GameEvent.Context.of(user));
 
-                SoundCategory soundCategory;
+                SoundSource soundCategory;
                 SoundEvent soundEvent;
-                if (user instanceof FoxEntity) {
-                    soundEvent = SoundEvents.ENTITY_FOX_TELEPORT;
-                    soundCategory = SoundCategory.NEUTRAL;
+                if (user instanceof Fox) {
+                    soundEvent = SoundEvents.FOX_TELEPORT;
+                    soundCategory = SoundSource.NEUTRAL;
                 } else {
-                    soundEvent = SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
-                    soundCategory = SoundCategory.PLAYERS;
+                    soundEvent = SoundEvents.CHORUS_FRUIT_TELEPORT;
+                    soundCategory = SoundSource.PLAYERS;
                 }
                 world.playSound(null, user.getX(), user.getY(), user.getZ(), soundEvent, soundCategory);
-                user.onLanding();
+                user.resetFallDistance();
                 break;
             }
         });
@@ -99,24 +98,24 @@ public abstract class EELambdas {
         register("dual_strike", ((world, level, context, userEntity, targetEntity, pos) -> {
             if (!(userEntity instanceof LivingEntity user) || !(targetEntity instanceof LivingEntity target)) return;
 
-            Optional<Entity> optionalTarget = user.getEntityWorld().getOtherEntities(
+            Optional<Entity> optionalTarget = user.level().getEntities(
                 target,
-                target.getBoundingBox().expand(2.5, 0.25, 2.5),
-                entity -> entity instanceof LivingEntity potentialTarget && potentialTarget.canTakeDamage() && !Relations.isFriendly(user, potentialTarget)
+                target.getBoundingBox().inflate(2.5, 0.25, 2.5),
+                entity -> entity instanceof LivingEntity potentialTarget && potentialTarget.canBeSeenAsEnemy() && !Relations.isFriendly(user, potentialTarget)
             )
                 .stream()
                 .reduce((entity1, entity2) -> entity1.distanceTo(target) < entity2.distanceTo(target) ? entity1 : entity2);
 
             if (optionalTarget.isPresent() && optionalTarget.get() instanceof LivingEntity otherTarget) {
-                double damage = 1 + user.getAttributeValue(EntityAttributes.ATTACK_DAMAGE) * level * 0.2;
-                if (user instanceof PlayerEntity player) otherTarget.damage(world, user.getDamageSources().playerAttack(player), (float)damage);
-                else otherTarget.damage(world, user.getDamageSources().mobAttack(user), (float)damage);
+                double damage = 1 + user.getAttributeValue(Attributes.ATTACK_DAMAGE) * level * 0.2;
+                if (user instanceof Player player) otherTarget.hurtServer(world, user.damageSources().playerAttack(player), (float)damage);
+                else otherTarget.hurtServer(world, user.damageSources().mobAttack(user), (float)damage);
 
-                ItemStack heldItem = user.getMainHandStack();
+                ItemStack heldItem = user.getMainHandItem();
                 if (heldItem.getItem() instanceof MeleeWeapon melee) {
                     melee.postChargedHit(heldItem, user, otherTarget);
 
-                    if (user.fallDistance > 0.0f && !user.isOnGround() && !user.isClimbing() && !user.isTouchingWater() && !user.hasStatusEffect(StatusEffects.BLINDNESS) && !user.hasVehicle()) {
+                    if (user.fallDistance > 0.0f && !user.onGround() && !user.onClimbable() && !user.isInWater() && !user.hasEffect(MobEffects.BLINDNESS) && !user.isPassenger()) {
                         melee.postCriticalHit(heldItem, user, otherTarget);
                     }
                 }
@@ -125,7 +124,7 @@ public abstract class EELambdas {
     }
 
     private static void registerItemConditions () {
-        register("one_enchantment", (itemStack -> itemStack.getEnchantments().getSize() == 1));
+        register("one_enchantment", (itemStack -> itemStack.getEnchantments().size() == 1));
     }
 
     private static void register (String name, Predicate<ItemStack> lambda) {
