@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.provismet.ExtendedEnchanting.mixin",
+  "package": "com.provismet.extendedenchanting.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "FarmlandBlockMixin",

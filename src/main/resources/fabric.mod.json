@@ -17,13 +17,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.provismet.ExtendedEnchanting.ExtendedEnchantingMain"
+			"com.provismet.extendedenchanting.ExtendedEnchantingMain"
 		],
 		"client": [
-			"com.provismet.ExtendedEnchanting.ExtendedEnchantingClient"
+			"com.provismet.extendedenchanting.ExtendedEnchantingClient"
 		],
 		"fabric-datagen": [
-			"com.provismet.datagen.ExtendedEnchanting.ExtendedEnchantingDatagen"
+			"com.provismet.extendedenchanting.datagen.ExtendedEnchantingDatagen"
 		]
 	},
 	"mixins": [
