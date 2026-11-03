@@ -1,6 +1,6 @@
 package com.provismet.extendedenchanting.datagen;
 
-import com.provismet.CombatPlusCore.api.tag.CombatPlusEnchantmentTags;
+import com.provismet.combatplus.api.tag.CombatPlusEnchantmentTags;
 import com.provismet.extendedenchanting.registries.EEEnchantments;
 import com.provismet.extendedenchanting.utility.tags.EEEnchantmentTags;
 import com.provismet.lilylib.datagen.tag.LilyTagProviders;

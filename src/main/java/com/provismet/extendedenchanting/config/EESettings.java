@@ -1,6 +1,6 @@
 package com.provismet.extendedenchanting.config;
 
-import com.provismet.CombatPlusCore.utility.CombatPlusConfig;
+import com.provismet.combatplus.utility.CombatPlusConfig;
 import com.provismet.extendedenchanting.ExtendedEnchantingMain;
 import com.provismet.lilylib.util.json.JsonBuilder;
 import com.provismet.lilylib.util.json.JsonReader;

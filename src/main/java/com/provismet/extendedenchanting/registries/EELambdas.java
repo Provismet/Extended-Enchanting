@@ -1,9 +1,9 @@
 package com.provismet.extendedenchanting.registries;
 
-import com.provismet.CombatPlusCore.api.enchantment.effect.doubleEntity.CodeExecutionDoubleEntityEffect;
-import com.provismet.CombatPlusCore.api.enchantment.effect.singleEntity.CodeExecutionSingleEntityEffect;
-import com.provismet.CombatPlusCore.api.item.interfaces.MeleeWeapon;
-import com.provismet.CombatPlusCore.utility.CombatPlusRegistries;
+import com.provismet.combatplus.api.enchantment.effect.doubleEntity.CodeExecutionDoubleEntityEffect;
+import com.provismet.combatplus.api.enchantment.effect.singleEntity.CodeExecutionSingleEntityEffect;
+import com.provismet.combatplus.api.item.interfaces.MeleeWeapon;
+import com.provismet.combatplus.utility.CombatPlusRegistries;
 import com.provismet.extendedenchanting.ExtendedEnchantingMain;
 import com.provismet.extendedenchanting.interfaces.IMixinLivingEntity;
 import com.provismet.lilylib.util.Relations;
