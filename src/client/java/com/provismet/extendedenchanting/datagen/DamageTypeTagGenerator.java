@@ -6,7 +6,7 @@ import com.provismet.lilylib.datagen.tag.LilyTagProviders;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.damagesource.DamageTypes;
+
 import java.util.concurrent.CompletableFuture;
 
 public class DamageTypeTagGenerator extends LilyTagProviders.LilyDamageTypeTagProvider {
@@ -19,9 +19,6 @@ public class DamageTypeTagGenerator extends LilyTagProviders.LilyDamageTypeTagPr
         this.builder(EEDamageTypeTags.COMBUSTION)
             .addOptionalTag(DamageTypeTags.IS_FIRE)
             .addOptionalTag(DamageTypeTags.IS_EXPLOSION);
-
-        this.builder(EEDamageTypeTags.MELEE_STRIKE)
-            .add(DamageTypes.TRIDENT);
 
         this.builder(DamageTypeTags.BYPASSES_ARMOR)
             .add(EEDamageTypes.STATIC.getKey());

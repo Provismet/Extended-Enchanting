@@ -20,6 +20,7 @@ import com.provismet.combatplus.api.loot.condition.singleEntity.ExposedToSunCond
 import com.provismet.combatplus.api.loot.condition.singleEntity.RelativeHealthCondition;
 import com.provismet.combatplus.api.loot.condition.singleEntity.TickModuloCondition;
 import com.provismet.combatplus.api.loot.context.CombatPlusLootContext;
+import com.provismet.combatplus.api.tag.CombatPlusDamageTypeTags;
 import com.provismet.combatplus.api.tag.CombatPlusEnchantmentTags;
 import com.provismet.combatplus.api.tag.CombatPlusItemTags;
 import com.provismet.combatplus.registries.CombatPlusEnchantmentComponentTypes;
@@ -338,7 +339,7 @@ public class EEEnchantments {
             AnyOfCondition.anyOf(
                 DamageSourceCondition.hasDamageSource(
                     DamageSourcePredicate.Builder.damageType()
-                        .tag(TagPredicate.is(EEDamageTypeTags.MELEE_STRIKE))
+                        .tag(TagPredicate.is(CombatPlusDamageTypeTags.IS_MELEE))
                         .isDirect(true)
                 ),
                 DamageSourceCondition.hasDamageSource(
