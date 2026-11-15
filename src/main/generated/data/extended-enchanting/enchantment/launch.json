@@ -28,7 +28,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "type": "#extended-enchanting:cannot_launch"
+                "minecraft:entity_type": "#extended-enchanting:cannot_launch"
               }
             }
           },

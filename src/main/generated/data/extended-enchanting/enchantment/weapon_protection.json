@@ -33,7 +33,7 @@
               "condition": "minecraft:damage_source_properties",
               "predicate": {
                 "direct_entity": {
-                  "equipment": {
+                  "minecraft:equipment": {
                     "mainhand": {
                       "items": "#combat-plus:melee_weapon"
                     }
@@ -46,7 +46,7 @@
               "condition": "minecraft:damage_source_properties",
               "predicate": {
                 "direct_entity": {
-                  "type": "#extended-enchanting:has_weapon"
+                  "minecraft:entity_type": "#extended-enchanting:has_weapon"
                 },
                 "is_direct": true
               }
