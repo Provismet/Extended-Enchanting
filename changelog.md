@@ -1,1 +1,1 @@
-- Update to Minecraft 1.21.11
+- Updated to 26.x Minecraft versions.
