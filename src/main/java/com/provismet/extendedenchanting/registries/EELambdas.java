@@ -75,7 +75,7 @@ public abstract class EELambdas {
                 double z = pos.z() + (user.getRandom().nextDouble() - 0.5) * 16.0;
 
                 if (user.isPassenger()) user.stopRiding();
-                if (!user.randomTeleport(x, y, z, true, _ -> true)) continue;
+                if (!user.randomTeleport(x, y, z, true, _ -> false)) continue;
                 world.gameEvent(GameEvent.TELEPORT, pos, GameEvent.Context.of(user));
 
                 SoundSource soundCategory;
