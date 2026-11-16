@@ -13,13 +13,13 @@
         },
         "enchanted": "victim",
         "requirements": {
-          "condition": "minecraft:all_of",
+          "type": "minecraft:all_of",
           "terms": [
             {
-              "condition": "combat-plus:exposed_to_sun"
+              "type": "combat-plus:exposed_to_sun"
             },
             {
-              "condition": "minecraft:damage_source_properties",
+              "type": "minecraft:damage_source_properties",
               "predicate": {
                 "is_direct": true
               }
@@ -38,13 +38,13 @@
         },
         "enchanted": "victim",
         "requirements": {
-          "condition": "minecraft:all_of",
+          "type": "minecraft:all_of",
           "terms": [
             {
-              "condition": "combat-plus:exposed_to_sun"
+              "type": "combat-plus:exposed_to_sun"
             },
             {
-              "condition": "minecraft:damage_source_properties",
+              "type": "minecraft:damage_source_properties",
               "predicate": {
                 "is_direct": true
               }
@@ -72,18 +72,18 @@
           ]
         },
         "requirements": {
-          "condition": "minecraft:all_of",
+          "type": "minecraft:all_of",
           "terms": [
             {
-              "condition": "combat-plus:every_x_ticks",
+              "type": "combat-plus:every_x_ticks",
               "value": 40.0
             },
             {
-              "condition": "combat-plus:exposed_to_sun"
+              "type": "combat-plus:exposed_to_sun"
             },
             {
+              "type": "combat-plus:relative_health",
               "comparison": "<",
-              "condition": "combat-plus:relative_health",
               "value": 1.0
             }
           ]

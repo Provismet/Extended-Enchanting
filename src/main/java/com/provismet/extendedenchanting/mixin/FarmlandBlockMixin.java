@@ -10,7 +10,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FarmlandBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -22,8 +21,8 @@ public abstract class FarmlandBlockMixin extends Block {
         super(settings);
     }
     
-    @Inject(method="turnToDirt", at=@At("HEAD"), cancellable=true)
-    private static void preventDirt (@Nullable Entity entity, BlockState state, Level world, BlockPos pos, CallbackInfo info) {
+    @Inject(method="fallOn", at=@At("HEAD"), cancellable=true)
+    private static void preventDirt (Level level, BlockState state, BlockPos pos, Entity entity, double fallDistance, CallbackInfo info) {
         if (entity instanceof LivingEntity living && EnchantmentHelper.has(living.getItemBySlot(EquipmentSlot.FEET), EEEnchantmentComponentTypes.SOIL_STEP)) info.cancel();
     }
 }

@@ -22,17 +22,17 @@
           }
         },
         "requirements": {
+          "type": "combat-plus:apply_to_target",
           "applied_condition": {
-            "condition": "minecraft:inverted",
+            "type": "minecraft:inverted",
             "term": {
-              "condition": "minecraft:entity_properties",
+              "type": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
                 "minecraft:entity_type": "#extended-enchanting:cannot_launch"
               }
             }
-          },
-          "condition": "combat-plus:apply_to_target"
+          }
         }
       }
     ]

@@ -17,13 +17,13 @@
         },
         "enchanted": "victim",
         "requirements": {
-          "condition": "minecraft:all_of",
+          "type": "minecraft:all_of",
           "terms": [
             {
-              "condition": "combat-plus:exposed_to_moon"
+              "type": "combat-plus:exposed_to_moon"
             },
             {
-              "condition": "minecraft:damage_source_properties",
+              "type": "minecraft:damage_source_properties",
               "predicate": {
                 "is_direct": true
               }
@@ -42,13 +42,13 @@
         },
         "enchanted": "victim",
         "requirements": {
-          "condition": "minecraft:all_of",
+          "type": "minecraft:all_of",
           "terms": [
             {
-              "condition": "combat-plus:exposed_to_moon"
+              "type": "combat-plus:exposed_to_moon"
             },
             {
-              "condition": "minecraft:damage_source_properties",
+              "type": "minecraft:damage_source_properties",
               "predicate": {
                 "is_direct": true
               }
@@ -64,7 +64,7 @@
           "function": "extended-enchanting:reset_insomnia"
         },
         "requirements": {
-          "condition": "combat-plus:exposed_to_moon"
+          "type": "combat-plus:exposed_to_moon"
         }
       }
     ]

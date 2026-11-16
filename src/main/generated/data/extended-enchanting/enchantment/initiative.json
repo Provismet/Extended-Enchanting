@@ -15,8 +15,8 @@
           }
         },
         "requirements": {
+          "type": "combat-plus:relative_health",
           "comparison": ">=",
-          "condition": "combat-plus:relative_health",
           "value": 1.0
         }
       }

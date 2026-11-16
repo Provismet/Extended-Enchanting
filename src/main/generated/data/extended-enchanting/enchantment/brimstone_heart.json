@@ -14,14 +14,14 @@
           "operation": "add_value"
         },
         "requirements": {
-          "condition": "minecraft:all_of",
+          "type": "minecraft:all_of",
           "terms": [
             {
-              "condition": "combat-plus:dimension",
+              "type": "combat-plus:dimension",
               "dimension_key": "minecraft:the_nether"
             },
             {
-              "condition": "minecraft:entity_properties",
+              "type": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
                 "minecraft:flags": {
@@ -52,18 +52,18 @@
           ]
         },
         "requirements": {
-          "condition": "minecraft:all_of",
+          "type": "minecraft:all_of",
           "terms": [
             {
-              "condition": "combat-plus:every_x_ticks",
+              "type": "combat-plus:every_x_ticks",
               "value": 20.0
             },
             {
-              "condition": "combat-plus:dimension",
+              "type": "combat-plus:dimension",
               "dimension_key": "minecraft:the_nether"
             },
             {
-              "condition": "minecraft:entity_properties",
+              "type": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
                 "minecraft:flags": {
@@ -72,8 +72,8 @@
               }
             },
             {
+              "type": "combat-plus:relative_health",
               "comparison": "<",
-              "condition": "combat-plus:relative_health",
               "value": 1.0
             }
           ]

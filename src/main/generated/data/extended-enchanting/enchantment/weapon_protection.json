@@ -15,22 +15,22 @@
           }
         },
         "requirements": {
-          "condition": "minecraft:any_of",
+          "type": "minecraft:any_of",
           "terms": [
             {
-              "condition": "minecraft:damage_source_properties",
+              "type": "minecraft:damage_source_properties",
               "predicate": {
                 "is_direct": true,
                 "tags": [
                   {
                     "expected": true,
-                    "id": "combat-plus:is_melee"
+                    "id": "#combat-plus:is_melee"
                   }
                 ]
               }
             },
             {
-              "condition": "minecraft:damage_source_properties",
+              "type": "minecraft:damage_source_properties",
               "predicate": {
                 "direct_entity": {
                   "minecraft:equipment": {
@@ -43,7 +43,7 @@
               }
             },
             {
-              "condition": "minecraft:damage_source_properties",
+              "type": "minecraft:damage_source_properties",
               "predicate": {
                 "direct_entity": {
                   "minecraft:entity_type": "#extended-enchanting:has_weapon"

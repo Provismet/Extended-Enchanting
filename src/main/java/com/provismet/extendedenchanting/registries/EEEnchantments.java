@@ -339,7 +339,7 @@ public class EEEnchantments {
             AnyOfCondition.anyOf(
                 DamageSourceCondition.hasDamageSource(
                     DamageSourcePredicate.Builder.damageType()
-                        .tag(TagPredicate.is(CombatPlusDamageTypeTags.IS_MELEE))
+                        .tag(TagPredicate.is(damageLookup, CombatPlusDamageTypeTags.IS_MELEE))
                         .isDirect(true)
                 ),
                 DamageSourceCondition.hasDamageSource(
@@ -384,7 +384,7 @@ public class EEEnchantments {
             ),
             DamageSourceCondition.hasDamageSource(
                 DamageSourcePredicate.Builder.damageType()
-                    .tag(TagPredicate.is(EEDamageTypeTags.COMBUSTION))
+                    .tag(TagPredicate.is(damageLookup, EEDamageTypeTags.COMBUSTION))
             )
         ).exclusiveWith(
             enchantmentLookup.getOrThrow(EnchantmentTags.ARMOR_EXCLUSIVE)

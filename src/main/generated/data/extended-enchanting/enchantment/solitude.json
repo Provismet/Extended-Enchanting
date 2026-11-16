@@ -15,14 +15,14 @@
           }
         },
         "requirements": {
+          "type": "combat-plus:apply_to_attacker",
           "applied_condition": {
+            "type": "combat-plus:apply_to_item",
             "applied_condition": {
-              "condition": "combat-plus:code_execution_item_condition",
+              "type": "combat-plus:code_execution_item_condition",
               "function": "extended-enchanting:one_enchantment"
-            },
-            "condition": "combat-plus:apply_to_item"
-          },
-          "condition": "combat-plus:apply_to_attacker"
+            }
+          }
         }
       }
     ]

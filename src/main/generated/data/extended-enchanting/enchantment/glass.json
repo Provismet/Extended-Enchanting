@@ -15,12 +15,12 @@
           }
         },
         "requirements": {
+          "type": "combat-plus:apply_to_attacker",
           "applied_condition": {
+            "type": "combat-plus:relative_health",
             "comparison": ">=",
-            "condition": "combat-plus:relative_health",
             "value": 1.0
-          },
-          "condition": "combat-plus:apply_to_attacker"
+          }
         }
       }
     ]
